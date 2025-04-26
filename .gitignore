@@ -1,1 +1,4 @@
 .DS_Store
+spider/data/database/
+bird/data/dev/dev_databases
+bird/data/train/train_databases

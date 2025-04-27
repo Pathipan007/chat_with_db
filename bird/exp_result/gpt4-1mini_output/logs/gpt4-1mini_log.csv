@@ -1,0 +1,1542 @@
+question_id,question,difficulty,generation_time_formatted,generation_time_seconds
+0,What is the highest eligible free rate for K-12 students in the schools in Alameda County?,simple,1.79 วินาที,1.794691801071167
+1,Please list the lowest three eligible free rates for students aged 5-17 in continuation schools.,moderate,1.81 วินาที,1.8066132068634033
+2,Please list the zip code of all the charter schools in Fresno County Office of Education.,simple,0.79 วินาที,0.7935500144958496
+3,What is the unabbreviated mailing street address of the school with the highest FRPM count for K-12 students?,simple,0.80 วินาที,0.7992501258850098
+4,Please list the phone numbers of the direct charter-funded schools that are opened after 2000/1/1.,moderate,2.12 วินาที,2.1164212226867676
+5,How many schools with an average score in Math greater than 400 in the SAT test are exclusively virtual?,simple,1.61 วินาที,1.6088860034942627
+6,"Among the schools with the SAT test takers of over 500, please list the schools that are magnet schools or offer a magnet program.",simple,1.30 วินาที,1.2994248867034912
+7,What is the phone number of the school that has the highest number of test takers with an SAT score of over 1500?,simple,0.99 วินาที,0.9905557632446289
+8,What is the number of SAT test takers of the schools with the highest FRPM count for K-12 students?,simple,1.11 วินาที,1.107970952987671
+9,"Among the schools with the average score in Math over 560 in the SAT test, how many schools are directly charter-funded?",simple,1.20 วินาที,1.2015128135681152
+10,"For the school with the highest average score in Reading in the SAT test, what is its FRPM count for students aged 5-17?",simple,1.51 วินาที,1.5084571838378906
+11,Please list the codes of the schools with a total enrollment of over 500.,simple,0.67 วินาที,0.6713440418243408
+12,"Among the schools with an SAT excellence rate of over 0.3, what is the highest eligible free rate for students aged 5-17?",moderate,1.22 วินาที,1.2175700664520264
+13,Please list the phone numbers of the schools with the top 3 SAT excellence rate.,simple,0.99 วินาที,0.9937520027160645
+14,"List the top five schools, by descending order, from the highest to the lowest, the most number of Enrollment (Ages 5-17). Please give their NCES school identification number.",simple,0.80 วินาที,0.798781156539917
+15,Which active district has the highest average score in Reading?,simple,0.99 วินาที,0.9905438423156738
+16,How many schools in merged Alameda have number of test takers less than 100?,simple,1.20 วินาที,1.198944091796875
+17,"Rank schools by their average score in Writing where the score is greater than 499, showing their charter numbers.",simple,0.99 วินาที,0.9932630062103271
+18,How many schools in Fresno (directly funded) have number of test takers not more than 250?,simple,1.00 วินาที,1.004500150680542
+19,What is the phone number of the school that has the highest average score in Math?,simple,0.78 วินาที,0.7834539413452148
+20,How many schools in Amador which the Low Grade is 9 and the High Grade is 12?,simple,0.79 วินาที,0.7923920154571533
+21,In Los Angeles how many schools have more than 500 free meals but less than 700 free or reduced price meals for K-12?,simple,0.91 วินาที,0.9056069850921631
+22,Which school in Contra Costa has the highest number of test takers?,simple,1.09 วินาที,1.0866060256958008
+23,List the names of schools with more than 30 difference in enrollements between K-12 and ages 5-17? Please also give the full street adress of the schools.,moderate,1.30 วินาที,1.296492099761963
+24,Give the names of the schools with the percent eligible for free meals in K-12 is more than 0.1 and test takers whose test score is greater than or equal to 1500?,moderate,0.99 วินาที,0.9937918186187744
+25,"Name schools in Riverside which the average of average math score for SAT is grater than 400, what is the funding type of these schools?",moderate,1.71 วินาที,1.7123510837554932
+26,State the names and full communication address of high schools in Monterey which has more than 800 free or reduced price meals for ages 15-17?,moderate,2.23 วินาที,2.2276358604431152
+27,"What is the average score in writing for the schools that were opened after 1991 or closed before 2000? List the school names along with the score. Also, list the communication number of the schools if there is any.",moderate,1.38 วินาที,1.3844101428985596
+28,"Consider the average difference between K-12 enrollment and 15-17 enrollment of schools that are locally funded, list the names and DOC type of schools which has a difference above this average.",challenging,3.28 วินาที,3.282200813293457
+29,When did the first-through-twelfth-grade school with the largest enrollment open?,simple,1.71 วินาที,1.707421064376831
+30,Which cities have the top 5 lowest enrollment number for students in grades 1 through 12?,simple,1.73 วินาที,1.7286770343780518
+31,What is the eligible free rate of the 10th and 11th schools with the highest enrolment for students in grades 1 through 12?,moderate,1.50 วินาที,1.5002219676971436
+32,What is the eligible free or reduced price meal rate for the top 5 schools in grades 1-12 with the highest free or reduced price meal count of the schools with the ownership code 66?,moderate,1.20 วินาที,1.1978909969329834
+33,"If there are any, what are the websites address of the schools with a free meal count of 1,900-2,000 to students aged 5-17? Include the name of the school.",moderate,1.20 วินาที,1.198002815246582
+34,What is the free rate for students between the ages of 5 and 17 at the school run by Kacey Gibson?,moderate,1.13 วินาที,1.128788948059082
+35,What is the administrator's email address of the chartered school with the fewest students enrolled in grades 1 through 12?,moderate,1.06 วินาที,1.0577940940856934
+36,Under whose administration is the school with the highest number of students scoring 1500 or more on the SAT? Indicate their full names.,challenging,1.40 วินาที,1.4018402099609375
+37,"What is the complete address of the school with the lowest excellence rate? Indicate the Street, City, Zip and State.",moderate,1.40 วินาที,1.4029228687286377
+38,"What are the webpages for the Los Angeles County school that has between 2,000 and 3,000 test takers?",simple,1.30 วินาที,1.3029048442840576
+39,What is the average number of test takers from Fresno schools that opened between 1/1/1980 and 12/31/1980?,simple,1.09 วินาที,1.0918278694152832
+40,What is the telephone number for the school with the lowest average score in reading in Fresno Unified?,moderate,1.20 วินาที,1.1978559494018555
+41,List the names of virtual schools that are among the top 5 in their respective counties based on average reading scores.,simple,1.91 วินาที,1.913764238357544
+42,What is the type of education offered in the school who scored the highest average in Math?,simple,1.08 วินาที,1.0840809345245361
+43,"What is the average math score of the school with the lowest average score for all subjects, and in which county is it located?",moderate,1.94 วินาที,1.940777063369751
+44,What is the average writing score of the school who has the highest number of test takers whose total SAT sscores are greater or equal to 1500? Indicate the city to where the school is situated.,simple,1.54 วินาที,1.5403990745544434
+45,What is the average writing score of each of the schools managed by Ricci Ulrich? List the schools and the corresponding average writing scores.,moderate,1.82 วินาที,1.8183469772338867
+46,Which state special schools have the highest number of enrollees from grades 1 through 12?,simple,1.20 วินาที,1.200119972229004
+47,What is the monthly average number of schools that opened in Alameda County under the jurisdiction of the Elementary School District in 1980?,moderate,1.71 วินาที,1.7098629474639893
+48,What is the ratio of merged Unified School District schools in Orange County to merged Elementary School District schools?,moderate,1.09 วินาที,1.0904712677001953
+49,Which different county has the most number of closed schools? Please provide the name of each school as well as the closure date.,moderate,1.09 วินาที,1.0937809944152832
+50,What is the postal street address for the school with the 7th highest Math average? Indicate the school's name.,simple,0.99 วินาที,0.9916419982910156
+51,In which mailing street address can you find the school that has the lowest average score in reading? Also give the school's name.,simple,1.40 วินาที,1.4049921035766602
+52,What is the total number of schools whose total SAT scores are greater or equal to 1500 whose mailing city is Lakeport?,simple,2.73 วินาที,2.7297370433807373
+53,How many test takers are there at the school/s whose mailing city address is in Fresno?,simple,1.09 วินาที,1.0917339324951172
+54,Please specify all of the schools and their related mailing zip codes that are under Avetik Atoian's administration.,simple,1.51 วินาที,1.508937120437622
+55,"Of the schools with a mailing state address in California, what is the ratio of the schools located in the county of Colusa against the school located in the county of Humboldt?",moderate,1.43 วินาที,1.4296586513519287
+56,"Of all the schools with a mailing state address in California, how many are active in San Joaquin city?",simple,0.74 วินาที,0.7392959594726562
+57,What is the phone number and extension number for the school that had the 333rd highest average writing score?,simple,0.77 วินาที,0.770179033279419
+58,What is the phone number and extension number for the school with the zip code 95203-3704? Indicate the school's name.,simple,0.75 วินาที,0.7505819797515869
+59,What is the website for the schools under the administrations of Mike Larson and Dante Alvarez?,simple,2.22 วินาที,2.222939968109131
+60,What are the websites for all the partially virtual chartered schools located in San Joaquin?,simple,1.10 วินาที,1.0977821350097656
+61,How many chartered schools located in the city of Hickman are owned by the Elementary School District?,simple,1.13 วินาที,1.1333839893341064
+62,What is the total number of non-chartered schools in the county of Los Angeles with a percent (%) of eligible free meals for grades 1 through 12 that is less than 0.18%?,challenging,2.18 วินาที,2.1764798164367676
+63,"In chartered schools with charter number 00D2, what are the names of all the administrators? Include the name of the school and the city to which it belongs",simple,1.51 วินาที,1.5079631805419922
+64,What is the total number of schools with a mailing city in Hickman belonging to the charter number 00D4?,simple,1.24 วินาที,1.2431018352508545
+65,What is the ratio in percentage of Santa Clara County schools that are locally funded compared to all other types of charter school funding?,moderate,1.26 วินาที,1.2647759914398193
+66,"Between 1/1/2000 to 12/31/2005, how many directly funded schools opened in the county of Stanislaus?",simple,1.81 วินาที,1.8145887851715088
+67,What is the total amount of Community College District closure in 1989 in the city of San Francisco?,simple,0.80 วินาที,0.7983038425445557
+68,Which county reported the most number of school closure in the 1980s with school wonership code belonging to Youth Authority Facilities (CEA)?,moderate,1.40 วินาที,1.3964049816131592
+69,Please provide the National Center for Educational Statistics school district identification number for all schools with a School Ownership Code that are part of the State Special Schools.,simple,0.69 วินาที,0.6900639533996582
+70,How many active and closed District Community Day Schools are there in the county of Alpine?,simple,0.82 วินาที,0.819918155670166
+71,What is the district code for the School that does not offer a magnet program in the city of Fresno?,simple,1.17 วินาที,1.165045976638794
+72,How many students from the ages of 5 to 17 are enrolled at the State Special School school in Fremont for the 2014-2015 academic year?,moderate,1.24 วินาที,1.2407279014587402
+73,What is the free or reduced price meal count for ages 5 to 17 in the Youth Authority School with a mailing street address of PO Box 1040?,simple,1.15 วินาที,1.147205114364624
+74,What is the lowest grade for the District Special Education Consortia School with National Center for Educational Statistics school district identification number of 0613360?,moderate,0.91 วินาที,0.9141957759857178
+75,What is the educational level name for the schools with Breakfast Provision 2 in county code 37? Indicate the name of the school.,simple,0.87 วินาที,0.8658730983734131
+76,What is the city location of the high school level school with Lunch Provision 2 whose lowest grade is 9 and the highest grade is 12 in the county of Merced?,moderate,1.67 วินาที,1.6746511459350586
+77,Which schools served a grade span of Kindergarten to 9th grade in the county of Los Angeles and what is its Percent (%) Eligible FRPM (Ages 5-17)?,moderate,1.91 วินาที,1.9116830825805664
+78,What is the most common type of grade span served in the city of Adelanto?,simple,1.20 วินาที,1.2039198875427246
+79,"Between San Diego and Santa Barbara, which county offers the most number of schools that does not offer physical building? Indicate the amount.",moderate,1.31 วินาที,1.3094651699066162
+80,What is the school type of the school with the highest latitude? Indicate the name of the school as well as the latitude coordinates.,simple,1.31 วินาที,1.3057751655578613
+81,In which city can you find the school in the state of California with the lowest latitude coordinates and what is its lowest grade? Indicate the school name.,moderate,1.10 วินาที,1.1025691032409668
+82,What is the grade span offered in the school with the highest longitude?,simple,0.99 วินาที,0.9890570640563965
+83,"Of the schools that offers a magnet program serving a grade span of Kindergarten to 8th grade, how many offers Multiple Provision Types? List the number of cities that offers a Kindergarten to 8th grade span and indicate how many schools are there serving such grade span for each city.",challenging,1.72 วินาที,1.7178010940551758
+84,What are the two most common first names among the school administrators? Indicate the district to which they administer.,simple,1.11 วินาที,1.1086399555206299
+85,What is the Percent (%) Eligible Free (K-12) in the school administered by an administrator whose first name is Alusine. List the district code of the school.,moderate,1.82 วินาที,1.824174165725708
+86,"What is the administrator's last name that oversees the school with Charter number 40? Indicate the district, the county where the school is situated, and the name of the school.",simple,1.01 วินาที,1.0147440433502197
+87,"What are the valid e-mail addresses of the administrator of the school located in the San Bernardino county, City of San Bernardino City Unified that opened between 1/1/2009 to 12/31/2010 whose school types are public Intermediate/Middle Schools and Unified Schools?",challenging,1.31 วินาที,1.3111119270324707
+88,What is the administrator's email address for the school with the highest number of test takers who received SAT scores of at least 1500?Provide the name of the school.,simple,0.99 วินาที,0.987238883972168
+89,How many accounts who choose issuance after transaction are staying in East Bohemia region?,moderate,1.22 วินาที,1.22377610206604
+90,How many accounts who have region in Prague are eligible for loans?,simple,2.91 วินาที,2.910472869873047
+91,"The average unemployment ratio of 1995 and 1996, which one has higher percentage?",simple,1.69 วินาที,1.6887280941009521
+92,List out the no. of districts that have female average salary is more than 6000 but less than 10000?,simple,2.05 วินาที,2.0531158447265625
+93,How many male customers who are living in North Bohemia have average salary greater than 8000?,moderate,2.01 วินาที,2.0128839015960693
+94,"List out the account numbers of female clients who are oldest and has lowest average salary, calculate the gap between this lowest average salary with the highest average salary?",challenging,3.14 วินาที,3.140780210494995
+95,List out the account numbers of clients who are youngest and have highest average salary?,moderate,2.23 วินาที,2.233952760696411
+96,How many customers who choose statement of weekly issuance are Owner?,simple,1.30 วินาที,1.2979662418365479
+97,List out the id number of client who choose statement of issuance after transaction are Disponent?,simple,1.21 วินาที,1.2079131603240967
+98,"Among the accounts who have approved loan date in 1997, list out the accounts that have the lowest approved amount and choose weekly issuance statement.",moderate,1.31 วินาที,1.30649995803833
+99,"Among the accounts who have loan validity more than 12 months, list out the accounts that have the highest approved amount and have account opening date in 1993.",moderate,1.71 วินาที,1.710892915725708
+100,"Among the account opened, how many female customers who were born before 1950 and stayed in Sokolov?",moderate,1.97 วินาที,1.9731698036193848
+101,List out the accounts who have the earliest trading date in 1995 ?,simple,1.15 วินาที,1.1484990119934082
+102,State different accounts who have account opening date before 1997 and own an amount of money greater than 3000USD,simple,1.13 วินาที,1.1299231052398682
+103,"Which client issued his/her card in 1994/3/3, give his/her client id.",simple,0.87 วินาที,0.8712477684020996
+104,"The transaction of 840 USD happened in 1998/10/14, when was this account opened?",simple,0.89 วินาที,0.8909921646118164
+105,"There was a loan approved in 1994/8/25, where was that account opened, give the district Id of the branch.",simple,0.99 วินาที,0.9922280311584473
+106,What is the biggest amount of transaction that the client whose card was opened in 1996/10/21 made?,simple,1.91 วินาที,1.910728931427002
+107,What is the gender of the oldest client who opened his/her account in the highest average salary branch?,simple,2.52 วินาที,2.523106098175049
+108,"For the client who applied the biggest loan, what was his/her first amount of transaction after opened the account?",simple,1.83 วินาที,1.8259170055389404
+109,How many clients opened their accounts in Jesenik branch were women?,simple,1.31 วินาที,1.3062949180603027
+110,What is the disposition id of the client who made 5100 USD transaction in 1998/9/2?,simple,0.99 วินาที,0.9871311187744141
+111,How many accounts were opened in Litomerice in 1996?,simple,1.04 วินาที,1.0432140827178955
+112,"For the female client who was born in 1976/1/29, which district did she opened her account?",simple,1.17 วินาที,1.1706891059875488
+113,"For the client who applied 98832 USD loan in 1996/1/3, when was his/her birthday?",simple,1.20 วินาที,1.1950719356536865
+114,"For the first client who opened his/her account in Prague, what is his/her account ID?",simple,1.26 วินาที,1.2579598426818848
+115,"For the branch which located in the south Bohemia with biggest number of inhabitants, what is the percentage of the male clients?",challenging,1.37 วินาที,1.3673908710479736
+116,"For the client whose loan was approved first in 1993/7/5, what is the increase rate of his/her account balance from 1993/3/22 to 1998/12/27?",challenging,3.14 วินาที,3.141876220703125
+117,What is the percentage of loan amount that has been fully paid with no issue.,moderate,1.20 วินาที,1.196559190750122
+118,"For loan amount less than USD100,000, what is the percentage of accounts that is still running with no issue.",moderate,0.80 วินาที,0.7984778881072998
+119,"For accounts in 1993 with statement issued after transaction, list the account ID, district name and district region.",moderate,1.61 วินาที,1.6097121238708496
+120,"From Year 1995 to 2000, who are the accounts holders from 'east Bohemia'. State the account ID the frequency of statement issuance.",moderate,1.61 วินาที,1.6127710342407227
+121,List account ID and account opening date for accounts from 'Prachatice'.,simple,1.30 วินาที,1.2973177433013916
+122,State the district and region for loan ID '4990'.,simple,1.20 วินาที,1.2033028602600098
+123,"Provide the account ID, district and region for loan amount greater than USD300,000.",simple,1.10 วินาที,1.096958875656128
+124,"List the loan ID, district and average salary for loan with duration of 60 months.",simple,1.11 วินาที,1.1068699359893799
+125,"For loans contracts which are still running where client are in debt, list the district of the and the state the percentage unemployment rate increment from year 1995 to 1996.",challenging,0.95 วินาที,0.9536733627319336
+126,Calculate the percentage of account from 'Decin' district for all accounts are opened in 1993.,simple,1.17 วินาที,1.170780897140503
+127,List the account IDs with monthly issuance of statements.,simple,0.61 วินาที,0.6121230125427246
+128,"List the top nine districts, by descending order, from the highest to the lowest, the number of female account holders.",moderate,1.18 วินาที,1.1790783405303955
+129,Which are the top ten withdrawals (non-credit card) by district names for the month of January 1996?,moderate,2.09 วินาที,2.0939178466796875
+130,How many of the account holders in South Bohemia still do not own credit cards?,moderate,1.52 วินาที,1.5153310298919678
+131,Which district has highest active loan?,moderate,1.19 วินาที,1.1929669380187988
+132,What is the average loan amount by male borrowers?,simple,0.89 วินาที,0.8940041065216064
+133,"In 1996, which districts have the highest unemployment rate? List their branch location and district name.",simple,1.00 วินาที,1.0038087368011475
+134,"In the branch where the largest number of crimes were committed in 1996, how many accounts were opened?",simple,1.10 วินาที,1.1016650199890137
+135,"After making a credit card withdrawal, how many account/s with monthly issuance has a negative balance?",moderate,1.41 วินาที,1.4125781059265137
+136,"Between 1/1/1995 and 12/31/1997, how many loans in the amount of at least 250,000 per account that chose monthly statement issuance were approved?",moderate,1.30 วินาที,1.3033547401428223
+137,How many accounts have running contracts in Branch location 1?,moderate,0.99 วินาที,0.9949829578399658
+138,"In the branch where the second-highest number of crimes were committed in 1995 occurred, how many male clients are there?",moderate,1.53 วินาที,1.5329558849334717
+139,"How many high-level credit cards have ""OWNER"" type of disposition?",simple,0.79 วินาที,0.7873647212982178
+140,"How many accounts are there in the district of ""Pisek""?",simple,0.81 วินาที,0.8077960014343262
+141,"Which districts have transactions greater than USS$10,000 in 1997?",simple,1.14 วินาที,1.1429061889648438
+142,Which accounts placed orders for household payment in Pisek?,simple,1.27 วินาที,1.2670600414276123
+143,What are the accounts that have gold credit cards?,simple,1.40 วินาที,1.4015610218048096
+144,"How much is the average amount in credit card made by account holders in a month, in year 2021?",moderate,1.81 วินาที,1.8091180324554443
+145,"Who are the account holder identification numbers whose who have transactions on the credit card with the amount is less than the average, in 1998?",moderate,1.69 วินาที,1.6901168823242188
+146,Who are the female account holders who own credit cards and also have loans?,simple,1.11 วินาที,1.1120891571044922
+147,How many female clients' accounts are in the region of South Bohemia?,simple,1.03 วินาที,1.032745122909546
+148,Please list the accounts whose district is Tabor that are eligible for loans.,moderate,1.16 วินาที,1.1621370315551758
+149,"Please list the account types that are not eligible for loans, and the average income of residents in the district where the account is located exceeds $8000 but is no more than $9000.",challenging,1.50 วินาที,1.4981157779693604
+150,How many accounts in North Bohemia has made a transaction with the partner's bank being AB?,moderate,1.30 วินาที,1.3004517555236816
+151,Please list the name of the districts with accounts that made withdrawal transactions.,moderate,1.50 วินาที,1.4964699745178223
+152,What is the average number of crimes committed in 1995 in regions where the number exceeds 4000 and the region has accounts that are opened starting from the year 1997?,moderate,0.91 วินาที,0.9117240905761719
+153,How many 'classic' cards are eligible for loan?,simple,0.99 วินาที,0.9937188625335693
+154,How many male clients in 'Hl.m. Praha' district?,simple,1.20 วินาที,1.1995110511779785
+155,How many percent of 'Gold' cards were issued prior to 1998?,simple,1.40 วินาที,1.4034690856933594
+156,Who is the owner of the account with the largest loan amount?,simple,1.21 วินาที,1.2063119411468506
+157,What is the number of committed crimes in 1995 in the district of the account with the id 532?,simple,1.09 วินาที,1.0933411121368408
+158,What is the district Id of the account that placed the order with the id 33333?,simple,1.10 วินาที,1.0956342220306396
+159,List all the withdrawals in cash transactions that the client with the id 3356 makes.,simple,1.30 วินาที,1.3000891208648682
+160,"Among the weekly issuance accounts, how many have a loan of under 200000?",simple,1.21 วินาที,1.2062909603118896
+161,What type of credit card does the client with the id 13539 own?,simple,0.90 วินาที,0.9002947807312012
+162,What is the region of the client with the id 3541 from?,simple,1.09 วินาที,1.09378981590271
+163,Which district has the most accounts with loan contracts finished with no problems?,moderate,1.10 วินาที,1.0979082584381104
+164,Who placed the order with the id 32423?,simple,3.14 วินาที,3.1430141925811768
+165,Please list all the transactions made by accounts from district 5.,simple,0.78 วินาที,0.7845897674560547
+166,How many of the accounts are from Jesenik district?,simple,0.89 วินาที,0.8894271850585938
+167,List all the clients' IDs whose junior credit cards were issued after 1996.,simple,1.20 วินาที,1.195039987564087
+168,What percentage of clients who opened their accounts in the district with an average salary of over 10000 are women?,moderate,2.13 วินาที,2.127229928970337
+169,What was the growth rate of the total amount of loans across all accounts for a male client between 1996 and 1997?,challenging,1.93 วินาที,1.9304399490356445
+170,How many credit card withdrawals were recorded after 1995?,simple,1.40 วินาที,1.3971590995788574
+171,What was the difference in the number of crimes committed in East and North Bohemia in 1996?,moderate,1.52 วินาที,1.5164239406585693
+172,How many owner and disponent dispositions are there from account number 1 to account number 10?,simple,0.90 วินาที,0.9011609554290771
+173,How often does account number 3 request an account statement to be released? What was the aim of debiting 3539 in total?,challenging,1.06 วินาที,1.0576939582824707
+174,What year was account owner number 130 born?,simple,0.72 วินาที,0.7215940952301025
+175,How many accounts have an owner disposition and request for a statement to be generated upon a transaction?,moderate,1.30 วินาที,1.3004279136657715
+176,"What is the amount of debt that client number 992 has, and how is this client doing with payments?",simple,1.09 วินาที,1.0928058624267578
+177,"What is the sum that client number 4's account has following transaction 851? Who owns this account, a man or a woman?",simple,1.21 วินาที,1.213775873184204
+178,Which kind of credit card does client number 9 possess?,simple,0.89 วินาที,0.8857631683349609
+179,"How much, in total, did client number 617 pay for all of the transactions in 1998?",simple,1.20 วินาที,1.1992201805114746
+180,"Please provide a list of clients who were born between 1983 and 1987 and whose account branch is in East Bohemia, along with their IDs.",moderate,1.81 วินาที,1.8126299381256104
+181,Please provide the IDs of the 3 female clients with the largest loans.,simple,0.89 วินาที,0.8897690773010254
+182,How many male customers who were born between 1974 and 1976 have made a payment on their home in excess of $4000?,moderate,1.91 วินาที,1.9109280109405518
+183,How many accounts in Beroun were opened after 1996?,simple,0.90 วินาที,0.9041452407836914
+184,How many female customers have a junior credit card?,simple,1.10 วินาที,1.0962629318237305
+185,What proportion of customers who have accounts at the Prague branch are female?,moderate,1.61 วินาที,1.6104590892791748
+186,What percentage of male clients request for weekly statements to be issued?,moderate,1.93 วินาที,1.9273920059204102
+187,How many clients who choose statement of weekly issuance are Owner?,simple,0.90 วินาที,0.899277925491333
+188,"Among the accounts who have loan validity more than 24 months, list out the accounts that have the lowest approved amount and have account opening date before 1997.",moderate,1.30 วินาที,1.3031108379364014
+189,Name the account numbers of female clients who are oldest and have lowest average salary?,moderate,1.19 วินาที,1.1905157566070557
+190,How many clients who were born in 1920 stay in east Bohemia?,simple,0.80 วินาที,0.8022158145904541
+191,How many loan accounts are for pre-payment of duration of 24 months with weekly issuance of statement.,simple,1.31 วินาที,1.3062450885772705
+192,What is the average amount of loan which are still on running contract with statement issuance after each transaction?,moderate,1.20 วินาที,1.1963119506835938
+193,List all ID and district for clients that can only have the right to issue permanent orders or apply for loans.,moderate,1.30 วินาที,1.296431303024292
+194,"Provide the IDs and age of the client with high level credit card, which is eligible for loans.",moderate,1.52 วินาที,1.5159940719604492
+195,What is the most common bond type?,simple,0.79 วินาที,0.7923099994659424
+196,"In the non-carcinogenic molecules, how many contain chlorine atoms?",simple,1.42 วินาที,1.4165329933166504
+197,Calculate the average number of oxygen atoms in single-bonded molecules.,moderate,1.62 วินาที,1.6216800212860107
+198,On average how many carcinogenic molecules are single bonded?,challenging,4.99 วินาที,4.9931640625
+199,"In the molecule containing sodium atoms, how many are non-carcinogenic?",simple,1.20 วินาที,1.2012770175933838
+200,Find the triple-bonded molecules which are carcinogenic.,simple,0.98 วินาที,0.983957052230835
+201,What is the percentage of carbon in double-bond molecules?,moderate,1.21 วินาที,1.2066211700439453
+202,How many triple type bonds are there?,simple,0.80 วินาที,0.8006031513214111
+203,In how many atoms is there no bromine?,simple,0.53 วินาที,0.5342609882354736
+204,"Of the first 100 molecules in number order, how many are carcinogenic?",simple,1.04 วินาที,1.0378081798553467
+205,Identify by their ID the molecules in which there is carbon.,simple,0.81 วินาที,0.805678129196167
+206,What elements are in the TR004_8_9 bond atoms?,challenging,0.99 วินาที,0.9937012195587158
+207,What elements are in a double type bond?,challenging,4.17 วินาที,4.1702189445495605
+208,Which type of label is the most numerous in atoms with hydrogen?,moderate,1.09 วินาที,1.0912330150604248
+209,Chlorine is in what type of bond?,simple,1.11 วินาที,1.1073849201202393
+210,What atoms are connected in single type bonds?,simple,1.81 วินาที,1.8062670230865479
+211,Indicate which atoms are connected in non-carcinogenic type molecules.,simple,1.10 วินาที,1.1040949821472168
+212,Which element is the least numerous in non-carcinogenic molecules?,challenging,1.28 วินาที,1.2774078845977783
+213,What type of bond is there between the atoms TR004_8 and TR004_20?,moderate,1.61 วินาที,1.6093618869781494
+214,What type of label is not on molecules with atoms with tin?,simple,1.11 วินาที,1.106039047241211
+215,How many atoms with iodine and with sulfur type elements are there in single bond molecules?,challenging,2.04 วินาที,2.0358052253723145
+216,Identify all connected atoms with a triple bond.,simple,0.99 วินาที,0.987001895904541
+217,Identify all the atoms that are connected to the atoms of the TR181 molecule.,simple,1.52 วินาที,1.5177538394927979
+218,What percentage of carcinogenic-type molecules does not contain fluorine?,challenging,1.18 วินาที,1.183835744857788
+219,What is the percentage of carcinogenic molecules in triple type bonds?,challenging,1.20 วินาที,1.1964149475097656
+220,Please list top three elements of the toxicology of the molecule TR000 in alphabetical order.,challenging,0.69 วินาที,0.6926250457763672
+221,What are the atoms that are bonded in the molecule TR001 with the bond ID of TR001_2_6?,simple,1.61 วินาที,1.6094801425933838
+222,What is the difference between the number of molecules that are carcinogenic and those that are not?,moderate,0.99 วินาที,0.989814043045044
+223,What are the atom IDs of the bond TR000_2_5?,simple,0.69 วินาที,0.6858110427856445
+224,What are the bond IDs that have the same atom ID 2 of TR000_2?,simple,1.96 วินาที,1.958162784576416
+225,Please list top five molecules that have double bonds in alphabetical order.,simple,1.04 วินาที,1.0446650981903076
+226,What is the percentage of double bonds in the molecule TR008? Please provide your answer as a percentage with five decimal places.,moderate,1.44 วินาที,1.4386889934539795
+227,What is the percentage of molecules that are carcinogenic? Please provide your answer as a percentage with three decimal places.,simple,0.98 วินาที,0.977886438369751
+228,How much of the hydrogen in molecule TR206 is accounted for? Please provide your answer as a percentage with four decimal places.,moderate,1.34 วินาที,1.3350698947906494
+229,What is the type of bond that molecule TR000 has when involved in any bonds?,simple,1.26 วินาที,1.264190912246704
+230,What are the elements of the toxicology and label of molecule TR060?,challenging,1.09 วินาที,1.0884678363800049
+231,Which bond type accounted for the majority of the bonds found in molecule TR010 and state whether or not this molecule is carcinogenic?,challenging,1.51 วินาที,1.509964942932129
+232,Please list top three molecules that have single bonds between two atoms and are not carcinogenic in alphabetical order.,moderate,1.09 วินาที,1.0924947261810303
+233,Please list top two bonds that happened with the molecule TR006 in alphabetical order.,simple,0.80 วินาที,0.7991840839385986
+234,How many bonds which involved atom 12 does molecule TR009 have?,moderate,1.20 วินาที,1.1991870403289795
+235,How many molecules are carcinogenic and have the bromine element?,simple,1.00 วินาที,0.9964680671691895
+236,What are the bond type and the atoms of the bond ID of TR001_6_9?,moderate,1.21 วินาที,1.212130069732666
+237,Which molecule does the atom TR001_10 belong to? Please state whether this molecule is carcinogenic or not.,moderate,1.10 วินาที,1.102550983428955
+238,How many molecules have a triple bond type?,simple,0.78 วินาที,0.7798361778259277
+239,How many connections does the atom 19 have?,simple,0.76 วินาที,0.7586088180541992
+240,"List all the elements of the toxicology of the molecule ""TR004"".",challenging,1.15 วินาที,1.1496078968048096
+241,How many of the molecules are not carcinogenic?,simple,0.89 วินาที,0.8852710723876953
+242,"Among all the atoms from 21 to 25, list all the molecules that are carcinogenic.",moderate,1.30 วินาที,1.296785831451416
+243,What are the bonds that have phosphorus and nitrogen as their atom elements?,moderate,1.92 วินาที,1.9154090881347656
+244,Is the molecule with the most double bonds carcinogenic?,moderate,1.32 วินาที,1.3175790309906006
+245,What is the average number of bonds the atoms with the element iodine have?,moderate,1.42 วินาที,1.4198410511016846
+246,List the bond type and the bond ID of the atom 45.,moderate,0.91 วินาที,0.9073038101196289
+247,List all the elements of atoms that can not bond with any other atoms.,challenging,0.80 วินาที,0.8031561374664307
+248,"What are the atoms of the triple bond with the molecule ""TR041""?",simple,1.42 วินาที,1.4213991165161133
+249,What are the elements of the atoms of TR144_8_19?,challenging,1.72 วินาที,1.7203378677368164
+250,"Of all the carcinogenic molecules, which one has the most double bonds?",moderate,1.20 วินาที,1.1994609832763672
+251,What is the least common element of all carcinogenic molecules?,moderate,1.19 วินาที,1.1919968128204346
+252,What are the atoms that can bond with the atom that has the element lead?,simple,1.62 วินาที,1.620162010192871
+253,List the elements of all the triple bonds.,challenging,1.30 วินาที,1.2973439693450928
+254,What percentage of bonds have the most common combination of atoms' elements?,moderate,5.82 วินาที,5.820710897445679
+255,What proportion of single bonds are carcinogenic? Please provide your answer as a percentage with five decimal places.,moderate,1.72 วินาที,1.7197270393371582
+256,Calculate the total atoms consisting of the element carbon and hydrogen.,simple,0.90 วินาที,0.8950493335723877
+257,List down atom id2 for atoms with element sulfur.,simple,0.86 วินาที,0.8571410179138184
+258,What are the bond type for atoms with element Tin?,moderate,1.14 วินาที,1.142914056777954
+259,How many elements are there for single bond molecules?,simple,1.36 วินาที,1.3604259490966797
+260,Calculate the total atoms with triple-bond molecules containing the element phosphorus or bromine.,moderate,1.41 วินาที,1.4089269638061523
+261,Write down bond id for molecules that are carcinogenic.,simple,0.91 วินาที,0.9092330932617188
+262,"Among the single bond molecule id, which molecules are not carcinogenic?",simple,1.18 วินาที,1.1817059516906738
+263,What is the composition of element chlorine in percentage among the single bond molecules?,challenging,1.32 วินาที,1.320652961730957
+264,"What are the labels for TR000, TR001 and TR002?",simple,1.01 วินาที,1.0114502906799316
+265,List down the molecule id for non carcinogenic molecules.,simple,0.79 วินาที,0.7853078842163086
+266,Calculate the total carcinogenic molecules for molecule id from TR000 to TR030.,simple,0.79 วินาที,0.7920019626617432
+267,List down the bond type for molecules from molecule id TR000 to TR050.,moderate,0.74 วินาที,0.7395410537719727
+268,What are the elements for bond id TR001_10_11?,challenging,1.13 วินาที,1.1311619281768799
+269,How many bond id have element iodine?,simple,1.13 วินาที,1.1277971267700195
+270,"Among the molecules with element Calcium, are they mostly carcinogenic or non carcinogenic?",moderate,2.42 วินาที,2.4242899417877197
+271,Does bond id TR001_1_8 have both element of chlorine and carbon?,simple,2.01 วินาที,2.009107828140259
+272,List down two molecule id of triple bond non carcinogenic molecules with element carbon.,moderate,1.13 วินาที,1.1338491439819336
+273,What is the percentage of element chlorine in carcinogenic molecules?,moderate,1.49 วินาที,1.487381935119629
+274,List the toxicology elements associated with molecule TR001.,simple,0.99 วินาที,0.9929847717285156
+275,Give me the molecule ID of the double bond type.,simple,0.68 วินาที,0.684485912322998
+276,Write down the atom IDs of the first and second atoms of triple bond type molecules.,simple,1.10 วินาที,1.0958359241485596
+277,What are the toxicology elements associated with bond ID TR000_1_2?,challenging,0.99 วินาที,0.992729902267456
+278,How many of the single bond type molecules are non-carcinogenic?,simple,1.50 วินาที,1.5019221305847168
+279,What is the label for bond ID TR001_10_11?,simple,1.50 วินาที,1.5027658939361572
+280,Enumerate the bond ID of triple bond type molecules and tell me if they are carcinogenic or not.,moderate,1.10 วินาที,1.0961987972259521
+281,Tally the toxicology element of the 4th atom of each molecule that was carcinogenic.,challenging,1.62 วินาที,1.6152830123901367
+282,What is the ratio of Hydrogen elements in molecule ID TR006? List the ratio with its label.,challenging,1.93 วินาที,1.9295649528503418
+283,Identify whether the chemical compound that contains Calcium is carcinogenic.,moderate,1.26 วินาที,1.2587249279022217
+284,Determine the bond type that is formed in the chemical compound containing element Carbon.,moderate,1.22 วินาที,1.2211010456085205
+285,Name chemical elements that form a bond TR001_10_11.,challenging,1.10 วินาที,1.0966780185699463
+286,"Among all chemical compounds identified in the database, what percent of compounds form a triple-bond.",simple,0.89 วินาที,0.8910539150238037
+287,"Among all chemical compounds that contain molecule TR047, identify the percent that form a double-bond.",moderate,1.53 วินาที,1.5349798202514648
+288,Identify whether the molecule that contains atom TR001_1 is carcinogenic.,simple,1.38 วินาที,1.3759989738464355
+289,Is molecule TR151 carcinogenic?,simple,1.09 วินาที,1.0936648845672607
+290,Which toxic element can be found in the molecule TR151?,challenging,1.62 วินาที,1.6177208423614502
+291,How many chemical compounds in the database are identified as carcinogenic.,simple,0.79 วินาที,0.7920610904693604
+292,Identify the atoms belong to the molecule with ID between TR010 to TR050 that contain the element carbon.,simple,1.50 วินาที,1.5048680305480957
+293,How many atoms belong to the molecule labeled with carcinogenic compounds?,simple,0.79 วินาที,0.7876741886138916
+294,Which bond ids are double-bond with carcinogenic compound?,simple,1.32 วินาที,1.3197760581970215
+295,How many atoms belong to the molecule that element is hydrogen and labeled with carcinogenic compound?,simple,0.86 วินาที,0.8640382289886475
+296,Indicate the molecule id is belonging to the TR000_1_2 bond that has the first atom named TR000_1.,simple,1.20 วินาที,1.1988630294799805
+297,"Among the atoms that contain element carbon, which one does not contain compound carcinogenic?",simple,0.99 วินาที,0.9921560287475586
+298,Calculate the percentage of molecules containing carcinogenic compounds that element is hydrogen.,moderate,1.41 วินาที,1.4146990776062012
+299,Is molecule TR124 carcinogenic?,simple,0.98 วินาที,0.9784009456634521
+300,What atoms comprise TR186?,simple,1.21 วินาที,1.2073829174041748
+301,What is the bond type of TR007_4_19?,simple,0.94 วินาที,0.9413797855377197
+302,Name the elements that comprise the atoms of bond TR001_2_4.,challenging,1.14 วินาที,1.1427831649780273
+303,How many double bonds does TR006 have and is it carcinogenic?,moderate,1.41 วินาที,1.4111311435699463
+304,List all carcinogenic molecules and their elements.,challenging,1.20 วินาที,1.1980869770050049
+305,Name all bonds with single bond types and what atoms are connected to the molecules.,simple,1.31 วินาที,1.3114581108093262
+306,Which molecules have triple bonds and list all the elements they contain.,challenging,1.19 วินาที,1.1897258758544922
+307,Name the atoms' elements that form bond TR000_2_3.,challenging,1.41 วินาที,1.4132919311523438
+308,How many bonds are created by bonding atoms with chlorine element?,simple,1.30 วินาที,1.2968361377716064
+309,List out the atom id that belongs to the TR346 molecule and how many bond type can be created by this molecule?,simple,1.05 วินาที,1.053528070449829
+310,"How many molecules have a double bond type and among these molecule, how many are labeled as carcinogenic compound?",moderate,3.59 วินาที,3.587660789489746
+311,How many molecules without sulphur element is not having double bond?,simple,1.08 วินาที,1.0845191478729248
+312,What is the carcinogenic label for bond TR001_2_4?,simple,1.11 วินาที,1.111743450164795
+313,How many atoms belong to molecule id TR001?,simple,1.09 วินาที,1.0909998416900635
+314,How many single bonds are there in the list?,simple,0.58 วินาที,0.5816459655761719
+315,"Among the molecules which contain ""cl"" element, which of them are carcinogenic?",simple,1.09 วินาที,1.0894842147827148
+316,"Among the molecules which contain ""c"" element, which of them are not carcinogenic?",simple,1.00 วินาที,0.9973611831665039
+317,Calculate the percentage of carcinogenic molecules which contain the Chlorine element.,moderate,1.30 วินาที,1.29569411277771
+318,What is the molecule id of bond id TR001_1_7?,simple,1.01 วินาที,1.0107550621032715
+319,How many elements are contained in bond_id TR001_3_4?,challenging,1.09 วินาที,1.0933310985565186
+320,What is the type of the bond which is presenting the connection between two atoms TR000_1 and TR000_2?,moderate,1.61 วินาที,1.6080329418182373
+321,"What is the molecule of atom id ""TR000_2"" and atom id 2 ""TR000_4""?",simple,1.00 วินาที,0.9960603713989258
+322,What is the element of toxicology for the atom with the ID of TR000_1?,challenging,0.79 วินาที,0.786175012588501
+323,Is molecule TR000 is carcinogenic or not?,simple,0.99 วินาที,0.9900369644165039
+324,Find the percentage of atoms with single bond.,simple,0.89 วินาที,0.8904619216918945
+325,How many carcinogenic molecules that consisted of Nitrogen?,simple,1.30 วินาที,1.300412893295288
+326,Which molecule consisted of Sulphur atom with double bond?,simple,1.38 วินาที,1.3762381076812744
+327,Which non-carcinogenic molecules consisted more than 5 atoms?,moderate,1.33 วินาที,1.331517219543457
+328,"List all the elements with double bond, consisted in molecule TR024.",challenging,1.81 วินาที,1.8057737350463867
+329,Which carcinogenic molecule have the highest number of atoms consisted in it?,moderate,1.60 วินาที,1.6011989116668701
+330,Calculate the percentage of carcinogenic molecules with triple bonded Hidrogen atoms.,challenging,2.02 วินาที,2.0191640853881836
+331,How many of the molecules are carcinogenic?,simple,1.09 วินาที,1.0921058654785156
+332,"Among the molecules between TR004 to TR010, how many of them has single bonds?",simple,0.94 วินาที,0.9392859935760498
+333,"In the molecule TR008, how many carbons are present?",simple,0.74 วินาที,0.7375171184539795
+334,What is the element with the atom ID of TR004_7 in molecule that is not carcinogenic?,challenging,0.90 วินาที,0.9028847217559814
+335,What is the total number of molecules with double bonded oxygen?,simple,1.60 วินาที,1.5986719131469727
+336,"in molecules with triple bonds, how many of them are not carcinogenic?",simple,1.21 วินาที,1.2076818943023682
+337,List the element and bond type included in the molecule with molecule ID of TR002.,challenging,1.09 วินาที,1.094264030456543
+338,What is the atom ID of double bonded carbon in TR012 molecule?,moderate,1.31 วินาที,1.3140501976013184
+339,List the atom ID of the carcinogenic molecule that contains oxygen?,simple,0.99 วินาที,0.9851651191711426
+340,Which are the cards that have incredibly powerful foils.,simple,0.89 วินาที,0.8920998573303223
+341,What are the borderless cards available without powerful foils?,simple,0.79 วินาที,0.7920999526977539
+342,List the card names with value that cost more converted mana for the face.,simple,1.19 วินาที,1.1939551830291748
+343,Name all cards with 2015 frame style ranking below 100 on EDHRec.,simple,0.58 วินาที,0.5829107761383057
+344,List all the mythic rarity print cards banned in gladiator format.,moderate,1.50 วินาที,1.502068042755127
+345,"For artifact type of cards that do not have multiple faces on the same card, state its legalities status for vintage play format.",moderate,1.20 วินาที,1.195600986480713
+346,List all the card id and artist with unknown power which are legal for commander play format.,moderate,1.10 วินาที,1.0980491638183594
+347,Find all cards illustrated by Stephen Daniel and describe the text of the ruling of these cards. State if these cards have missing or degraded properties and values.,moderate,2.50 วินาที,2.5023908615112305
+348,Describe the information about rulings for card named 'Sublime Epiphany' with number 74s.,simple,3.76 วินาที,3.756085157394409
+349,Name the card and artist with the most ruling information. Also state if the card is a promotional printing.,moderate,1.20 วินาที,1.1978099346160889
+350,State the alternative languages available for card named Annul numbered 29.,simple,1.09 วินาที,1.091520071029663
+351,Name all the cards which have alternative language in Japanese.,simple,0.89 วินาที,0.8854730129241943
+352,Calculate the percentage of the cards availabe in Chinese Simplified.,moderate,1.10 วินาที,1.0985360145568848
+353,List all the sets available in Italian translation. State the total number of cards per set.,simple,1.40 วินาที,1.4012360572814941
+354,How many types of cards does the artist Aaron Boyd illustrated about card art?,simple,0.68 วินาที,0.6846840381622314
+355,What is the keyword found on card 'Angel of Mercy'?,simple,0.79 วินาที,0.789435863494873
+356,How many cards have infinite power?,simple,0.58 วินาที,0.5832750797271729
+357,What type of promotion is of card 'Duress'?,simple,0.99 วินาที,0.9882500171661377
+358,"What is the border color of card ""Ancestor's Chosen""?",simple,1.00 วินาที,0.9965109825134277
+359,"What is the type of the card ""Ancestor's Chosen"" as originally printed?",simple,0.99 วินาที,0.9925041198730469
+360,"cards are not directly linked to language but through table 'set'. you need to add set in covered table & rephrase your question
+What are the languages available for the set that card 'Angel of Mercy' is in?",moderate,1.19 วินาที,1.1919400691986084
+361,How many cards of legalities whose status is restricted have text boxes?,simple,1.36 วินาที,1.3607430458068848
+362,"What is the description about the ruling of card ""Condemn""?",simple,0.63 วินาที,0.6332449913024902
+363,How many cards of legalities whose status is restricted are found in a starter deck?,simple,0.99 วินาที,0.9888010025024414
+364,"What is the status of card ""Cloudchaser Eagle""?",simple,0.88 วินาที,0.884296178817749
+365,"What is the type of card ""Benalish Knight""?",simple,0.58 วินาที,0.5776939392089844
+366,"What is the rule of playing card ""Benalish Knight""?",simple,0.90 วินาที,0.898756742477417
+367,Please provide the names of the artists who illustrated the card art in Phyrexian.,simple,0.79 วินาที,0.7868242263793945
+368,What is the percentage of borderless cards?,simple,1.20 วินาที,1.2003881931304932
+369,How many cards that illusrtated in German have been reprinted?,simple,0.79 วินาที,0.7853569984436035
+370,How many borderless cards are illustrated in Russian?,simple,0.79 วินาที,0.7879788875579834
+371,What is the percentage of cards whose language is French among the Story Spotlight cards?,challenging,1.40 วินาที,1.3984730243682861
+372,How many cards are there with toughness of 99?,simple,1.61 วินาที,1.6087191104888916
+373,Name the cards that were illustrated by Aaron Boyd.,simple,0.78 วินาที,0.7830810546875
+374,How many black border cards are only available on mtgo?,simple,1.20 วินาที,1.1955687999725342
+375,List down all the card IDs with converted mana cost of 0.,simple,0.78 วินาที,0.7798662185668945
+376,What are the card layout of cards with keyword of flying?,simple,0.59 วินาที,0.5907199382781982
+377,"How many cards with original type of ""Summon - Angel"" have subtype other than ""Angel""?",simple,1.30 วินาที,1.297424077987671
+378,What are the foiled cards that are incredibly powerful when paired with non foiled cards? List the IDs.,simple,0.96 วินาที,0.9610891342163086
+379,What are the cards belong to duel deck a? List the ID.,simple,0.72 วินาที,0.7170488834381104
+380,List the edhrecRank for cards with frame version 2015.,simple,0.78 วินาที,0.779536247253418
+381,List down the name of artists for cards in Chinese Simplified.,simple,0.70 วินาที,0.7022280693054199
+382,What are the cards that only available in paper and Japanese language?,simple,1.81 วินาที,1.8079502582550049
+383,How many of the banned cards are white border?,simple,1.10 วินาที,1.0984508991241455
+384,List down the uuid for legacy cards and the foreign language of these cards.,simple,1.20 วินาที,1.1965818405151367
+385,Write down the ruling of Beacon of Immortality.,simple,0.99 วินาที,0.9891982078552246
+386,How many cards are having future frame version and what are the legality status of these cards?,simple,1.09 วินาที,1.090790033340454
+387,What are the cards for set OGW? State the colour for these cards.,simple,0.89 วินาที,0.89205002784729
+388,What are the cards in set 10E with converted mana of 5 have translation and what are the languages?,simple,1.20 วินาที,1.196850061416626
+389,List down the name of cards with original types of Creature - Elf and the date of rulings for these cards.,simple,0.99 วินาที,0.9893200397491455
+390,What are the colors of cards from ID 1-20? What are the format of these cards?,simple,0.99 วินาที,0.9909932613372803
+391,"Among the Artifact cards, which are black color and comes with foreign languague translation?",moderate,1.20 วินาที,1.2024352550506592
+392,"Pick 3 cards with rarity of uncommon, list down name these cards according to ascending order of it's ruling date.",simple,3.82 วินาที,3.8168580532073975
+393,On how many cards designed by John Avon is its foil non-powerful?,simple,1.13 วินาที,1.1320161819458008
+394,How many white bordered cards are powerful?,simple,0.79 วินาที,0.7899949550628662
+395,How many cards designed by UDON and available in mtgo print type has a starting maximum hand size of -1?,simple,0.68 วินาที,0.6806132793426514
+396,How many cards with a 1993 frame version and available on paper have a sensitive content warning?,simple,0.89 วินาที,0.8874161243438721
+397,"What is the mana cost of cards with a normal layout, a 2003 frame version, with a black border color, and available in paper and mtgo?",moderate,1.34 วินาที,1.3443920612335205
+398,What is the  unconverted mana do all the cards created by Rob Alexander cost in total?,simple,0.93 วินาที,0.9339361190795898
+399,Lists all types of cards available in arena.,simple,0.89 วินาที,0.8888669013977051
+400,Lists the set code of all cards translated into Spanish.,simple,0.99 วินาที,0.993333101272583
+401,What percentage of legendary frame effect cards that are only available in online game variations?,moderate,1.71 วินาที,1.7083683013916016
+402,What is the percentage of Story Spotlight cards that do not have a text box? List them by their ID.,moderate,1.10 วินาที,1.0955450534820557
+403,Calculate the percentage of cards in Spanish. List them by name.,simple,1.30 วินาที,1.2966840267181396
+404,Indicates the name of all the languages into which the set whose number of cards is 309 is translated.,simple,0.64 วินาที,0.6443099975585938
+405,How many Brazilian Portuguese translated sets are inside the Commander block?,moderate,1.03 วินาที,1.0266900062561035
+406,Lists by ID all Creature-type cards with legal status.,simple,0.99 วินาที,0.9876019954681396
+407,Lists all types of cards in German.,moderate,0.89 วินาที,0.8906700611114502
+408,How many unknown power cards contain info about the triggered ability,moderate,0.88 วินาที,0.8848757743835449
+409,"Indicates the number of cards with pre-modern format, ruling text ""This is a triggered mana ability."" that do not have multiple faces.",moderate,1.78 วินาที,1.7770929336547852
+410,"Is there any card from Erica Yang artist in pauper format and available in paper? If so, indicate its ID.",simple,1.30 วินาที,1.3019819259643555
+411,"To which artist does the card with the text ""Das perfekte Gegenmittel zu einer dichten Formation"" belong?",simple,0.68 วินาที,0.6803481578826904
+412,"What is the foreign name of the card in French of type Creature, normal layout and black border color, by artist Matthew D. Wilson?",moderate,1.52 วินาที,1.5232481956481934
+413,How many cards with print rarity have ruling text printed on 01/02/2007?,simple,1.14 วินาที,1.1354079246520996
+414,What language is the set of 180 cards that belongs to the Ravnica block translated into?,simple,0.95 วินาที,0.9490201473236084
+415,What percentage of cards with format commander and legal status do not have a content warning?,challenging,1.30 วินาที,1.3006517887115479
+416,What percentage of cards without power are in French?,challenging,1.21 วินาที,1.212177038192749
+417,What percentage of Japanese translated sets are expansion sets?,moderate,1.29 วินาที,1.293900966644287
+418,What kind of printing is on the card that Daren Bader created?,simple,0.79 วินาที,0.7910230159759521
+419,How many color cards with no borders have been ranked higher than 12000 on EDHRec?,simple,0.99 วินาที,0.994854211807251
+420,"How many cards are oversized, reprinted, and printed for promotions?",simple,1.71 วินาที,1.7092227935791016
+421,Please list top three unknown power cards that have promotional types for arena league in alphabetical order.,simple,0.91 วินาที,0.9098489284515381
+422,What is the language of the card with the multiverse number 149934?,simple,0.76 วินาที,0.762484073638916
+423,Please provide the ids of top three powerful pairs of Kingdom Foil and Kingdom Cards sorted by Kingdom Foil id in alphabetical order.,simple,1.30 วินาที,1.302198886871338
+424,What proportion of cards do not have a text box with a normal layout?,simple,1.20 วินาที,1.199462890625
+425,What are the card numbers that don't have multiple faces on a single card and have the subtypes Angel and Wizard?,simple,0.89 วินาที,0.8902487754821777
+426,"Please provide top three sets that don't appear in Magic: The Gathering Online, along with their names in in alphabetical order.",simple,0.79 วินาที,0.7868542671203613
+427,What languages are available in the set known as Archenemy on the magic card market and having the code ARC?,moderate,1.20 วินาที,1.1956701278686523
+428,What is the name of set number 5 and its translation?,simple,0.89 วินาที,0.889150857925415
+429,What is the language and expansion type of set number 206?,simple,0.99 วินาที,0.9925837516784668
+430,Please list top two sets of cards with their IDs that have Italian-language cards and are located in the Shadowmoor block in alphabetical order.,simple,1.41 วินาที,1.4064159393310547
+431,Which set is not available outside of the United States and has foil cards with Japanese writing on them? Please include the set ID in your response.,challenging,1.09 วินาที,1.0937306880950928
+432,Which Russian set of cards contains the most cards overall?,moderate,1.44 วินาที,1.4361133575439453
+433,What is the percentage of the set of cards that have Chinese Simplified as the language and are only available for online games?,moderate,0.85 วินาที,0.8522617816925049
+434,How many sets are available just in Japanese and not in Magic: The Gathering Online?,moderate,1.30 วินาที,1.299009084701538
+435,How many card border with black color ? List out the card id.,simple,0.68 วินาที,0.6844563484191895
+436,How many cards have frame effect as extendedart? List out the id of those cards.,simple,0.89 วินาที,0.8854782581329346
+437,"Among black card borders, which card has full artwork?",simple,0.79 วินาที,0.7881379127502441
+438,"Point out the language of set id ""174""?",simple,1.09 วินาที,1.0910007953643799
+439,"List out the set name of the set code ""ALL"".",simple,0.59 วินาที,0.585719108581543
+440,"Which foreign language used by ""A Pedra Fellwar""?",simple,1.29 วินาที,1.2873499393463135
+441,State the set code of the set with release date of 07/13/2007?,simple,0.84 วินาที,0.8361902236938477
+442,"Mention the base set size and set code of the set that was in block named ""Masques"" and ""Mirage"".",simple,0.81 วินาที,0.8065319061279297
+443,Give the code of sets have expansion type of 'expansion'?,simple,1.13 วินาที,1.12984299659729
+444,Name the foreign name of the card that has boros watermark? List out the type of this card.,simple,1.72 วินาที,1.723534107208252
+445,What is the language and flavor text of the card that has colorpie watermark? List out the type of this card.,simple,1.20 วินาที,1.1959660053253174
+446,What is percentage of the cards with a converted Mana Cost of 10 in set of Abyssal Horror?,moderate,0.99 วินาที,0.9889891147613525
+447,Give the code of sets have expansion commander type?,simple,0.89 วินาที,0.8925120830535889
+448,Name the foreign name of the card that has abzan watermark? List out the type of this card.,simple,0.78 วินาที,0.7787928581237793
+449,What is the language of the card that has azorius watermark? List out the type of this card.,simple,0.70 วินาที,0.6980249881744385
+450,"Of all the cards that are designed by Aaron Miller, how many of them are incredibly powerful?",moderate,0.89 วินาที,0.8936371803283691
+451,How many cards available in paper have a positive starting maximum hand size?,simple,0.79 วินาที,0.7852940559387207
+452,Please list the names of the cards that have a text box.,simple,0.89 วินาที,0.89385986328125
+453,"What's the unconverted mana cost of the card ""Ancestor's Chosen""?",simple,0.80 วินาที,0.8022010326385498
+454,"Among the cards with a white border color, how many of them have unknown power?",simple,1.09 วินาที,1.0881481170654297
+455,Which of the cards that are a promotional painting have multiple faces on the same card? Please list their names.,simple,0.90 วินาที,0.8950021266937256
+456,"What's the list of all types for the card ""Molimo, Maro-Sorcerer""?",simple,0.89 วินาที,0.8945837020874023
+457,"Please list the websites where I can purchase the cards that have the promotional type of ""bundle"".",simple,0.55 วินาที,0.5515029430389404
+458,"How many artists have designed a card with a black border color and is available in both ""arena"" and ""mtgo"" printing type?",simple,0.92 วินาที,0.9183642864227295
+459,"Which card costs more converted mana, ""Serra Angel"" or ""Shrine Keeper""?",moderate,1.52 วินาที,1.5205721855163574
+460,"Which artist designed the card whose promotional name is ""Battra, Dark Destroyer""?",simple,0.70 วินาที,0.6958930492401123
+461,Please list the names of the top 3 cards with the highest converted mana cost and have a 2003 card frame style.,simple,0.67 วินาที,0.668175220489502
+462,"What's the Italian name of the set of cards with ""Ancestor's Chosen"" is in?",moderate,0.98 วินาที,0.9849972724914551
+463,"How many translations are there for the set of cards with ""Angel of Mercy"" in it?",simple,0.90 วินาที,0.8977305889129639
+464,"Please list the names of the cards in the set ""Hauptset Zehnte Edition"".",simple,1.10 วินาที,1.096423864364624
+465,"For the set of cards with ""Ancestor's Chosen"" in it, is there a Korean version of it?",moderate,1.10 วินาที,1.0953631401062012
+466,"Among the cards in the set ""Hauptset Zehnte Edition"", how many of them are designed by Adam Rex?",moderate,1.61 วินาที,1.6066479682922363
+467,"How many cards are there in the base set of ""Hauptset Zehnte Edition""?",simple,1.09 วินาที,1.0899100303649902
+468,"What is the Simplified Chinese translation of the name of the set ""Eighth Edition""?",moderate,0.92 วินาที,0.9200458526611328
+469,"Did the set of cards with ""Angel of Mercy"" appear on Magic: The Gathering Online?",moderate,1.18 วินาที,1.1825170516967773
+470,"When was the set of cards with ""Ancestor's Chosen"" released?",simple,1.10 วินาที,1.0959889888763428
+471,"What is the expansion type of the set ""Hauptset Zehnte Edition""?",simple,1.09 วินาที,1.0865087509155273
+472,"Among the sets in the block ""Ice Age"", how many of them have an Italian translation?",moderate,1.33 วินาที,1.3258721828460693
+473,Is the set of cards with Adarkar Valkyrie only available outside the United States?,moderate,1.32 วินาที,1.3247179985046387
+474,"Among the sets of cards that have an Italian translation, how many of them have a base set number of under 100?",moderate,0.77 วินาที,0.7711708545684814
+475,How many cards in the set Coldsnap have a black border color?,simple,0.70 วินาที,0.7007119655609131
+476,Please list the name of the cards in the set Coldsnap with the highest converted mana cost.,simple,0.96 วินาที,0.9597418308258057
+477,"Which of these artists have designed a card in the set Coldsnap, Jeremy Jarvis, Aaron Miller or Chippy?",challenging,0.91 วินาที,0.9148149490356445
+478,What is card number 4 in the set Coldsnap?,simple,0.56 วินาที,0.5638730525970459
+479,"Among the cards with converted mana cost higher than 5 in the set Coldsnap, how many of them have unknown power?",moderate,0.89 วินาที,0.8945462703704834
+480,"What is the Italian flavor text of the card ""Ancestor's Chosen""?",moderate,1.04 วินาที,1.0426037311553955
+481,"Please list all the foreign languages in which the card ""Ancestor's Chosen"" has a flavor text.",simple,0.87 วินาที,0.870387077331543
+482,"What's the German type of the card ""Ancestor's Chosen""?",simple,1.19 วินาที,1.191072940826416
+483,Please list the Italian text ruling of all the cards in the set Coldsnap.,moderate,2.03 วินาที,2.03462290763855
+484,Please list the Italian names of the cards in the set Coldsnap with the highest converted mana cost.,moderate,1.51 วินาที,1.505113124847412
+485,When was the ruling for the card 'Reminisce' created?,simple,0.89 วินาที,0.8881299495697021
+486,What is the percentage of the cards with a converted mana cost of 7 in the set Coldsnap?,moderate,1.30 วินาที,1.3025238513946533
+487,What is the percentage of incredibly powerful cards in the set Coldsnap?,challenging,1.40 วินาที,1.401026964187622
+488,What's the code for the set which was released on 2017/7/14?,simple,1.43 วินาที,1.4312639236450195
+489,List the keyrune code for the set whose code is 'PKHC'.,simple,0.58 วินาที,0.5849599838256836
+490,"For the set which had 'SS2' as the code, what is its magic card market id?",simple,1.09 วินาที,1.094541072845459
+491,What's the magic card market name for the set which was released on 2017/6/9?,simple,0.90 วินาที,0.9018490314483643
+492,"For the set ""From the Vault: Lore"", what is its expansion type?",simple,1.52 วินาที,1.517364263534546
+493,"For the set ""Commander 2014 Oversized"" , give its parent code.",simple,0.80 วินาที,0.7967469692230225
+494,For all cards illustrated by Jim Pavelec. and describe the text of the ruling of these cards. Do these cards have missing or degraded properties and values.,challenging,1.32 วินาที,1.3153049945831299
+495,"What was the release date for the set which card ""Evacuation"" in it?",simple,1.09 วินาที,1.0918519496917725
+496,"What is the number of cards are there in the set of ""Rinascita di Alara""?",simple,1.09 วินาที,1.087982177734375
+497,"List the expansion type of the set ""Huitième édition"".",simple,1.25 วินาที,1.2532858848571777
+498,"What's the French name of the set of cards with ""Tendo Ice Bridge"" is in?",moderate,1.37 วินาที,1.3656821250915527
+499,"How many translations of the name of the set ""Tenth Edition""?",moderate,0.80 วินาที,0.8002150058746338
+500,"Tell the Japanese name of the set which card ""Fellwar Stone"" is in it.",moderate,1.18 วินาที,1.183851718902588
+501,Which card name in the set 'Journey into Nyx Hero's Path' has the highest converted mana cost.,moderate,1.09 วินาที,1.0939710140228271
+502,"What is the release date for the set ""Ola de frío""?",simple,1.40 วินาที,1.4015998840332031
+503,"What was the expansion type for the set which card ""Samite Pilgrim"" in it?",simple,1.52 วินาที,1.5155060291290283
+504,How many cards are there in the set 'World Championship Decks 2004' with the converted mana cost as '3'.,simple,1.20 วินาที,1.2006032466888428
+505,"Show the Simplified Chinese translation of the name of the set ""Mirrodin""?",moderate,0.99 วินาที,0.990231990814209
+506,"For all the set of cards that has Japanese translation, what is the percentage of them are only available in non-foil?",challenging,1.37 วินาที,1.3736319541931152
+507,"For all the set of cards that has Brazil Portuguese translation, what is the percentage of them are only available online?",challenging,1.33 วินาที,1.32647705078125
+508,What are the available printing types of the cards that doesn't have a text box created by Aleksi Briclot?,moderate,0.99 วินาที,0.9942610263824463
+509,What is the unique id of the set that has the highest number of cards?,simple,1.19 วินาที,1.188288927078247
+510,"Among the cards that doesn't have multiple faces on the same card, who is the illustrator of the card art that has the highest cost of converted mana?",simple,0.99 วินาที,0.9922356605529785
+511,What is the most common visual frame effects among the incredibly powerful foils?,moderate,1.09 วินาที,1.0896508693695068
+512,How many cards with unknown power that can't be found in foil is in duel deck A?,simple,1.21 วินาที,1.2068259716033936
+513,"Among the sets whose expansion type is Commander, which set has the highest total number of cards including promotional and related supplemental products but excluding Alchemy modifications? Indicate the id of the set.",challenging,1.30 วินาที,1.3001008033752441
+514,"In duels, what are the top 10 cards with the highest uncoverted mana cost?",simple,0.99 วินาที,0.9884469509124756
+515,When was the oldest mythic card released and what are its legal play formats?,moderate,1.19 วินาที,1.1912989616394043
+516,How many cards did Volkan BaÇµa illustrated whose foreign language is in French?,moderate,1.10 วินาที,1.1010029315948486
+517,How many rare enchantment Abundance cards are there whose play format status are all legal?,moderate,1.40 วินาที,1.4046242237091064
+518,Which of the play format has the highest number of banned status? Indicate the play format and the names of all the card meet the condition.,moderate,1.81 วินาที,1.8112318515777588
+519,"What is the language of the ""Battlebond"" set?",simple,1.22 วินาที,1.219886064529419
+520,Who is the illustrator that illustrated the least amount of cards? List the format of play of the cards that he/she illustrated.,moderate,1.58 วินาที,1.5799779891967773
+521,"Among the cards whose version of frame style is 1997, what is the status of the card illustrated by D. Alexander Gregory in legacy play format that has sensitive content or Wizards of the Coast?",challenging,1.87 วินาที,1.86881422996521
+522,Which cards are ranked 1st on EDHRec? List all of the cards name and its banned play format.,moderate,0.89 วินาที,0.8947780132293701
+523,What is the annual average number of sets that were released between 1/1/2012 to 12/31/2015? Indicate the common langugage of the card.,challenging,1.11 วินาที,1.1102349758148193
+524,List the artists who illustrated cards with black borders which are available only in arena.,simple,0.92 วินาที,0.9168970584869385
+525,Find the uuid of cards in which the old school format is restricted or banned.,simple,0.89 วินาที,0.8910059928894043
+526,"Among the card designed by Matthew D. Wilson, how many are available only in the paper?",simple,0.99 วินาที,0.9944508075714111
+527,What are the rulings for the card named and designed by Kev Walker? List them in descending order of dates.,moderate,1.40 วินาที,1.4015188217163086
+528,List the names of all the cards in the set Hour of Devastation and find the formats in which these cards are legal.,challenging,1.31 วินาที,1.3054461479187012
+529,Find and list the names of sets which doesn't have Japanese translation but have Korean translation.,moderate,1.50 วินาที,1.5045299530029297
+530,List all the frame styles and cards Allen Williams worked on and find any banned cards if there are any.,moderate,1.69 วินาที,1.6868259906768799
+531,"Which user has a higher reputation, Harlan or Jarrod Dixon?",simple,1.01 วินาที,1.0067458152770996
+532,Please list the display names of all the users whose accounts were created in the year 2011.,simple,0.99 วินาที,0.9941580295562744
+533,How many users last accessed the website after 2014/9/1?,simple,0.61 วินาที,0.6080539226531982
+534,What is the display name of the user who has the most number of views?,simple,0.58 วินาที,0.5799458026885986
+535,"Among the users who have more than 100 upvotes, how many of them have more then 1 downvotes?",simple,1.00 วินาที,1.0009772777557373
+536,How many users with more than 10 views created their account after the year 2013?,simple,1.09 วินาที,1.0947461128234863
+537,How many posts does the user csgillespie own?,simple,1.00 วินาที,0.9972589015960693
+538,Please list the titles of the posts owned by the user csgillespie?,simple,0.99 วินาที,0.9901270866394043
+539,"Who is the owner of the post ""Eliciting priors from experts""?",simple,0.89 วินาที,0.8892989158630371
+540,What is the title of the post that is owned by csgillespie and has the highest popularity?,simple,0.72 วินาที,0.7193481922149658
+541,What is the display name of the user who is the owner of the most valuable post?,simple,0.98 วินาที,0.9752178192138672
+542,What is the total number of comments of all the posts owned by csgillespie?,simple,1.01 วินาที,1.0085980892181396
+543,"For the post that got the most number of answers owned by csgillespie, how many answers did it get?",simple,0.75 วินาที,0.7524898052215576
+544,"What is the display name of the user who last edited the post ""Examples for teaching: Correlation does not mean causation""?",moderate,1.10 วินาที,1.0998709201812744
+545,"Among the posts owned by csgillespie, how many of them are root posts?",simple,1.09 วินาที,1.0908231735229492
+546,Please list the display names of all the users who owns a post that is well-finished.,simple,1.40 วินาที,1.401906967163086
+547,"Among the posts owned by an elder user, how many of them have a score of over 19?",simple,1.10 วินาที,1.0960819721221924
+548,"What is the location of the owner of the post ""Eliciting priors from experts""?",simple,0.99 วินาที,0.9899177551269531
+549,"From which post is the tag ""bayesian"" excerpted from? Please give the body of the post.",simple,0.80 วินาที,0.7952311038970947
+550,From which post is the most popular tag excerpted from? Please give the body of the post.,simple,0.78 วินาที,0.7830719947814941
+551,How many badges has the user csgillespie obtained?,simple,1.11 วินาที,1.1077921390533447
+552,Please list the names of the badges obtained by csgillespie.,simple,0.86 วินาที,0.8573241233825684
+553,"Among the badges obtained by csgillespie, how many of them were obtained in the year 2011?",simple,1.01 วินาที,1.01361083984375
+554,What is the display name of the user who has obtained the most number of badges?,simple,1.09 วินาที,1.0932011604309082
+555,What is the average score of the posts owned by the user csgillespie?,simple,1.09 วินาที,1.0904040336608887
+556,What is the average number of badges obtained by a user with over 200 views?,simple,1.00 วินาที,0.9991710186004639
+557,"Among the posts with a score of over 5, what is the percentage of them being owned by an elder user?",moderate,1.41 วินาที,1.4076638221740723
+558,How many votes did the user No.58 take on 2010/7/19?,simple,1.46 วินาที,1.4554040431976318
+559,Indicate the creation date of the maximum number of votes.,simple,0.65 วินาที,0.6488630771636963
+560,"Give the number of ""Revival"" badges.",simple,0.79 วินาที,0.7862050533294678
+561,What is the title for the post which got the highest score comment?,simple,0.90 วินาที,0.8994390964508057
+562,"For the post which got 1910 view counts, how many comments does it get?",simple,0.69 วินาที,0.6898958683013916
+563,"User No.3025 gave a comment at 20:29:39 on 2014/4/23 to a post, how many favorite counts did that post get?",moderate,1.09 วินาที,1.09144926071167
+564,Give the only one comment text of the post with parent id 107829.,simple,1.05 วินาที,1.0463790893554688
+565,"User No.23853 gave a comment to a post at 9:08:18 on 2013/7/12, was that post well-finished?",moderate,1.55 วินาที,1.553391933441162
+566,"For the owner user of post No. 65041, what is his/her reputation points?",simple,1.09 วินาที,1.093022108078003
+567,"For the user with the display name of ""Tiago Pasqualini"", how many posts did he/she own?",simple,0.99 วินาที,0.9923360347747803
+568,Provide the display name of the user who made the vote No.6347.,simple,0.79 วินาที,0.7879679203033447
+569,Give the number of votes for the post about data visualization.,simple,0.89 วินาที,0.8925621509552002
+570,"For the user whose display name is ""DatEpicCoderGuyWhoPrograms"", what is his/her badge's name?",simple,1.05 วินาที,1.045971155166626
+571,"For the user No.24, how many times is the number of his/her posts compared to his/her votes?",moderate,1.15 วินาที,1.1461188793182373
+572,How many views did the post titled 'Integration of Weka and/or RapidMiner into Informatica PowerCenter/Developer' get?,moderate,1.08 วินาที,1.081610918045044
+573,Write the contents of comments with a score of 17.,simple,1.19 วินาที,1.1854150295257568
+574,Which user has the website URL listed at 'http://stackoverflow.com',simple,0.74 วินาที,0.7430880069732666
+575,What is the badge name that user 'SilentGhost' obtained?,simple,0.85 วินาที,0.8523068428039551
+576,Name the user that commented 'thank you user93!',simple,0.79 วินาที,0.7865700721740723
+577,Write all comments made by user 'A Lion.',simple,0.79 วินาที,0.7917788028717041
+578,Which user made a post titled 'Understanding what Dassault iSight is doing?' and how much is the reputation of the user?,moderate,1.40 วินาที,1.402371883392334
+579,Write all comments made on the post titled 'How does gentle boosting differ from AdaBoost?',simple,1.19 วินาที,1.190256118774414
+580,Name 10 users with the badge name 'Necromancer.',simple,0.81 วินาที,0.8056900501251221
+581,Who is the editor of the post titled 'Open source tools for visualizing multi-dimensional data?',moderate,1.38 วินาที,1.3783349990844727
+582,List the title of posts which were edited by Vebjorn Ljosa.,simple,2.64 วินาที,2.6449410915374756
+583,What is the total score of the posts edited by Yevgeny and include the user's website URL.,simple,1.21 วินาที,1.2063028812408447
+584,Write all the comments left by users who edited the post titled 'Why square the difference instead of taking the absolute value in standard deviation?',moderate,1.81 วินาที,1.8117501735687256
+585,How much is the total bounty amount of the post titled about 'data',simple,1.20 วินาที,1.2006070613861084
+586,Which user added a bounty amount of 50 to the post title mentioning variance?,challenging,1.37 วินาที,1.3719019889831543
+587,Calculate the average view count of each post tagged as 'humor' and list the title and the comment of each post.,moderate,1.12 วินาที,1.1154119968414307
+588,Give the total number of comments posted by user ID 13.,simple,0.80 วินาที,0.8020873069763184
+589,Which user ID has the highest reputation?,simple,0.78 วินาที,0.7777838706970215
+590,Which user ID has the lowest view?,simple,1.03 วินาที,1.033277988433838
+591,How many users are awarded with supporter badge during year 2011?,simple,1.35 วินาที,1.3504619598388672
+592,How many users are awarded with more than 5 badges?,simple,1.20 วินาที,1.201866865158081
+593,How many users from New York have a teacher and supporter badge?,simple,1.27 วินาที,1.2691888809204102
+594,Which user created post ID 1 and what is the reputation of this user?,simple,1.09 วินาที,1.0943241119384766
+595,Which user have only one post history per post and having at least 1000 views?,moderate,2.33 วินาที,2.3333990573883057
+596,Which users have posted the most comments. List out the user's badge?,simple,1.46 วินาที,1.4566028118133545
+597,How many users from India have the teacher badges?,simple,1.01 วินาที,1.0111041069030762
+598,What is the percentage difference of student badges given during 2010 and 2011?,challenging,2.17 วินาที,2.1710619926452637
+599,What are the post history type IDs for post ID 3720 and how many unique users have commented on the post?,simple,1.30 วินาที,1.298264980316162
+600,List out all post that are related to post ID 61217 and what is the popularity of this post?,simple,1.00 วินาที,0.9962999820709229
+601,What is the score and the link type ID for post ID 395?,simple,0.78 วินาที,0.7789270877838135
+602,List out all post ID with score more than 60 and list out all the user ID that created these post.,simple,0.65 วินาที,0.6496193408966064
+603,What is the sum of favourite count gained by user ID 686 in 2011?,simple,0.93 วินาที,0.930628776550293
+604,What is the average of the up votes and the average user age for users creating more than 10 posts?,moderate,3.04 วินาที,3.041531801223755
+605,"How many users obtained the ""Announcer"" badge?",simple,0.90 วินาที,0.8978497982025146
+606,List out the name of badges that users obtained on 7/19/2010 7:39:08 PM.,simple,0.89 วินาที,0.886937141418457
+607,How many positive comments are there on the list?,simple,0.79 วินาที,0.789334774017334
+608,State the detailed content of the comment which was created on 7/19/2010 7:25:47 PM.,simple,1.23 วินาที,1.2332940101623535
+609,How many posts have a score of 10 on the list?,simple,0.85 วินาที,0.8513422012329102
+610,What are the name of badge that users who have the highest reputation obtained?,simple,0.85 วินาที,0.847585916519165
+611,Mention the reputation of users who had obtained the badge on 7/19/2010 7:39:08 PM.,simple,3.62 วินาที,3.6193978786468506
+612,"What is the name of badge that the user whose display name is ""Pierre"" obtained?",simple,0.79 วินาที,0.7872152328491211
+613,"List out the dates that users who are located in Rochester, NY obtained their badges?",simple,0.92 วินาที,0.9205331802368164
+614,"Among the users who obtained the ""Teacher"" badge, calculate their percentage of users",simple,1.19 วินาที,1.185995101928711
+615,"Among the users who obtained the ""Organizer"" badges, calculate the percentage of users who are teenagers.",moderate,1.18 วินาที,1.1775197982788086
+616,What is the comment's rating score of the post which was created on 7/19/2010 7:19:56 PM,simple,1.23 วินาที,1.230647087097168
+617,What is the detailed content of the comment of the post which was created on 7/19/2010 7:37:33 PM?,simple,1.20 วินาที,1.2013068199157715
+618,"List out the age of users who located in Vienna, Austria obtained the badge?",simple,0.99 วินาที,0.9902489185333252
+619,How many adults who obtained the badge Supporter?,simple,1.01 วินาที,1.008094310760498
+620,State the number of views of users who obtained the badge on 7/19/2010 7:39:08 PM.,simple,0.98 วินาที,0.9775691032409668
+621,What are the name of badges that users who have the lowest reputation obtained?,simple,2.13 วินาที,2.130796194076538
+622,"State the name of badge that the user whose display name is ""Sharpie"" obtained.",simple,1.10 วินาที,1.1019229888916016
+623,"How many elders obtained the ""Supporter"" badge?",simple,1.38 วินาที,1.3751351833343506
+624,What is the name of user with the ID of 30?,simple,0.76 วินาที,0.7576887607574463
+625,How many users were from New York?,simple,0.76 วินาที,0.763836145401001
+626,How many votes were made in 2010?,simple,0.83 วินาที,0.8329098224639893
+627,How many users were adult?,simple,0.79 วินาที,0.7863872051239014
+628,Which users have the highest number of views?,simple,1.02 วินาที,1.0189621448516846
+629,Calculate the ratio of votes in 2010 and 2011.,simple,1.36 วินาที,1.3590278625488281
+630,What is the name of tags used by John Salvatier's?,simple,1.01 วินาที,1.0106019973754883
+631,How many posts were created by Daniel Vassallo?,simple,0.79 วินาที,0.7864770889282227
+632,How many votes were made by Harlan?,simple,1.54 วินาที,1.536402940750122
+633,Which post by slashnick has the most answers count? State the post ID.,moderate,0.95 วินาที,0.9487972259521484
+634,"Among posts by Harvey Motulsky and Noah Snyder, which one has higher popularity?",challenging,1.59 วินาที,1.5879318714141846
+635,How many posts by Matt Parker have more than 4 votes?,moderate,1.12 วินาที,1.1191198825836182
+636,How many negative comments did Neil McGuigan get in his posts?,simple,1.39 วินาที,1.3886628150939941
+637,State all the tags used by Mark Meckes in his posts that doesn't have comments.,moderate,1.95 วินาที,1.9487721920013428
+638,List all the name of users that obtained the Organizer Badges.,simple,0.78 วินาที,0.7813780307769775
+639,"Based on posts posted by Community, calculate the percentage of posts that use the R language.",challenging,1.10 วินาที,1.100902795791626
+640,Calculate the difference in view count from post posted by Mornington and view count from posts posted by Amos.,moderate,1.41 วินาที,1.4127848148345947
+641,How many users received commentator badges in 2014?,simple,1.41 วินาที,1.411505937576294
+642,"How many posts were created on 21st July, 2010?",simple,0.79 วินาที,0.7926411628723145
+643,What are the display names and ages of user who got the highest in views?,simple,1.72 วินาที,1.7223968505859375
+644,"Provide the last edit date and last edit user ID for the post ""Detecting a given face in a database of facial images"".",simple,0.69 วินาที,0.69256591796875
+645,How many negative comments were given by user ID 13?,simple,0.90 วินาที,0.9004528522491455
+646,Describe the post title which got positive comments and display names of the users who posted those comments.,simple,1.00 วินาที,1.0046889781951904
+647,Provide the badge names received in 2011 for the user whose location is in the North Pole.,simple,1.01 วินาที,1.0075509548187256
+648,Provide the users' display names and available website URLs of the post with favorite count of more than 150.,simple,1.00 วินาที,0.9976272583007812
+649,"Describe the post history counts and last edit date of the post title ""What is the best introductory Bayesian statistics textbook?""",simple,1.16 วินาที,1.1594030857086182
+650,Describe the last accessed date and location of the users who received the outliers badge.,simple,0.95 วินาที,0.9525959491729736
+651,"Provide the related post title of ""How to tell if something happened in a data set which monitors a value over time"".",simple,1.82 วินาที,1.8206501007080078
+652,List the post IDs and badge names of the user Samuel in 2013.,moderate,1.31 วินาที,1.3142740726470947
+653,What is the owner's display name of the most popular post?,simple,0.99 วินาที,0.9928371906280518
+654,Mention the display name and location of the user who owned the excerpt post with hypothesis-testing tag.,moderate,1.52 วินาที,1.5154750347137451
+655,"Write down the related posts titles and link type IDs of the post ""What are principal component scores?"".",simple,1.33 วินาที,1.3257269859313965
+656,Describe the display name of the parent ID for child post with the highest score.,simple,1.10 วินาที,1.095822811126709
+657,"Under the vote type of 8, provide the display names and websites URLs of the user who got the highest bounty amount.",moderate,1.21 วินาที,1.2065751552581787
+658,What are the titles of the top 5 posts with the highest popularity?,simple,0.80 วินาที,0.8015868663787842
+659,"How many tags have post count between 5,000 to 7,000?",simple,1.11 วินาที,1.1112210750579834
+660,What is the owner user id of the most valuable post?,simple,1.01 วินาที,1.0093998908996582
+661,How old is the most influential user?,simple,1.10 วินาที,1.102086067199707
+662,How many posts with votes that were created in 2011 have a bounty of 50?,simple,1.42 วินาที,1.4183588027954102
+663,What is the id of the youngest user?,simple,0.70 วินาที,0.698307991027832
+664,What is the sum of score of the post on 2010-07-19?,simple,0.90 วินาที,0.9037470817565918
+665,What is the average monthly number of links created in 2010 for posts that have no more than 2 answers?,moderate,1.52 วินาที,1.518874168395996
+666,"Among the posts that were voted by user 1465, what is the id of the most valuable post?",simple,1.01 วินาที,1.0092558860778809
+667,What is the title of the post with the oldest post link?,simple,1.20 วินาที,1.20021390914917
+668,What is the display name of the user who acquired the highest amount of badges?,simple,1.32 วินาที,1.3171770572662354
+669,When did 'chl' cast its first vote in a post?,simple,0.80 วินาที,0.8033647537231445
+670,What is the date when the youngest user made his or her first post?,simple,1.31 วินาที,1.3110651969909668
+671,What is the display name of the user who acquired the first Autobiographer badge?,simple,1.21 วินาที,1.2143430709838867
+672,"Among the users located in United Kingdom, how many users whose post have a total favorite amount of 4 or more?",moderate,1.42 วินาที,1.4204399585723877
+673,What is the average number of posts voted by the oldest users?,simple,1.52 วินาที,1.518874168395996
+674,Who has the highest reputation? Please give the display name.,simple,1.01 วินาที,1.010221004486084
+675,How many users whose reputations are higher than 2000 and the number of views is higher than 1000?,simple,1.01 วินาที,1.007181167602539
+676,Please list all display names of users who are adults.,simple,0.80 วินาที,0.8046939373016357
+677,How many posts did Jay Stevens have in 2010?,simple,1.21 วินาที,1.2094528675079346
+678,Which post by Harvey Motulsky has the most views? Please give the id and title of this post.,simple,0.90 วินาที,0.9016008377075195
+679,Which post has the highest score? Please give its id and title's name.,simple,0.72 วินาที,0.7178268432617188
+680,What is the average score of Stephen Turner's posts?,simple,0.78 วินาที,0.7780892848968506
+681,Please list the users' display names whose posts had over 20000 views in 2011.,simple,0.91 วินาที,0.9113779067993164
+682,Which is the most valuable post in 2010? Please give its id and the owner's display name.,moderate,0.80 วินาที,0.7985539436340332
+683,What is the percentage of posts whose owners had a reputation of over 1000 in 2011?,moderate,1.32 วินาที,1.3164401054382324
+684,Identify the percentage of teenage users.,simple,0.80 วินาที,0.80342698097229
+685,Identify the total views on the post 'Computer Game Datasets'. Name the user who posted it last time.,moderate,1.32 วินาที,1.3177289962768555
+686,Identify the total number of posts with views above average.,simple,0.80 วินาที,0.8006529808044434
+687,How many comments were added to the post with the highest score?,simple,2.74 วินาที,2.736876964569092
+688,Identify the number of posts that have been viewed over 35000 times but have received no comments from other users.,simple,1.50 วินาที,1.4994137287139893
+689,"Identify the display name and location of the user, who was the last to edit the post with ID 183.",simple,1.10 วินาที,1.095405101776123
+690,Identify the latest badge awarded to the user with the display name Emmett.,simple,1.20 วินาที,1.199380874633789
+691,Identify the number of adult users who have cast over 5000 upvotes.,simple,1.30 วินาที,1.302988052368164
+692,"How long did it take the user, known by his or her display name 'Zolomon' to get the badge? Count from the date the user's account was created.",moderate,1.09 วินาที,1.0923898220062256
+693,"Identify the number of posts and comments left by the user, who has the latest created user account.",simple,1.09 วินาที,1.0888712406158447
+694,Provide the text of the latest 10 comments to the post with the title 'Analysing wind data with R' and the display name of the user who left it.,moderate,1.20 วินาที,1.2013907432556152
+695,How many users were awarded with 'Citizen Patrol' badge?,simple,0.68 วินาที,0.6845841407775879
+696,Count the number of posts with a tag specified as 'careers'.,simple,0.99 วินาที,0.9880940914154053
+697,"What is the reputation and view count of the user, who is known by his or her display name 'Jarrod Dixon'?",simple,0.80 วินาที,0.8049807548522949
+698,How many comments and answers were left by the users on the post with the title 'Clustering 1D data'?,simple,1.50 วินาที,1.5001521110534668
+699,When did the user known as 'IrishStat' create his or her account?,simple,0.79 วินาที,0.786888837814331
+700,Identify the number of posts that offer a bounty amount over 30.,simple,1.09 วินาที,1.0887219905853271
+701,"Among all the posts posted by the most influential user, identify the percentage with a score above 50.",challenging,1.30 วินาที,1.2994658946990967
+702,How many posts have a score less than 20?,simple,0.68 วินาที,0.680527925491333
+703,"Among the tags with tag ID below 15, how many of them have 20 count of posts and below?",simple,0.79 วินาที,0.7911858558654785
+704,What is the excerpt post ID and wiki post ID of the tag named sample?,simple,0.79 วินาที,0.79067063331604
+705,"Give the user's reputation and up vote number of the user that commented ""fine, you win :)"".",simple,0.76 วินาที,0.7590658664703369
+706,Give the texts commented on the post about linear regression.,simple,1.05 วินาที,1.0549900531768799
+707,"Among the posts with views ranging from 100 to 150, what is the comment with the highest score?",moderate,1.06 วินาที,1.0591888427734375
+708,List the creation date and age of the user that commented with webiste.,moderate,1.30 วินาที,1.2962968349456787
+709,"In comments with 0 score, how many of the posts have view count lower than 5?",simple,0.90 วินาที,0.8964669704437256
+710,"In posts with 1 comment, how many of the comments have 0 score?",simple,1.03 วินาที,1.030714988708496
+711,"Among products comments with 0 score, what is the total number of users ages 40 years old?",simple,1.06 วินาที,1.0582289695739746
+712,"What is the post ID and the comments commented in the post titled by ""Group differences on a five point Likert item""?",simple,1.10 วินาที,1.0965702533721924
+713,"What is the up vote number of the user that commented ""R is also lazy evaluated.""?",simple,1.31 วินาที,1.3053030967712402
+714,List the comments commented by the user with a username of Harvey Motulsky.,simple,1.20 วินาที,1.198695182800293
+715,"In comments with score between 1 to 5, list down the display names of the users with 0 down votes.",simple,0.88 วินาที,0.8838059902191162
+716,"Among the comments with scores between 5 to 10, what is the percentage of the users with 0 up votes?",moderate,1.42 วินาที,1.4180209636688232
+717,Please list all the superpowers of 3-D Man.,simple,1.10 วินาที,1.0980069637298584
+718,"How many superheroes have the super power of ""Super Strength""?",simple,1.30 วินาที,1.3012669086456299
+719,"Among the superheroes with the super power of ""Super Strength"", how many of them have a height of over 200cm?",moderate,1.19 วินาที,1.1888818740844727
+720,Please list the full names of all the superheroes with over 15 super powers.,simple,1.00 วินาที,1.0014350414276123
+721,How many superheroes have blue eyes?,simple,0.74 วินาที,0.7372138500213623
+722,What is the colour of Apocalypse's skin?,simple,1.44 วินาที,1.4359009265899658
+723,"Among the superheroes with blue eyes, how many of them have the super power of ""Agility""?",moderate,1.34 วินาที,1.3407621383666992
+724,Please list the superhero names of all the superheroes that have blue eyes and blond hair.,challenging,1.49 วินาที,1.4912490844726562
+725,How many superheroes are published by Marvel Comics?,simple,0.89 วินาที,0.8912880420684814
+726,Rank heroes published by Marvel Comics by their height in descending order.,moderate,1.21 วินาที,1.2062699794769287
+727,Who is the publisher of Sauron?,simple,0.87 วินาที,0.8655040264129639
+728,"Rank superheroes from Marvel Comics by their eye color popularity, starting with the most common color.",moderate,1.11 วินาที,1.112342119216919
+729,What is the average height of the superheroes from Marvel Comics?,simple,0.80 วินาที,0.7970540523529053
+730,List the superheroes from Marvel Comics who have the super power of 'Super Strength'.,challenging,1.09 วินาที,1.0909647941589355
+731,How many superheroes did DC Comics publish?,simple,1.10 วินาที,1.1010630130767822
+732,Which publisher published the slowest superhero?,moderate,1.55 วินาที,1.5469560623168945
+733,How many gold-eyed superheroes did Marvel Comics publish?,moderate,1.71 วินาที,1.7098848819732666
+734,What is the publisher's name of Blue Beetle II?,simple,1.56 วินาที,1.558678150177002
+735,How many superheroes with blonde hair are there?,simple,0.76 วินาที,0.7588160037994385
+736,Who is the dumbest superhero?,moderate,1.27 วินาที,1.271547794342041
+737,What is Copycat's race?,simple,3.95 วินาที,3.9474759101867676
+738,Which superheroes have a durability attribute value of less than 50?,simple,0.97 วินาที,0.9672157764434814
+739,What are the names of the superheroes with the power of death touch?,moderate,1.13 วินาที,1.1287298202514648
+740,How many female superheroes have a strength value of 100?,moderate,1.31 วินาที,1.314150094985962
+741,What is the name of the superhero that has the most powers?,simple,1.11 วินาที,1.1116611957550049
+742,How many vampire superheroes are there?,simple,0.90 วินาที,0.9047491550445557
+743,What is the percentage of superheroes who act in their own self-interest or make decisions based on their own moral code? Indicate how many of the said superheroes were published by Marvel Comics.,challenging,2.44 วินาที,2.441627264022827
+744,"Between DC and Marvel Comics, which publisher has published more superheroes? Find the difference in the number of superheroes they have published.",challenging,1.42 วินาที,1.4205303192138672
+745,Give the publisher ID of Star Trek.,simple,1.01 วินาที,1.0079081058502197
+746,Calculate the average attribute value of all superheroes.,simple,1.01 วินาที,1.0100889205932617
+747,What is the total number of superheroes without full name?,simple,0.80 วินาที,0.8048450946807861
+748,What is the eye colour of superhero with superhero ID 75?,simple,1.12 วินาที,1.115570068359375
+749,Provide the superpowers of the superhero called Deathlok.,simple,2.24 วินาที,2.2351021766662598
+750,What is the average weight of all female superheroes?,simple,1.01 วินาที,1.0122370719909668
+751,List down at least five superpowers of male superheroes.,moderate,3.87 วินาที,3.8745148181915283
+752,Give the name of the alien superheroes.,simple,1.01 วินาที,1.0087029933929443
+753,"Among the superheroes with height from 170 to 190, list the names of the superheroes with no eye color.",moderate,0.70 วินาที,0.7024931907653809
+754,What is the superpower of hero ID 56?,simple,1.01 วินาที,1.008059024810791
+755,List down at least five full name of Demi-God superheroes.,simple,1.30 วินาที,1.300173044204712
+756,How many bad superheroes are there?,simple,1.13 วินาที,1.1270430088043213
+757,Identify the race of the superhero who weighed 169 kg.,simple,1.52 วินาที,1.5208048820495605
+758,Provide the hair colour of the human superhero who is 185 cm tall.,moderate,1.11 วินาที,1.109677791595459
+759,What is the eye clolour of the heaviest superhero?,simple,1.11 วินาที,1.1140751838684082
+760,"In superheroes with height between 150 to 180, what is the percentage of heroes published by Marvel Comics?",challenging,1.32 วินาที,1.3160877227783203
+761,"Among the male superheroes, list the super hero names of superheroes with weight greater than the 79% average weight of all superheroes.",moderate,1.62 วินาที,1.6234869956970215
+762,Which power do superheroes have the most of?,simple,1.21 วินาที,1.2120118141174316
+763,Indicate the attribute value of superhero Abomination.,simple,1.21 วินาที,1.21189284324646
+764,What are the superpowers of heroes with ID 1?,simple,1.11 วินาที,1.1092758178710938
+765,How many heroes have stealth power?,simple,1.21 วินาที,1.2125897407531738
+766,What is the hero's full name with the highest attribute in strength?,moderate,1.21 วินาที,1.2097218036651611
+767,What is the average of superheroes with no skin colour?,simple,0.85 วินาที,0.8539431095123291
+768,How many superheroes were published by Dark Horse Comics?,simple,1.18 วินาที,1.1794118881225586
+769,Which superhero has the most durability published by Dark Horse Comics?,challenging,1.30 วินาที,1.2985422611236572
+770,What is the eyes colour of Abraham Sapien?,simple,1.93 วินาที,1.9298579692840576
+771,List the name of superheroes with flight power.,simple,1.01 วินาที,1.0060820579528809
+772,"List the eyes, hair and skin colour of all female superheroes published by Dark Horse Comics.",challenging,1.52 วินาที,1.5190150737762451
+773,"Which superhero has the same eyes, hair and skin colour? Indicate the publisher of the superhero.",challenging,1.11 วินาที,1.110255241394043
+774,Which group does superhero A-Bomb belong to?,simple,0.81 วินาที,0.8061089515686035
+775,What is the percentage of blue female superheroes among all female superheroes?,challenging,1.21 วินาที,1.2140307426452637
+776,Provide the hero name and race of Charles Chandler.,simple,1.21 วินาที,1.2081151008605957
+777,What is the gender of Agent 13 hero?,simple,1.62 วินาที,1.620650053024292
+778,Provide superheroes' names who have the adaptation power.,simple,1.42 วินาที,1.417205810546875
+779,How many powers does Amazo hero have?,simple,1.10 วินาที,1.0965158939361572
+780,List the powers of Hunter Zolomon.,simple,0.93 วินาที,0.9276437759399414
+781,Provide the heights of the heroes whose eye colours are amber.,simple,1.10 วินาที,1.1027348041534424
+782,List the heroes' names whose eyes and hair colours are both black.,moderate,1.01 วินาที,1.0074191093444824
+783,Provide the eye colours of the heroes whose skin colours are gold.,simple,1.21 วินาที,1.2091193199157715
+784,Provide the full names of vampire heroes.,simple,0.91 วินาที,0.906141996383667
+785,Describe the names of neutral alignment superheroes.,simple,0.78 วินาที,0.7769680023193359
+786,How many heroes have the highest attribute value in strength?,moderate,1.54 วินาที,1.536966323852539
+787,What are the race and alignment of Cameron Hicks?,simple,1.30 วินาที,1.301954746246338
+788,How many percent of female heroes were published by Marvel Comics?,challenging,1.30 วินาที,1.3000588417053223
+789,Find the average weight of the heroes who are aliens.,simple,1.09 วินาที,1.0919458866119385
+790,Calculate the difference between Emil Blonsky's weight and Charles Chandler's weight.,moderate,0.90 วินาที,0.9013428688049316
+791,Calculate the average height for each superhero.,simple,0.79 วินาที,0.7865328788757324
+792,What is Abomination's superpower?,simple,1.21 วินาที,1.21244215965271
+793,"Among the superheroes with the race of god/eternal, how many of them are male",simple,1.50 วินาที,1.504075050354004
+794,Which hero was the fastest?,moderate,1.14 วินาที,1.138936996459961
+795,How many superheroes have a neutral alignment?,simple,1.04 วินาที,1.0399391651153564
+796,State all of 3-D Man's attributes along with their values.,moderate,1.09 วินาที,1.0926721096038818
+797,Which superheroes have blue eyes with brown hair?,moderate,1.04 วินาที,1.0377111434936523
+798,"What is the publisher for Hawkman, Karate Kid and Speedy?",moderate,1.04 วินาที,1.040497064590454
+799,How many superheroes didn't have any publisher?,simple,0.95 วินาที,0.9465198516845703
+800,Calculate the percentage of superheroes with blue eyes.,moderate,0.84 วินาที,0.8441379070281982
+801,Find the ratio between male superheroes and female superheroes.,moderate,1.29 วินาที,1.2905480861663818
+802,Who is the tallest superhero?,simple,1.00 วินาที,1.0026750564575195
+803,What is the power ID of cryokinesis?,simple,0.99 วินาที,0.9893162250518799
+804,Provide the name of superhero with superhero ID 294.,simple,4.06 วินาที,4.055645227432251
+805,List the full names of superheroes with missing weight.,simple,0.98 วินาที,0.9840259552001953
+806,Provide the eye colour of the superhero who has Karen Beecher-Duncan as their full name.,simple,1.00 วินาที,1.0000567436218262
+807,What is the superpowers of the superhero has Helen Parr as their full name?,simple,1.00 วินาที,0.9967317581176758
+808,Find the race of the superhero who weighs 108kg and is 188cm tall.,simple,1.40 วินาที,1.4015088081359863
+809,What is the publisher name of the superhero ID 38?,simple,0.91 วินาที,0.9149799346923828
+810,What is the race of the superhero with maximum attribute value?,simple,1.38 วินาที,1.3765239715576172
+811,Give the alignment and superpowers of the superhero named Atom IV.,simple,1.31 วินาที,1.305704116821289
+812,List down at least five full names of superheroes with blue eyes.,simple,1.10 วินาที,1.0974481105804443
+813,Calculate the average attribute value of all neutral superheroes.,simple,1.09 วินาที,1.0916008949279785
+814,List the skin colour of the superheroes with 100 attribute value.,moderate,1.09 วินาที,1.0938570499420166
+815,Count the good female superheroes.,simple,1.10 วินาที,1.1018078327178955
+816,Provide the names of superheroes with attribute value between 75 to 80.,simple,1.30 วินาที,1.2962901592254639
+817,Give the race of the blue-haired male superhero.,moderate,1.21 วินาที,1.2085139751434326
+818,"Among the bad superheroes, what is the percentage of female superheroes?",challenging,1.28 วินาที,1.2764689922332764
+819,"In superheroes with missing weight data, calculate the difference between the number of superheroes with blue eyes and no eye color.",challenging,1.71 วินาที,1.7141292095184326
+820,How strong is the Hulk?,moderate,1.09 วินาที,1.0940649509429932
+821,List down Ajax's superpowers.,simple,0.99 วินาที,0.9933810234069824
+822,How many green-skinned villains are there in the superhero universe?,moderate,1.00 วินาที,0.9951071739196777
+823,How many female superheroes are in Marvel Comics?,moderate,0.89 วินาที,0.8907461166381836
+824,Identify superheroes who can control wind and list their names in alphabetical order.,moderate,1.09 วินาที,1.0939428806304932
+825,Identify the gender of the superhero who has the ability of Phoenix Force.,moderate,0.89 วินาที,0.8874187469482422
+826,Identify the heaviest superhero in DC Comics.,simple,0.99 วินาที,0.990203857421875
+827,What is the average height of a non-human superhero in Dark Horse Comics?,moderate,1.20 วินาที,1.197763204574585
+828,Count the fastest superheroes.,simple,0.62 วินาที,0.6163129806518555
+829,Which publisher created more superheroes: DC or Marvel Comics? Find the difference in the number of superheroes.,challenging,1.46 วินาที,1.4638378620147705
+830,Identify the weakest attribute of the Black Panther.,moderate,1.31 วินาที,1.3110039234161377
+831,What is Abomination's eye colour?,simple,1.07 วินาที,1.0703840255737305
+832,Name the tallest superhero.,simple,0.90 วินาที,0.898533821105957
+833,"Name the superhero, otherwise known as Charles Chandler.",simple,0.81 วินาที,0.8131308555603027
+834,"Among all superheroes created by George Lucas, identify the percentage of female superheroes.",challenging,1.30 วินาที,1.2976908683776855
+835,"Among all superheroes in Marvel Comics, identify the percentage of 'good' superheroes.",challenging,1.61 วินาที,1.6117048263549805
+836,What is the total number of superheroes that have John as their first name?,simple,0.70 วินาที,0.6956338882446289
+837,Give the hero ID of superhero with the lowest attribute value.,simple,0.92 วินาที,0.9218859672546387
+838,Provide the full name of the superhero named Alien.,simple,0.89 วินาที,0.8856849670410156
+839,"In superheroes with weight less than 100, list the full name of the superheroes with brown eyes.",simple,0.89 วินาที,0.8860611915588379
+840,List the attribute value of the superhero named Aquababy.,simple,1.30 วินาที,1.3033537864685059
+841,Provide the weight and race of the superhero with superhero ID 40.,simple,0.98 วินาที,0.982490062713623
+842,Calculate the average height of all neutral superheroes.,simple,0.90 วินาที,0.8976938724517822
+843,List the hero ID of superheroes have intellegence as their power.,simple,1.19 วินาที,1.1948938369750977
+844,Give the eye colour of Blackwulf.,simple,0.89 วินาที,0.8907229900360107
+845,List the power of superheroes with height greater than 80% of the average height of all superheroes.,moderate,1.10 วินาที,1.0980539321899414
+846,Please list the reference names of the drivers who are eliminated in the first period in race number 20.,moderate,1.09 วินาที,1.0891740322113037
+847,What is the surname of the driver with the best lap time in race number 19 in the second qualifying period?,simple,1.01 วินาที,1.0057177543640137
+848,Please list the year during which the race is held on circuits in Shanghai.,simple,1.09 วินาที,1.091932773590088
+849,Where can the introduction of the races held on Circuit de Barcelona-Catalunya be found?,simple,1.31 วินาที,1.3096671104431152
+850,Please give the name of the race held on the circuits in Germany.,simple,0.90 วินาที,0.9036250114440918
+851,Please list the positions of the circuits built by the constructor Renault.,simple,1.00 วินาที,1.0044548511505127
+852,How many races in the year 2010 are held on grand prixs outside Asia and Europe?,moderate,1.00 วินาที,1.002363920211792
+853,Please give the names of the races held on the circuits in Spain.,simple,1.10 วินาที,1.0974030494689941
+854,What is the coordinates location of the circuits for Australian grand prix?,simple,0.87 วินาที,0.8679618835449219
+855,Where can I find the information about the races held on Sepang International Circuit?,simple,0.73 วินาที,0.7281649112701416
+856,Please list the time of the races held on Sepang International Circuit.,simple,0.95 วินาที,0.9530751705169678
+857,Give the coordinate position for Abu Dhabi Grand Prix.,simple,0.90 วินาที,0.8979840278625488
+858,Which country is the constructor which got 1 point in the race No. 24 from?,simple,3.45 วินาที,3.454237222671509
+859,What's Bruno Senna's Q1 result in the qualifying race No. 354?,simple,0.88 วินาที,0.8788158893585205
+860,"For the driver who had the Q2 time as 0:01:40 in the qualifying race No. 355, what is his nationality?",simple,1.03 วินาที,1.028395175933838
+861,What is his number of the driver who finished 0:01:54 in the Q3 of qualifying race No.903?,simple,0.77 วินาที,0.7705180644989014
+862,"For the Bahrain Grand Prix in 2007, how many drivers not finished the game?",simple,1.20 วินาที,1.1964333057403564
+863,Show me the season page of year when the race No. 901 took place.,simple,0.83 วินาที,0.8271303176879883
+864,"For the race happened on 2015/11/29, how many drivers finished the game?",simple,1.05 วินาที,1.0475807189941406
+865,"For all the drivers who finished the game in race No. 592, who is the oldest?",moderate,1.02 วินาที,1.022428035736084
+866,Who was the player that got the lap time of 0:01:27 in the race No. 161? Show his introduction website.,moderate,0.84 วินาที,0.8425681591033936
+867,"For the driver who set the fastest lap speed in race No.933, where does he come from?",simple,0.80 วินาที,0.7961099147796631
+868,Where is Malaysian Grand Prix held? Give the location coordinates.,simple,0.93 วินาที,0.9275450706481934
+869,"For the constructor which got the highest point in the race No. 9 , what is its introduction website?",moderate,0.92 วินาที,0.9198009967803955
+870,What's Lucas di Grassi's Q1 result in the race No. 345?,simple,0.97 วินาที,0.9703149795532227
+871,"For the driver who had the Q2 time as 0:01:15 in race No. 347, where is he from?",simple,0.81 วินาที,0.8117001056671143
+872,"In the race No. 45, for the driver who had the Q3 time as 0:01:33, what is his abbreviated code?",simple,1.03 วินาที,1.0298750400543213
+873,What is the actual finish time for Bruce McLaren in the race No.743?,simple,0.92 วินาที,0.9184329509735107
+874,Who finished second in the San Marino Grand Prix in 2006?,simple,1.18 วินาที,1.1774117946624756
+875,Show me the season page of year when the race No. 901 took place.,simple,0.81 วินาที,0.8092119693756104
+876,"For the race happened in 2015/11/29, how many drivers did not finish the game?",simple,1.30 วินาที,1.2993180751800537
+877,"For all the drivers who finished the game in race No. 872, who is the youngest?",moderate,1.12 วินาที,1.1198720932006836
+878,Who was the driver that got the best lap time in the race No. 348? Give his full name.,simple,1.17 วินาที,1.1698071956634521
+879,"For the driver who set the fastest lap speed, what is his nationality?",moderate,1.60 วินาที,1.6044700145721436
+880,"Paul di Resta was in the No. 853 race, what percent faster did he finish in the 853rd race than the next race for the fastest lap speed?",challenging,2.22 วินาที,2.2174270153045654
+881,"For the drivers who took part in the race in 1983/7/16, what's their race completion rate?",moderate,2.36 วินาที,2.3574559688568115
+882,Which year was the first Singapore Grand Prix?,simple,0.55 วินาที,0.5546612739562988
+883,How many races were there in 2005? Name all the races in descending order.,simple,1.10 วินาที,1.0997138023376465
+884,List the names of all races that occurred in the earliest recorded year and month.,moderate,0.97 วินาที,0.9677481651306152
+885,State the name and date of the last round of race in year 1999.,simple,0.80 วินาที,0.7974791526794434
+886,Which year has the most number of races?,simple,0.70 วินาที,0.6975741386413574
+887,Name the races in year 2017 that are not hosted in year 2000.,simple,0.84 วินาที,0.8359498977661133
+888,In which country was the first European Grand Prix hosted? Name the circuit and location.,simple,1.16 วินาที,1.1601979732513428
+889,When was the last f1 season whereby Brands Hatch hosted the British Grand Prix?,simple,0.90 วินาที,0.9026331901550293
+890,How many seasons has Silverstone Circuit hosted the United Kindom grand prix?,simple,0.89 วินาที,0.8923072814941406
+891,Name all drivers in the 2010 Singapore Grand Prix order by their position stands.,simple,1.51 วินาที,1.5136969089508057
+892,State the driver with the most points scored. Find his full name with that points.,moderate,0.90 วินาที,0.8973288536071777
+893,Name the top 3 drivers and the points they scored in the 2017 Chinese Grand Prix.,simple,1.13 วินาที,1.1316959857940674
+894,What is the best lap time recorded? List the driver and race with such recorded lap time.,moderate,1.22 วินาที,1.221937894821167
+895,What is the average lap time for Lewis Hamilton in the 2009 Malaysian Grand Prix?,moderate,1.62 วินาที,1.619596004486084
+896,Calculate the percentage whereby Hamilton was not at the 1st track of the the f1 circuit since 2010.,challenging,1.65 วินาที,1.6488182544708252
+897,Name the driver with the most winning. Mention his nationality and what is his maximum point scores.,moderate,1.29 วินาที,1.287588119506836
+898,How old is the youngest Japanese driver? What is his name?,simple,0.96 วินาที,0.9596817493438721
+899,List circuits which host 4 f1 races from year 1990 to 2000.,moderate,0.94 วินาที,0.9365057945251465
+900,List circuits in USA which hosted f1 races in 2006. State the name and location of circuit and the name of the race it hosted.,simple,0.87 วินาที,0.8709869384765625
+901,Name the races along with its circuit name and location for f1 races hosted in September 2005.,simple,1.10 วินาที,1.0990779399871826
+902,Which race was Alex Yoong in when he was in track number less than 20?,simple,1.07 วินาที,1.0701220035552979
+903,How many times did Michael Schumacher won from races hosted in Sepang International Circuit?,moderate,2.02 วินาที,2.021843194961548
+904,State the race and year of race in which Michael Schumacher had his fastest lap.,moderate,1.40 วินาที,1.3979599475860596
+905,What is Eddie Irvine's average points scored in year 2000?,simple,1.81 วินาที,1.8148729801177979
+906,Which was Lewis Hamilton first race? What was his points recorded for his first race event?,moderate,1.34 วินาที,1.3367280960083008
+907,List all races in 2017 and the hosting country order by date of the event.,simple,0.74 วินาที,0.7437589168548584
+908,"What is the most laps f1 races had? Name the race, year and circuit location where the races with most laps was hosted.",simple,0.89 วินาที,0.8893868923187256
+909,"Among all European Grand Prix races, what is the percentage of the races were hosted in Germany?",moderate,1.54 วินาที,1.5391547679901123
+910,What's the location coordinates of Silverstone Circuit?,simple,0.68 วินาที,0.6769862174987793
+911,"Which of these circuits is located at a higher latitude, Silverstone Circuit, Hockenheimring or Hungaroring?",simple,0.94 วินาที,0.9363291263580322
+912,What's the reference name of Marina Bay Street Circuit?,simple,0.63 วินาที,0.6346690654754639
+913,In which country can I find the circuit with the highest altitude?,simple,0.71 วินาที,0.7120270729064941
+914,How many drivers don't have a code?,simple,0.61 วินาที,0.614811897277832
+915,Which country is the oldest driver from?,simple,0.75 วินาที,0.7461948394775391
+916,Please list the surnames of all the Italian drivers.,simple,0.74 วินาที,0.7413482666015625
+917,Which website should I go to if I want to know more about Anthony Davidson?,simple,1.09 วินาที,1.0918748378753662
+918,What's Lewis Hamilton's reference name?,simple,0.86 วินาที,0.8563709259033203
+919,Which circuit did the 2009 Spanish Grand Prix use?,simple,1.20 วินาที,1.2005791664123535
+920,Please list all the years that Silverstone Circuit was used in a Formula_1 race.,simple,1.29 วินาที,1.2942628860473633
+921,Please give more information about the Formula_1 races that used the Silverstone Circuit.,simple,0.99 วินาที,0.9945011138916016
+922,What time did the the 2010's Formula_1 race took place on the Abu Dhabi Circuit?,simple,0.90 วินาที,0.8972399234771729
+923,How many Formula_1 races took place on the circuits in Italy?,simple,0.89 วินาที,0.8862180709838867
+924,Please list the exact dates on which a Formula_1 race took place on the Barcelona-Catalunya circuit.,simple,1.04 วินาที,1.0427238941192627
+925,Please give the link of the website that shows more information about the circuits the Spanish Grand Prix used in 2009.,simple,1.05 วินาที,1.0541319847106934
+926,What's the fastest lap time ever in a race for Lewis Hamilton?,simple,0.95 วินาที,0.9478321075439453
+927,Which driver created the fastest lap speed in a Formula_1 race? Please give both his forename and surname.,simple,1.09 วินาที,1.0869140625
+928,Which driver ranked the first in the Canadian Grand Prix in 2007? Please give his reference name.,moderate,1.13 วินาที,1.1307580471038818
+929,Please list the Formula_1 races that Lewis Hamilton participated.,simple,1.18 วินาที,1.1792371273040771
+930,In which Formula_1 race did Lewis Hamilton rank the highest?,simple,1.15 วินาที,1.1468310356140137
+931,What was the fastest lap speed among all drivers in the 2009 Spanish Grand Prix?,moderate,2.09 วินาที,2.0875871181488037
+932,In which years did Lewis Hamilton participate in a Formula_1 race?,simple,1.02 วินาที,1.0241379737854004
+933,What was Lewis Hamilton's final rank in the 2008 Chinese Grand Prix?,moderate,1.16 วินาที,1.164060115814209
+934,Which driver was in the no. 4 grid formation when starting the race in 1989's Australian Grand Prix? Please give his forename and surname.,moderate,1.29 วินาที,1.2944650650024414
+935,How many drivers managed to finish the race in the 2008 Australian Grand Prix?,simple,1.00 วินาที,1.001371145248413
+936,Which was the fastest lap for Lewis Hamilton in the 2008 Australian Grand Prix?,simple,1.26 วินาที,1.2632977962493896
+937,What's the finish time for the driver who ranked second in 2008's AustChineseralian Grand Prix?,simple,1.00 วินาที,1.0048620700836182
+938,Who was the champion of 2008's Australian Grand Prix and where can I know more about him?,moderate,1.45 วินาที,1.452674150466919
+939,How many drivers from the UN participated in the 2008 Australian Grand Prix?,moderate,1.14 วินาที,1.1433758735656738
+940,"Among the drivers that finished the race in the 2008 Chinese Grand Prix, how many of them have participated in Formula_1 races?",moderate,1.19 วินาที,1.1902809143066406
+941,How many points did Lewis Hamilton get in total in all the Formula_1 races he participated?,simple,0.85 วินาที,0.8467841148376465
+942,What is the average fastest lap time in seconds for Lewis Hamilton in all the Formula_1 races?,moderate,1.52 วินาที,1.524595022201538
+943,What is the rate of drivers completing all the laps in the 2008 Australian Grand Prix?,moderate,1.14 วินาที,1.1376898288726807
+944,How much faster in percentage is the champion than the driver who finished the race last in the 2008 Australian Grand Prix?,challenging,1.91 วินาที,1.905268907546997
+945,"How many circuits are there in Adelaide, Australia?",simple,0.64 วินาที,0.6447148323059082
+946,Please list the location coordinates of the US circuits.,simple,0.92 วินาที,0.9215652942657471
+947,How many British drivers were born after 1980?,simple,0.79 วินาที,0.7938039302825928
+948,What are the maximum points of British constructors?,simple,0.89 วินาที,0.8909029960632324
+949,Which constructor has the highest point?,simple,1.18 วินาที,1.1792328357696533
+950,Please list the constructor names with 0 points at race 291.,simple,0.90 วินาที,0.9039928913116455
+951,How many Japanese constructors have 0 points in 2 races?,simple,1.40 วินาที,1.4041531085968018
+952,Which constructors have been ranked 1?,simple,0.83 วินาที,0.8288111686706543
+953,How many French constructors have a lap number of over 50?,simple,1.46 วินาที,1.456928014755249
+954,Please calculate the race completion percentage of Japanese drivers from 2007 to 2009.,challenging,1.30 วินาที,1.295482873916626
+955,"What is the average time in seconds of champion for each year, before year 1975?",challenging,1.30 วินาที,1.2967419624328613
+956,Which drivers born after 1975 have been ranked 2? Please give their forenames and surnames.,simple,0.89 วินาที,0.8873679637908936
+957,How many Italian drivers haven't finished the race?,simple,1.00 วินาที,0.9951260089874268
+958,Which driver has the fastest lap time? Please give their forenames and surnames.,moderate,1.24 วินาที,1.2405362129211426
+959,What is the fastest lap number of the champion in 2009?,simple,1.16 วินาที,1.1597018241882324
+960,What is the average of fastest lap speed in the 2009 Spanish Grand Prix race?,moderate,1.21 วินาที,1.214296817779541
+961,Which race has the shortest actual finishing time? Please give the name and year.,simple,1.09 วินาที,1.0889997482299805
+962,"From 2000 to 2005, what percentage of drivers who were born before 1985 and the lap numbers were over 50?",challenging,2.03 วินาที,2.031306266784668
+963,How many French drivers who obtain the laptime less than 02:00.00?,moderate,1.08 วินาที,1.0808660984039307
+964,List out the code for drivers who have nationality in America.,simple,1.49 วินาที,1.4924900531768799
+965,List out the Id number of races which were hold in 2009.,simple,0.77 วินาที,0.7688436508178711
+966,How many driver participated in race ID number 18?,simple,0.55 วินาที,0.5545721054077148
+967,State code numbers of top 3 yougest drivers. How many Netherlandic drivers among them?,simple,0.85 วินาที,0.8456850051879883
+968,What is reference name of Robert Kubica?,simple,0.79 วินาที,0.7884678840637207
+969,How many British drivers who were born in 1980?,simple,1.43 วินาที,1.4316539764404297
+970,List out top 3 German drivers who were born from 1980-1990 and have the earliest lap time.,moderate,1.71 วินาที,1.7102341651916504
+971,Please state the reference name of the oldest German driver.,simple,0.79 วินาที,0.7865331172943115
+972,Which drivers who were born in 1971 and has the fastest lap time on the race? Give id and code of these drivers.,moderate,3.32 วินาที,3.319685220718384
+973,List out top 10 Spanish drivers who were born before 1982 and have the latest lap time.,moderate,1.54 วินาที,1.5351221561431885
+974,State the racing year which has the fastest lap time?,simple,1.00 วินาที,0.997769832611084
+975,Which year has the lowest speed of lap time?,simple,1.71 วินาที,1.7135591506958008
+976,"List the driver's ID of the top five driver, by descending order, the fastest time during the first lap of the race.",simple,1.11 วินาที,1.1052799224853516
+977,"From race no. 50 to 100, how many finishers have been disqualified?",simple,0.87 วินาที,0.8728001117706299
+978,How many times the circuits were held in Austria? Please give their location and coordinates.,simple,1.31 วินาที,1.313000202178955
+979,What race number has the most finishers?,simple,1.29 วินาที,1.2936301231384277
+980,List the reference name of the drivers who passed the second qualifying lap during race no. 23. Indicate their nationality and birthday.,moderate,0.88 วินาที,0.8805367946624756
+981,"On what year did the youngest driver had his first qualifying race? Also state the name, date and time of the race.",moderate,1.31 วินาที,1.3104400634765625
+982,How many American drivers have puncture status.,simple,1.20 วินาที,1.199613332748413
+983,Which of the Italian constructor got the highest point to date? Give its introduction website?,simple,0.99 วินาที,0.9918479919433594
+984,What is the website of the constructor who tallied the most total wins.,simple,1.02 วินาที,1.017820119857788
+985,"Among the drivers who participated in the French Grand Prix, who has the slowest time in the 3rd lap.",simple,1.16 วินาที,1.1582598686218262
+986,In which race did the fastest 1st lap time was recorded? Please indicate the time in milliseconds.,simple,0.90 วินาที,0.9035108089447021
+987,What is the average fastest lap time of the top 10 drivers in the 2006 United States Grand Prix?,simple,1.25 วินาที,1.2455921173095703
+988,List down top 3 German drivers who has the shortest average pit stop duration and were born between 1980-1985.,challenging,1.33 วินาที,1.3345210552215576
+989,Who is the champion of the Canadian Grand Prix in 2008? Indicate his finish time.,moderate,1.44 วินาที,1.4447481632232666
+990,What is the constructor reference name of the champion in the 2009 Singapore Grand Prix? Please give its website.,challenging,0.97 วินาที,0.9679138660430908
+991,What is the full name and date of birth of Austrian drivers born between 1981 and 1991?,simple,1.00 วินาที,1.0044059753417969
+992,"Find the full name, Wiki Pedia page link, and date of birth of German drivers born between 1971 and 1985. List it in descending order of date of birth.",moderate,0.97 วินาที,0.967127799987793
+993,"In which location does the Hungaroring circuit located? Also, find the country and coordinates of this circuit?",simple,0.81 วินาที,0.8117671012878418
+994,"Which constructor scored most points from Monaco Grand Prix between 1980 and 2010? List the score, name and nationality of this team.",challenging,1.71 วินาที,1.7059130668640137
+995,What is the average score of Lewis Hamilton among all the Turkish Grand Prix?,moderate,5.59 วินาที,5.591498851776123
+996,What is the annual average number of races held during the first 10 years of the 21st century?,simple,0.93 วินาที,0.9267721176147461
+997,Which citizenship do the vast majority of the drivers hold?,simple,1.34 วินาที,1.3445360660552979
+998,"In terms of number of points acquired, how many victories did the driver who ranked 91st acquired?",simple,1.83 วินาที,1.8337810039520264
+999,"In terms of the fastest lap time, what is the name of the race which recorded the fastest lap speed by a racer?",simple,5.09 วินาที,5.087692737579346
+1000,Which racetrack hosted the most recent race? Indicate the full location.,simple,1.00 วินาที,0.9954099655151367
+1001,What is full name of the racer who ranked 1st in the 3rd qualifying race held in the Marina Bay Street Circuit in 2008?,challenging,1.32 วินาที,1.31996488571167
+1002,"As of the present, what is the full name of the youngest racer? Indicate her nationality and the name of the race to which he/she first joined.",moderate,2.58 วินาที,2.582357883453369
+1003,How many accidents did the driver who had the highest number accidents in the Canadian Grand Prix have?,moderate,1.21 วินาที,1.2071270942687988
+1004,How many wins was achieved by the oldest racer? Indicate his/her full name.,simple,1.22 วินาที,1.2156727313995361
+1005,What was the longest time a driver had ever spent at a pit stop?,simple,0.78 วินาที,0.7810697555541992
+1006,"Among all the lap records set on various circuits, what is the time for the fastest one?",challenging,0.74 วินาที,0.7413749694824219
+1007,What was the longest time that Lewis Hamilton had spent at a pit stop?,simple,0.84 วินาที,0.8368930816650391
+1008,During which lap did Lewis Hamilton take a pit stop during the 2011 Australian Grand Prix?,simple,1.20 วินาที,1.1963229179382324
+1009,Please list the time each driver spent at the pit stop during the 2011 Australian Grand Prix.,simple,1.14 วินาที,1.141617774963379
+1010,What is the lap record set by Lewis Hamilton in a Formula_1 race?,simple,1.35 วินาที,1.3452930450439453
+1011,Which top 20 driver created the shortest lap time ever record in a Formula_1 race? Please give them full names.,challenging,0.86 วินาที,0.855017900466919
+1012,What was the position of the circuits during Lewis Hamilton's fastest lap in a Formula_1 race?,simple,1.59 วินาที,1.5869908332824707
+1013,What is the lap record for the Austrian Grand Prix Circuit?,simple,3.30 วินาที,3.2955660820007324
+1014,Please list the lap records for the circuits in Italy.,challenging,1.00 วินาที,1.0047571659088135
+1015,In which Formula_1 race was the lap record for the Austrian Grand Prix Circuit set?,moderate,1.24 วินาที,1.241837978363037
+1016,"In the race a driver set the lap record for the Austrian Grand Prix Circuit, how long did he spent at the pit stop at that same race?",challenging,1.54 วินาที,1.537912130355835
+1017,Please list the location coordinates of the circuits whose lap record is 1:29.488.,moderate,1.32 วินาที,1.3173439502716064
+1018,What was the average time in milliseconds Lewis Hamilton spent at a pit stop during Formula_1 races?,simple,0.90 วินาที,0.9015710353851318
+1019,What is the average lap time in milliseconds of all the lap records set on the various circuits in Italy?,moderate,0.99 วินาที,0.986767053604126
+1020,Which player has the highest overall rating? Indicate the player's api id.,simple,0.99 วินาที,0.9897010326385498
+1021,What is the height of the tallest player? Indicate his name.,simple,1.01 วินาที,1.014693021774292
+1022,What is the preferred foot when attacking of the player with the lowest potential?,simple,0.80 วินาที,0.7969322204589844
+1023,"Among the players with an overall rating between 60 to 65, how many players whose going to be in all of your attack moves instead of defensing?",moderate,1.03 วินาที,1.0336120128631592
+1024,Who are the top 5 players who perform better in crossing actions? Indicate their player id.,simple,0.98 วินาที,0.9820230007171631
+1025,Give the name of the league had the most goals in the 2016 season?,moderate,1.61 วินาที,1.6091277599334717
+1026,Which home team had lost the fewest matches in the 2016 season?,moderate,1.20 วินาที,1.1987650394439697
+1027,Indicate the full names of the top 10 players with the highest number of penalties.,simple,0.83 วินาที,0.8327791690826416
+1028,"In Scotland Premier League, which away team won the most during the 2010 season?",challenging,1.97 วินาที,1.9716367721557617
+1029,What are the speed in which attacks are put together of the top 4 teams with the highest build Up Play Speed?,moderate,1.30 วินาที,1.3008968830108643
+1030,Give the name of the league had the most matches end as draw in the 2016 season?,moderate,1.37 วินาที,1.3706719875335693
+1031,"At present, calculate for the player's age who have a sprint speed of no less than 97 between 2013 to 2015.",challenging,1.46 วินาที,1.463965892791748
+1032,Give the name of the league with the highest matches of all time and how many matches were played in the said league.,moderate,1.14 วินาที,1.138056993484497
+1033,What is the average height of players born between 1990 and 1995?,simple,0.95 วินาที,0.9483840465545654
+1034,List the players' api id who had the highest above average overall ratings in 2010.,simple,1.19 วินาที,1.1867239475250244
+1035,Give the team_fifa_api_id of teams with more than 50 but less than 60 build-up play speed.,simple,0.96 วินาที,0.9607739448547363
+1036,List the long name of teams with above-average build-up play passing in 2012.,challenging,1.60 วินาที,1.6037287712097168
+1037,"Calculate the percentage of players who prefer left foot, who were born between 1987 and 1992.",challenging,1.30 วินาที,1.3000340461730957
+1038,List the top 5 leagues in ascending order of the number of goals made in all seasons combined.,moderate,1.40 วินาที,1.4038143157958984
+1039,Find the average number of long-shot done by Ahmed Samir Farag.,simple,0.85 วินาที,0.854773998260498
+1040,List the top 10 players' names whose heights are above 180 in descending order of average heading accuracy.,moderate,1.22 วินาที,1.2232351303100586
+1041,"For the teams with normal build-up play dribbling class in 2014, List the names of the teams with less than average chance creation passing, in descending order of chance creation passing.",challenging,1.93 วินาที,1.9265432357788086
+1042,List the name of leagues in which the average goals by the home team is higher than the away team in the 2009/2010 season.,challenging,0.88 วินาที,0.8815839290618896
+1043,What is the short name of the football team Queens Park Rangers?,simple,1.10 วินาที,1.1025197505950928
+1044,List the football players with a birthyear of 1970 and a birthmonth of October.,simple,0.99 วินาที,0.992372989654541
+1045,What is the attacking work rate of the football playerr Franco Zennaro?,simple,1.31 วินาที,1.307358980178833
+1046,What is the ADO Den Haag team freedom of movement in the 1st two thirds of the pitch?,moderate,1.81 วินาที,1.807399034500122
+1047,What is the football player Francois Affolter header's finishing rate on 18/09/2014?,moderate,1.30 วินาที,1.2965679168701172
+1048,What is the overall rating of the football player Gabriel Tamas in year 2011?,simple,1.04 วินาที,1.0432970523834229
+1049,"How many matches in the 2015/2016 season were held in Scotland Premier League
+?",simple,1.07 วินาที,1.065769910812378
+1050,What is the preferred foot when attacking of the youngest football player?,simple,1.36 วินาที,1.35508394241333
+1051,List all the football player with the highest potential score.,simple,0.99 วินาที,0.9856698513031006
+1052,"Among all the players whose weight is under 130, how many of them preferred foot in attacking is left?",moderate,1.37 วินาที,1.366328239440918
+1053,List the football teams that has a chance creation passing class of Risky. Inidcate its short name only.,moderate,1.17 วินาที,1.1697406768798828
+1054,"What is the defensive work rate of the football player David Wilson
+?",simple,1.31 วินาที,1.3144900798797607
+1055,When is the birthday of the football player who has the highest overall rating?,simple,1.21 วินาที,1.207895040512085
+1056,What is the name of the football league in the country of Netherlands?,simple,0.88 วินาที,0.8846521377563477
+1057,Calculate the average home team goal in the 2010/2011 season in the country of Poland.,moderate,1.02 วินาที,1.0184428691864014
+1058,Who has the highest average finishing rate between the highest and shortest football player?,challenging,1.43 วินาที,1.4326419830322266
+1059,Please list player names which are higher than 180.,simple,0.83 วินาที,0.8328561782836914
+1060,How many players were born after 1990?,simple,0.78 วินาที,0.7840807437896729
+1061,How many players whose first names are Adam and weigh more than 170?,simple,1.21 วินาที,1.2051281929016113
+1062,Which players had an overall rating of over 80 from 2008 to 2010? Please list player names.,moderate,1.16 วินาที,1.162883996963501
+1063,What is Aaron Doran's potential score?,simple,1.24 วินาที,1.239346981048584
+1064,List out of players whose preferred foot is left.,simple,1.10 วินาที,1.0972201824188232
+1065,Please list all team names which the speed class is fast.,simple,1.10 วินาที,1.0999810695648193
+1066,What is the passing class of CLB team?,simple,0.79 วินาที,0.7891550064086914
+1067,Which teams have build up play passing more than 70? Please list their short names.,moderate,0.99 วินาที,0.9923830032348633
+1068,"From 2010 to 2015, what was the average overall rating of players who are higher than 170?",moderate,1.10 วินาที,1.0954921245574951
+1069,Which football player has the shortest height?,simple,0.61 วินาที,0.6105339527130127
+1070,Which country is the league Italy Serie A from?,simple,0.77 วินาที,0.768369197845459
+1071,"List the football team that has a build up play speed of 31, build up plan dribbling of 53, and build up play passing of 32. Only indicate the short name of the team.",challenging,1.31 วินาที,1.3133289813995361
+1072,What is the average overall rating of the football player Aaron Doran?,simple,1.19 วินาที,1.1878480911254883
+1073,"How many matches were held in the league Germany 1. Bundesliga
+from August to October 2008?",moderate,1.61 วินาที,1.6098287105560303
+1074,List all the short name of the football team that had a home team goal of 10?,simple,0.98 วินาที,0.9826059341430664
+1075,List all the football player with the highest balance score and potential score of 61.,moderate,1.41 วินาที,1.406048059463501
+1076,"What is the difference of the average ball control score between Abdou Diallo and Aaron Appindangoye
+?",challenging,1.91 วินาที,1.9128899574279785
+1077,What's the long name for the team GEN?,simple,0.89 วินาที,0.8941750526428223
+1078,"Which player is older, Aaron Lennon or Abdelaziz Barrada?",simple,0.78 วินาที,0.7843520641326904
+1079,Which player is the tallest?,simple,1.30 วินาที,1.3049509525299072
+1080,"Among the players whose preferred foot was the left foot when attacking, how many of them would remain in his position when the team attacked?",moderate,2.88 วินาที,2.875236749649048
+1081,Which country is the Belgium Jupiler League from?,simple,1.03 วินาที,1.033323049545288
+1082,Please list the leagues from Germany.,simple,0.79 วินาที,0.7907199859619141
+1083,Which player has the strongest overall strength?,simple,0.93 วินาที,0.9315750598907471
+1084,"Among the players born before the year 1986, how many of them would remain in his position and defense while the team attacked?",challenging,2.60 วินาที,2.598820924758911
+1085,"Which of these players performs the best in crossing actions, Alexis, Ariel Borysiuk or Arouna Kone?",moderate,1.59 วินาที,1.5927810668945312
+1086,What's the heading accuracy of Ariel Borysiuk?,simple,1.10 วินาที,1.0964879989624023
+1087,"Among the players whose height is over 180, how many of them have a volley score of over 70?",simple,1.20 วินาที,1.195807933807373
+1088,Please list the names of the players whose volley score and dribbling score are over 70.,moderate,0.99 วินาที,0.9904608726501465
+1089,How many matches in the 2008/2009 season were held in Belgium?,simple,1.23 วินาที,1.2271299362182617
+1090,What is the long passing score of the oldest player?,simple,1.81 วินาที,1.8120307922363281
+1091,"How many matches were held in the Belgium Jupiler League in April, 2009?",moderate,1.00 วินาที,1.0023889541625977
+1092,Give the name of the league had the most matches in the 2008/2009 season?,simple,1.27 วินาที,1.270747184753418
+1093,What is the average overall rating of the players born before the year 1986?,moderate,0.99 วินาที,0.9884641170501709
+1094,How much higher in percentage is Ariel Borysiuk's overall rating than that of Paulin Puel?,challenging,3.59 วินาที,3.591792106628418
+1095,How much is the average build up play speed of the Heart of Midlothian team?,moderate,1.28 วินาที,1.282607078552246
+1096,Calculate the average overall rating of Pietro Marino.,moderate,0.86 วินาที,0.8602747917175293
+1097,What is Aaron Lennox's total crossing score?,simple,0.82 วินาที,0.8185169696807861
+1098,What is Ajax's highest chance creation passing score and what is it classified as?,moderate,1.06 วินาที,1.0578458309173584
+1099,Which foot is preferred by Abdou Diallo?,simple,1.66 วินาที,1.6588330268859863
+1100,What is the highest overall rating received by Dorlan Pabon?,simple,0.75 วินาที,0.7547509670257568
+1101,What is the average number of goals made by Parma as the away team while playing in Italy?,moderate,1.40 วินาที,1.400554895401001
+1102,"For the players who had a 77 points overall rating on 2016/6/23, who was the oldest? Give the name of the player.",moderate,3.55 วินาที,3.5531599521636963
+1103,What was the overall rating for Aaron Mooy on 2016/2/4?,moderate,0.89 วินาที,0.8900079727172852
+1104,What was the potiential for Francesco Parravicini on 2010/8/30?,moderate,0.92 วินาที,0.9205589294433594
+1105,How was Francesco Migliore's attacking work rate on 2015/5/1?,moderate,1.68 วินาที,1.6845169067382812
+1106,Tell the defensive work rate for Kevin Berigaud on 2013/2/22.,moderate,1.25 วินาที,1.2466988563537598
+1107,When was the first time did Kevin Constant have his highest crossing score? Give the date.,moderate,1.61 วินาที,1.6076579093933105
+1108,"What was the build up play speed class for ""Willem II"" on 2011/2/22?",moderate,1.16 วินาที,1.157207727432251
+1109,"How was the build up play dribbling class for ""LEI"" on 2015/9/10?",moderate,1.25 วินาที,1.2513320446014404
+1110,"Tell the build Up play passing class for ""FC Lorient"" on 2010/2/22.",moderate,0.85 วินาที,0.8505539894104004
+1111,"State the chance creation passing class for ""PEC Zwolle"" on 2013/9/20.",moderate,1.18 วินาที,1.1843419075012207
+1112,"What was the chance creation crossing class for ""Hull City"" on 2010/2/22?",moderate,1.19 วินาที,1.192711353302002
+1113,"For the team ""Hannover 96"", what was its defence aggression class on 2015/9/10?",moderate,1.25 วินาที,1.2549240589141846
+1114,What was the average overall rating for Marko Arnautovic from 2007/2/22 to 2016/4/21?,challenging,1.19 วินาที,1.1917939186096191
+1115,What percentage is Landon Donovan's overall rating higher than Jordan Bowery on 2013/7/12?,challenging,1.47 วินาที,1.4719340801239014
+1116,List down most tallest players' name.,simple,0.69 วินาที,0.6893980503082275
+1117,What are the player api id of 10 heaviest players?,simple,0.81 วินาที,0.8122410774230957
+1118,List down the name of players who are 35 years old and above.,simple,0.94 วินาที,0.9444518089294434
+1119,How many home team goal have been scored by Aaron Lennon?,simple,1.60 วินาที,1.6023890972137451
+1120,Sum up the away team goal scored by both Daan Smith and Filipe Ferreira.,moderate,2.94 วินาที,2.9397542476654053
+1121,Calculate the total home team goal scored by players whose age are 30 years old and below.,moderate,2.37 วินาที,2.370957136154175
+1122,State the name of the most strongest player.,simple,0.89 วินาที,0.8936371803283691
+1123,What is the name of players with the highest potential?,simple,1.24 วินาที,1.2360618114471436
+1124,Who are the players that tend to be attacking when their mates were doing attack moves? List down their name.,moderate,2.23 วินาที,2.2250330448150635
+1125,"Among the players with finishing rate of 1, pick the eldest player and state the player's name.",moderate,1.00 วินาที,0.9950907230377197
+1126,State the name of players who came from Belgium.,simple,2.98 วินาที,2.9769299030303955
+1127,"Locate players with vision scores of 90 and above, state the country of these players.",moderate,2.69 วินาที,2.6912918090820312
+1128,Which country's players have the heaviest average weights?,simple,1.65 วินาที,1.6545708179473877
+1129,List down the long name for slow speed class team.,simple,0.85 วินาที,0.8507499694824219
+1130,What are the short name of team who played safe while creating chance of passing?,moderate,2.91 วินาที,2.9138779640197754
+1131,What is the average heights of Italy players?,simple,1.64 วินาที,1.637742042541504
+1132,Please provide the names of top three football players who are over 180 cm tall in alphabetical order.,simple,0.97 วินาที,0.9712731838226318
+1133,"How many football players born after the 1990s have the first name ""Aaron""?",simple,0.91 วินาที,0.9064140319824219
+1134,What is the difference between players 6 and 23's jumping scores?,simple,1.09 วินาที,1.0940628051757812
+1135,Please provide top five football players' IDs who are among the lowest potential players and prefer to use the right foot when attacking.,moderate,0.99 วินาที,0.9900510311126709
+1136,How many players had the highest potential score for crossing that preferred to use their left foots while attacking?,moderate,1.50 วินาที,1.5044119358062744
+1137,What percentage of players have a strength and stamina score of more than 80?,simple,1.15 วินาที,1.1535699367523193
+1138,In what country did the Poland Ekstraklasa take place?,simple,1.62 วินาที,1.61881685256958
+1139,"What was the final score for the match on September 24, 2008, in the Belgian Jupiler League between the home team and the away team?",challenging,1.40 วินาที,1.3967270851135254
+1140,"What are Alexis Blin's sprint speed, agility, and acceleration scores?",simple,1.00 วินาที,1.0046427249908447
+1141,"Does the KSV Cercle Brugge team have a slow, balanced or fast speed class?",moderate,1.22 วินาที,1.222114086151123
+1142,"In the 2015–2016 season, how many games were played in the Italian Serie A league?",simple,1.40 วินาที,1.3979301452636719
+1143,What was the highest score of the home team in the Netherlands Eredivisie league?,simple,1.25 วินาที,1.2501990795135498
+1144,Please state the finishing rate and curve score of the player who has the heaviest weight.,simple,1.09 วินาที,1.0854570865631104
+1145,Which top 4 leagues had the most games in the 2015-2016 season?,simple,1.08 วินาที,1.081521987915039
+1146,Please provide the full name of the away team that scored the most goals.,moderate,1.77 วินาที,1.7698378562927246
+1147,Please name one player whose overall strength is the greatest.,simple,1.40 วินาที,1.403804063796997
+1148,What is the percentage of players that are under 180 cm who have an overall strength of more than 70?,moderate,1.13 วินาที,1.1270229816436768
+1149,Are there more in-patient or outpatient who were male? What is the deviation in percentage?,moderate,1.19 วินาที,1.1897261142730713
+1150,What is the percentage of female patient were born after 1930?,moderate,1.15 วินาที,1.148132085800171
+1151,"For patient born between Year 1930 to 1940, how many percent of them were inpatient?",moderate,1.18 วินาที,1.1795361042022705
+1152,What is the ratio of outpatient to inpatient followed up treatment among all the 'SLE' diagnosed patient?,moderate,1.91 วินาที,1.914170742034912
+1153,What is the disease patient '30609' diagnosed with. List all the date of laboratory tests done for this patient.,simple,1.26 วินาที,1.2591991424560547
+1154,State the sex and birthday of patient ID '163109'. When was the examination taken and what symptom does the patient had.,simple,1.30 วินาที,1.2976157665252686
+1155,"List the patient ID, sex and birthday of patient with LDH beyond normal range.",simple,1.09 วินาที,1.0914697647094727
+1156,State the ID and age of patient with positive degree of coagulation.,moderate,1.10 วินาที,1.102682113647461
+1157,"For patients with severe degree of thrombosis, list their ID, sex and disease the patient is diagnosed with.",simple,1.00 วินาที,0.9991350173950195
+1158,List all patients who were born in 1937 whose total cholesterol was beyond the normal range.,moderate,1.41 วินาที,1.4086329936981201
+1159,"For patient with albumin level lower than 3.5, list their ID, sex and diagnosis.",simple,1.10 วินาที,1.1002140045166016
+1160,What is the percentage of female patient had total protein not within the normal range?,moderate,1.40 วินาที,1.402245283126831
+1161,"For in-patient age 50 and above, what is their average anti-cardiolipin antibody (IgG) concentration?",challenging,1.61 วินาที,1.6125760078430176
+1162,How many female patients who came at the hospital in 1997 was immediately followed at the outpatient clinic?,moderate,0.79 วินาที,0.7863869667053223
+1163,What was the age of the youngest patient when they initially arrived at the hospital?,simple,1.10 วินาที,1.0982210636138916
+1164,How many of the patients with the most serious thrombosis cases examined in 1997 are women?,moderate,1.06 วินาที,1.0598630905151367
+1165,What is the age gap between the youngest and oldest patient with a normal triglyceride recorded?,moderate,1.13 วินาที,1.1333749294281006
+1166,What are the symptoms observed by the youngest patient to ever did a medical examination? Identify their diagnosis.,simple,1.19 วินาที,1.1943178176879883
+1167,"For the year that concluded on December 31, 1998, how many male patients on average were tested in the lab each month?",moderate,1.71 วินาที,1.7103688716888428
+1168,"The oldest SJS patient's medical laboratory work was completed on what date, and what age was the patient when they initially arrived at the hospital?",challenging,1.09 วินาที,1.0882649421691895
+1169,What is the ratio of male to female patients among all those with abnormal uric acid counts?,challenging,1.51 วินาที,1.509984016418457
+1170,How many patients hadn't undergone a medical examination until at least a year following their initial hospital visit?,moderate,1.00 วินาที,0.9960329532623291
+1171,How many underage patients were examined during the course of the three-year period from 1990 to 1993?,challenging,1.17 วินาที,1.1685550212860107
+1172,How many male patients have elevated total bilirubin count?,simple,1.10 วินาที,1.0978147983551025
+1173,"What is the most common illness that doctors identified among the patients whose lab work was done between 1/1/1985, and 12/31/1995?",challenging,1.03 วินาที,1.0290729999542236
+1174,What is the average age of patients as of year 1999 examined in the laboratory for the October of the year 1991?,moderate,1.21 วินาที,1.205915927886963
+1175,"How old was the patient who had the highest hemoglobin count at the time of the examination, and what is the doctor's diagnosis?",moderate,1.20 วินาที,1.203495740890503
+1176,What was the anti-nucleus antibody concentration level for the patient id 3605340 on 1996/12/2?,simple,0.90 วินาที,0.9039962291717529
+1177,Was the total cholesterol status for the patient id 2927464 on 1995-9-4 at the normal level?,simple,1.41 วินาที,1.408519983291626
+1178,What was the gender of the first AORTITIS diagnosed patient?,simple,1.10 วินาที,1.0998179912567139
+1179,"For the patient who was diagnosed with SLE on 1994/2/19, what was his/her anti-Cardiolipin antibody concentration status on 1993/11/12?",moderate,1.40 วินาที,1.4011788368225098
+1180,Was the patient a man or a women whose ALT glutamic pylvic transaminase status got 9 on 1992-6-12?,moderate,1.10 วินาที,1.101855993270874
+1181,"For the patient who got the laboratory test of uric acid level as 8.4 on 1991-10-21, how old was he/she at that time?",moderate,1.62 วินาที,1.6231980323791504
+1182,"For the patient who first came to the hospital on 1991/6/13 who was diagnosed with SJS, what is the total number of his/her Laboratory tests in 1995?",moderate,0.93 วินาที,0.9334762096405029
+1183,"For the patient who was diagnosed SLE on 1997/1/27, what was his/her original diagnose when he/she came to the hospital for the first time?",challenging,1.09 วินาที,1.0915319919586182
+1184,"For the patient whose birthday was 1959/3/1, what symptoms did he/she have during the examination on 1993/9/27?",simple,1.23 วินาที,1.2331342697143555
+1185,"For the patient who was born on 1959/2/18, what is the decrease rate for his/her total cholesterol from November to December in 1981?",challenging,1.51 วินาที,1.5091540813446045
+1186,Lists all patients by ID who were diagnosed with Behcet's and had their exams between 01/01/197 and 12/31/1997.,moderate,1.08 วินาที,1.084702968597412
+1187,How many patients who were examined between 1987/7/6 and 1996/1/31 had a GPT level greater than 30 and an ALB level less than 4? List them by their ID.,moderate,3.59 วินาที,3.591866970062256
+1188,How many female patients born in 1964 were admitted to the hospital? List them by ID.,simple,1.07 วินาที,1.074585199356079
+1189,"What number of patients with a degree of thrombosis level 2 and ANA pattern of only S, have a level of anti-Cardiolip in antibody (IgM) 20% higher than average?",challenging,1.48 วินาที,1.4825718402862549
+1190,What percentage of patients with a proteinuria level within the normal range have a uric acid level below the normal range?,challenging,1.40 วินาที,1.3987791538238525
+1191,What percentage of male patients who first presented to the hospital in 1981 were diagnosed with BEHCET?,challenging,1.60 วินาที,1.595897912979126
+1192,List all patients who were followed up at the outpatient clinic who underwent a laboratory test in October 1991 and had a total blood bilirubin level within the normal range.,challenging,1.17 วินาที,1.1689479351043701
+1193,"Excluding all P only ANA Pattern patients, how many of the remainder are women born between 1980 and 1989?",moderate,1.33 วินาที,1.3299717903137207
+1194,"What sex is the patient who in a medical examination was diagnosed with PSS and in a laboratory examination had a blood level of C-reactive protein de 2+, createnine 1 and LDH 123?",challenging,1.27 วินาที,1.2734558582305908
+1195,What is the average blood albumin level for female patients with a PLT greater than 400 who have been diagnosed with SLE?,moderate,1.14 วินาที,1.136415958404541
+1196,What is the most common sign of patients with SLE disease?,simple,3.34 วินาที,3.3387882709503174
+1197,"When was the medical information on patient number 48473 first documented, and what disease did she have?",simple,0.97 วินาที,0.9700479507446289
+1198,How many female patients were given an APS diagnosis?,simple,0.70 วินาที,0.6968700885772705
+1199,How many patients who underwent testing in 1997 had protein levels outside the normal range?,simple,1.17 วินาที,1.1654009819030762
+1200,What proportion of patients who had signs of thrombocytopenia had SLE diagnosed?,moderate,1.37 วินาที,1.3685359954833984
+1201,What percentage of patients who were born in 1980 and were diagnosed with RA are women?,moderate,1.10 วินาที,1.0992069244384766
+1202,How many male patients who underwent testing between 1995 and 1997 and were subsequently diagnosed with Behcet disease did not stay in the hospital for treatment?,challenging,1.38 วินาที,1.3834140300750732
+1203,How many patients who were female got white blood cells that were below 3.5?,simple,1.14 วินาที,1.1445677280426025
+1204,How long did it take after patient number 821298 arrived at the hospital for the first time before her evaluation began?,simple,1.36 วินาที,1.3595221042633057
+1205,Was the patient with the number 57266's uric acid within a normal range?,moderate,0.70 วินาที,0.6962358951568604
+1206,When is the laboratory examination of patient '48473' where his/her AST glutamic oxaloacetic transaminase (GOT) index is above the normal range.,simple,0.87 วินาที,0.8735532760620117
+1207,"List all patients with their sex and date of birthday, whose AST glutamic oxaloacetic transaminase (GOT) index is within normal range for loboratory examination in 1994.",moderate,1.38 วินาที,1.3833580017089844
+1208,Provide IDs for male patients with ALT glutamic pylvic transaminase (GPT) that have history of ALT glutamic pylvic transaminase (GPT) exceed the normal range.,moderate,1.10 วินาที,1.0985100269317627
+1209,Please provide the diagnosis of patients with ALT glutamic pylvic transaminase beyond the normal range by ascending order of their date of birth.,moderate,1.09 วินาที,1.0930378437042236
+1210,What is the average index of the lactate dehydrogenase (LDH) for all patients with lactate dehydrogenase (LDH) within the normal range.,simple,0.76 วินาที,0.7629678249359131
+1211,Provide the ID and age of patient with lactate dehydrogenase (LDH) between 100-300 index above the normal range.,moderate,0.99 วินาที,0.9943680763244629
+1212,"For patients with alkaliphophatase (ALP) within normal range, were they treated as inpatient or outpatient?",moderate,0.91 วินาที,0.9072420597076416
+1213,"Name the ID of the patient who is born on the April 1st, 1982. Is his/her alkaliphophatase (ALP) within normal range?",moderate,2.63 วินาที,2.628425121307373
+1214,"List ID, sex and date of birth of patient whose total protein (TP) below the lower range of the normal index.",simple,0.81 วินาที,0.8060290813446045
+1215,"For all female patient with total protein (TP) beyond the normal index, what is the deviation of their TP idex from the normal.",moderate,1.31 วินาที,1.3104331493377686
+1216,Sort in descending order all patients by birthday for male patient with albumin not within range.,simple,1.35 วินาที,1.3481531143188477
+1217,"For all patient born in 1982, state if their albumin is within normal range.",moderate,1.15 วินาที,1.146008014678955
+1218,What is the percentage of the female patient whose uric acid (UA) beyond the normal range?,moderate,1.48 วินาที,1.481964111328125
+1219,"For all patients with normal uric acid (UA), what is the average UA index based on their latest laboratory examination result?",moderate,1.41 วินาที,1.4066576957702637
+1220,"Provide all ID, sex and birthday of patients whose urea nitrogen (UN) just within the borderline of passing?",simple,1.05 วินาที,1.050321102142334
+1221,"Provide the ID, sex, birthday of all patients diagnosed with 'RA' that are within the UN normal index.",simple,1.26 วินาที,1.2578151226043701
+1222,How many male patients are are with creatinine index out of the normal range?,simple,1.31 วินาที,1.3131730556488037
+1223,Are there more male patients with creatinine not within the normal range than female? True or False?,challenging,1.92 วินาที,1.922325849533081
+1224,"What is the highest total bilirubin level recorded? List out the patient details with ID, sex and birthday with that index.",simple,1.00 วินาที,1.0025789737701416
+1225,List and group all patients by sex for total bilirubin (T-BIL) level not within the normal range.,moderate,3.56 วินาที,3.5636181831359863
+1226,Who is the oldest patient with the highest total cholesterol (T-CHO). State the patient ID and T-CHO index.,simple,1.51 วินาที,1.5117847919464111
+1227,What is the average age of the male patient with high cholesterol?,moderate,1.20 วินาที,1.2000932693481445
+1228,Provide list of patients and their diagnosis with triglyceride (TG) index greater than 100 of the normal range?,simple,1.10 วินาที,1.101938009262085
+1229,"For all patients with triglyceride (TG) level beyond the normal range, how many are age more than 50 years?",moderate,1.10 วินาที,1.1046247482299805
+1230,List all outpatient within normal range of creatinine phosphokinase. Give me the distinct ids.,simple,0.79 วินาที,0.7931900024414062
+1231,"For patient born between 1936-1956, how many male patients have creatinine phosphokinase beyond the normal range?",challenging,1.21 วินาที,1.2067108154296875
+1232,"Provide ID, sex and age of patient who has blood glucose (GLU) not within normal range but with total cholesterol(T-CHO) within normal range.",challenging,1.20 วินาที,1.201974868774414
+1233,List each patient's ID and blood glucose (GLU) index that were within normal range for patient's whose data was first recorded in 1991.,moderate,1.00 วินาที,0.9993479251861572
+1234,"List the patient ID, sex and birthday who has abnormal white blood cell count. Group them by sex and list the patient by age in ascending order.",moderate,2.84 วินาที,2.8432118892669678
+1235,What are the patient's diagnosis for those who has lower red blood blood cell? State their ID and age.,moderate,0.90 วินาที,0.8971168994903564
+1236,"For all the female patient age 50 and above, who has abnormal red blood cell count. State if they were admitted to hospital.",challenging,1.23 วินาที,1.226968765258789
+1237,"Among all outpatients, list out those have low hemoglobin level. State the different IDs and their sex.",simple,0.88 วินาที,0.8819670677185059
+1238,"Among the patients who were diagnosed with SLE, who is the oldest with normal hemoglobin level. Provide the ID and sex.",moderate,0.93 วินาที,0.9285948276519775
+1239,Name the ID and age of patient with two or more laboratory examinations which show their hematoclit level exceeded the normal range.,challenging,1.20 วินาที,1.2011048793792725
+1240,"From laboratory examinations in 1991, what is the average hematoclit level that is lower than the normal range.",moderate,1.30 วินาที,1.3003473281860352
+1241,"For patients with abnormal platelet level, state the number of patients with lower than normal range. How is it compare to the number of patients with higher than normal range?",challenging,1.20 วินาที,1.199172019958496
+1242,"For laboratory examinations take in 1984, list all patients below 50 years old with normal platelet level.",challenging,1.50 วินาที,1.5030438899993896
+1243,"For all patients who are older than 55 years old, what is the percentage of female who has abnormal prothrombin time (PT)?",challenging,2.01 วินาที,2.011920213699341
+1244,List all patients who first came to the hospital after year 1992 with prothrombin time (PT) level that are normal.,moderate,1.19 วินาที,1.1945579051971436
+1245,"For the examinations done after 1997/1/1, how many of them have the result of an inactivated partial prothrom bin time?",moderate,1.09 วินาที,1.0882189273834229
+1246,"For the patients with an abnormal activated partial prothrom bin time, how many of them does not have thrombosis?",moderate,1.00 วินาที,1.004814863204956
+1247,"Among the male patients who have a normal level of white blood cells, how many of them have an abnormal fibrinogen level?",challenging,1.61 วินาที,1.6057279109954834
+1248,How many patients born after 1980/1/1 have an abnormal fibrinogen level?,moderate,1.19 วินาที,1.1938350200653076
+1249,Please list the disease names of the patients that have a proteinuria level higher than normal.,simple,1.40 วินาที,1.400249719619751
+1250,Which patient has a normal proteinuria level and is diagnosed with SLE? Please give his or her patient ID.,moderate,2.00 วินาที,1.9993648529052734
+1251,How many patients with an Ig G higher than normal?,simple,1.06 วินาที,1.0645639896392822
+1252,"Among the patients with a normal Ig G level, how many of them have symptoms?",moderate,2.28 วินาที,2.2763218879699707
+1253,"For the patient who has the highest Ig A within the normal range, what is his or her diagnosis?",simple,1.20 วินาที,1.2003016471862793
+1254,How many patients with a normal Ig A level came to the hospital after 1990/1/1?,moderate,1.20 วินาที,1.197495937347412
+1255,"For the patients with an abnormal Ig M level, what is the most common disease they are diagnosed with?",moderate,1.10 วินาที,1.1010329723358154
+1256,How many patients with a abnormal C-reactive protein don't have their data recorded?,moderate,1.11 วินาที,1.1090071201324463
+1257,"Among the patients whose creatinine level is abnormal, how many of them aren't 70 yet?",challenging,1.41 วินาที,1.414158821105957
+1258,How many patients with a normal Rhuematoid Factor has a positive measure of degree of coagulation?,moderate,1.40 วินาที,1.4029607772827148
+1259,Please list the diseases of the patients born after 1985-1-1 and have a normal Rhuematoid Factor.,moderate,1.09 วินาที,1.092508316040039
+1260,Please list the ID of the patient whose RF is normal and who is older than 60.,simple,1.10 วินาที,1.1009271144866943
+1261,How many patients with a normal RF don't have thrombosis?,simple,1.09 วินาที,1.092839241027832
+1262,How many patients with a normal level of complement 3 have a P pattern observed in the sheet of ANA examination?,moderate,1.02 วินาที,1.0168802738189697
+1263,"Among the patients whose level of Hematoclit isn't normal, which patient has the highest anti-Cardiolipin antibody concentration? Please list his or her ID.",moderate,1.57 วินาที,1.5709419250488281
+1264,"Among the patients have blood clots in veins, how many of them have a normal level of complement 4?",moderate,1.31 วินาที,1.3072748184204102
+1265,How many patients have a normal level of anti-ribonuclear protein and have been admitted to the hospital?,moderate,1.10 วินาที,1.1001060009002686
+1266,Which is the youngest patient with an abnormal anti-ribonuclear protein level? Please list his or her date of birth.,moderate,1.19 วินาที,1.1932120323181152
+1267,"Among the patients with normal anti-SM, how many of them does not have thrombosis?",moderate,1.30 วินาที,1.296895980834961
+1268,"For the patients with an abnormal anti-SM, please list the IDs of the three youngest ones.",simple,1.20 วินาที,1.2033720016479492
+1269,Please list the IDs of the patients who had the examination done after 1997/1/1 and had a normal anti-scl70.,moderate,0.99 วินาที,0.9884059429168701
+1270,"Among the patients who has a normal anti-scl70, how many of them are female and does not have any symptom?",challenging,3.86 วินาที,3.857738971710205
+1271,How many patients with a normal anti-SSA came to the hospital before 2000?,moderate,1.00 วินาที,0.9990839958190918
+1272,Which patient is the first patient with an abnormal anti-SSA to come to the hospital? Please give his or her ID.,moderate,0.89 วินาที,0.8869791030883789
+1273,How many patients have a normal anti-SSB and are diagnosed with SLE in the examination?,moderate,1.62 วินาที,1.6208851337432861
+1274,"For the patients whose anti-SSB are normal, how many of them have other symptoms observed in their examination?",moderate,1.61 วินาที,1.608435869216919
+1275,"Among the patients who has a normal level of anti-centromere and a normal level of anti-SSB, how many of them are male?",moderate,1.00 วินาที,1.0005769729614258
+1276,"For the patients who have an abnormal level of anti-DNA, please list the diseases they are diagnosed with.",simple,0.89 วินาที,0.8876917362213135
+1277,"How many patients have a normal anti-DNA level, yet their data are not recorded.",moderate,1.20 วินาที,1.1959197521209717
+1278,"Of the patients with an normal level of IGG, how many of them admitted to the hospital?",simple,1.00 วินาที,0.9958450794219971
+1279,"What is the percentage of patient who has a abnormal level of glutamic oxaloacetic transaminase level, yet he or she is diagnosed with SLE?",moderate,1.21 วินาที,1.2097499370574951
+1280,How many male patients have their glutamic oxaloacetic transaminase in the normal range?,simple,1.20 วินาที,1.1952931880950928
+1281,"Among the patients who have an abnormal level of glutamic oxaloacetic transaminase, when was the youngest of them born?",moderate,0.80 วินาที,0.8018701076507568
+1282,Please list the top three patients' birthdays with the highest glutamic pylvic transaminase in the normal range.,simple,0.83 วินาที,0.8300199508666992
+1283,"For the patients with the normal glutamic pylvic transaminase level, how many of them are male?",simple,2.38 วินาที,2.3792567253112793
+1284,"For the patient with the highest lactate dehydrogenase in the normal range, when was his or her data first recorded?",moderate,0.82 วินาที,0.822045087814331
+1285,When is the latest patient's medical data recorded? This patient should have an abnormal level of lactate dehydrogenase.,moderate,0.92 วินาที,0.9152770042419434
+1286,"For the patient with an abnormal alkaliphophatase level, how many of them are admitted to the hospital?",simple,1.06 วินาที,1.05619478225708
+1287,"Among the patients followed at the outpatient clinic, how many of them have a normal level of alkaliphophatase?",moderate,0.86 วินาที,0.8632450103759766
+1288,Please list the diagnosis of the patients whose total protein is lower than normal.,simple,1.21 วินาที,1.2069919109344482
+1289,"For the patients who are diagnosed with SJS, how many of them have a normal level of total protein?",moderate,1.49 วินาที,1.493384838104248
+1290,What is the examination date of the patient whose albumin is the highest in the normal range?,simple,0.89 วินาที,0.8933260440826416
+1291,How many male patients have a normal level of both albumin and total protein?,moderate,1.50 วินาที,1.5010781288146973
+1292,What is the anti Cardiolipin antibody concentration of the female patient with the highest uric acid level in the normal range?,challenging,1.82 วินาที,1.81846284866333
+1293,What is the highest anti-nucleus antibody concentration level of a patient with a normal creatinine level?,moderate,1.50 วินาที,1.5038330554962158
+1294,Please list the patient's ID whose creatinine level is normal and whose anti Cardiolipin antibody concentration level is the highest.,moderate,1.25 วินาที,1.2453680038452148
+1295,"Among the patients whose total bilirubin is over the normal range, how many of them have a peripheral pattern observed in the sheet of ANA examination?",challenging,1.15 วินาที,1.1544508934020996
+1296,What is the anti-nucleus antibody concentration of the patient whose total bilirubin is the highest in the normal range?,moderate,0.99 วินาที,0.990056037902832
+1297,"For the patients whose total cholesterol is higher than normal, how many of them have a negative measure of degree of coagulation?",moderate,1.71 วินาที,1.7059390544891357
+1298,"Among the patients whose total cholesterol is within the normal range, how many of them have a P pattern observed in the sheet of ANA examination?",moderate,0.89 วินาที,0.8869891166687012
+1299,"Among the patients with the normal level of triglyceride, how many of them have other symptoms observed?",simple,1.12 วินาที,1.1157488822937012
+1300,What is the disease name of the patient who has the highest level of triglyceride within the normal range?,moderate,1.08 วินาที,1.0811359882354736
+1301,Please list the IDs of the patients with no thrombosis and an abnormal level of creatinine phosphokinase.,simple,1.31 วินาที,1.3098208904266357
+1302,"For the patients with a normal range of creatinine phosphokinase, how many of them have a positive measure of degree of coagulation?",challenging,1.20 วินาที,1.2016148567199707
+1303,When is the birthday of the oldest patient whose blood glucose is abnormal?,simple,1.31 วินาที,1.311830997467041
+1304,"Among the patients with a normal blood glucose, how many of them don't have thrombosis?",moderate,1.09 วินาที,1.0912792682647705
+1305,How many patients accepted to the hospital have a normal level of white blood cells?,moderate,1.31 วินาที,1.3084392547607422
+1306,How many patients diagnosed with SLE have a normal white blood cell level?,simple,1.10 วินาที,1.1040828227996826
+1307,Please list the patient's ID if he or she has an abnormal level of red blood cell and is followed at the outpatient clinic.,challenging,0.89 วินาที,0.8894169330596924
+1308,"Among the patients who have a normal platelet level, how many of them have other symptoms observed?",moderate,1.20 วินาที,1.2020490169525146
+1309,Please list a patient's platelet level if it is within the normal range and if he or she is diagnosed with MCTD.,moderate,1.27 วินาที,1.268639326095581
+1310,"For the male patients that have a normal prothrombin time, what is their average prothrombin time?",simple,0.93 วินาที,0.931757926940918
+1311,How many patients with severe thrombosis have a normal prothrombin time?,moderate,0.98 วินาที,0.9830927848815918
+1312,What's Angela Sanders's major?,simple,1.00 วินาที,1.0020127296447754
+1313,How many students in the Student_Club are from the College of Engineering?,simple,1.01 วินาที,1.006392002105713
+1314,Please list the full names of the students in the Student_Club that come from the Art and Design Department.,simple,0.89 วินาที,0.8938219547271729
+1315,"How many students of the Student_Club have attended the event ""Women's Soccer""?",simple,1.31 วินาที,1.3130810260772705
+1316,"Please list the phone numbers of the students from the Student_Club that has attended the event ""Women's Soccer"".",moderate,1.09 วินาที,1.0939629077911377
+1317,"Among the students from the Student_Club who attended the event ""Women's Soccer"", how many of them want a T-shirt that's in medium size?",moderate,1.09 วินาที,1.0910370349884033
+1318,What is the event that has the highest attendance of the students from the Student_Club?,simple,1.30 วินาที,1.3044240474700928
+1319,Which college is the vice president of the Student_Club from?,simple,1.22 วินาที,1.216799259185791
+1320,Please list the event names of all the events attended by Maya Mclean.,simple,5.81 วินาที,5.805052995681763
+1321,How many events of the Student_Club did Sacha Harrison attend in 2019?,moderate,1.81 วินาที,1.8121330738067627
+1322,"Among the events attended by more than 10 members of the Student_Club, how many of them are meetings?",moderate,1.31 วินาที,1.3089289665222168
+1323,List all the names of events that had an attendance of over 20 students but were not fundraisers.,moderate,1.19 วินาที,1.1893610954284668
+1324,What is the average attendance of meetings in 2020?,moderate,1.62 วินาที,1.6156198978424072
+1325,What is the most expensive item that was spent in support of club events?,simple,1.10 วินาที,1.0961060523986816
+1326,"How many members of the Student_Club have majored Environmental Engineering?
+",simple,1.00 วินาที,0.9964079856872559
+1327,"List the full name of all the members of the Student_Club who attended the ""Laugh Out Loud"" event.",moderate,1.29 วินาที,1.2932159900665283
+1328,"List the last name of all the students who majored Law and Constitutional Studies. 
+",simple,0.90 วินาที,0.9028830528259277
+1329,What county did Sherri Ramsey grew up?,simple,1.22 วินาที,1.2186238765716553
+1330,What college offers the major that Tyler Hewitt took?,simple,0.89 วินาที,0.8889317512512207
+1331,What is the amount of the funds that the Vice President received?,simple,1.22 วินาที,1.215400218963623
+1332,How much did the Student_Club members spend on food in September Meeting?,moderate,1.34 วินาที,1.3364548683166504
+1333,What city and state did the President of the Student_Club grow up?,simple,0.99 วินาที,0.9891667366027832
+1334,List the full name of the Student_Club members that grew up in Illinois state.,simple,1.15 วินาที,1.1454989910125732
+1335,How much did the Student_Club members spend on advertisement in September Meeting?,moderate,1.45 วินาที,1.447390079498291
+1336,What department offers the major that Pierce and Guidi took?,simple,0.89 วินาที,0.8857150077819824
+1337,"What is the total budgeted amount for all category in ""October Speaker"" event?",simple,5.60 วินาที,5.603311061859131
+1338,"Was each expense in October Meeting on October 8, 2019 approved?",moderate,1.09 วินาที,1.0900349617004395
+1339,Calculate the total average cost that Elijah Allen spent in the events on September and October.,challenging,1.51 วินาที,1.506059169769287
+1340,Calculate the difference of the total amount spent in all events by the Student_Club in year 2019 and 2020.,moderate,1.60 วินาที,1.6011488437652588
+1341,"Give the location for ""Spring Budget Review"".",simple,0.68 วินาที,0.6796431541442871
+1342,"What was the cost for the ""Posters"" on 2019/9/4?",simple,0.89 วินาที,0.8859100341796875
+1343,"With the biggest budget for the ""Food"", what was the remaining of it?",simple,0.79 วินาที,0.786895751953125
+1344,What was the notes of the fundraising on 2019/9/14?,simple,0.69 วินาที,0.6891241073608398
+1345,"How many majors are there in ""College of Humanities and Social Sciences""?",simple,0.89 วินาที,0.8919332027435303
+1346,"Tell the phone number of ""Carlo Jacobs"".",simple,0.89 วินาที,0.8873069286346436
+1347,"Tell the hometown county for ""Adela O'Gallagher"".",simple,1.40 วินาที,1.3960940837860107
+1348,"For all the budgets for ""November Meeting"", how many of them had exceeded the budget?",simple,0.90 วินาที,0.8955779075622559
+1349,"Provide the total number of the budget amount for ""September Speaker"" event.",simple,0.90 วินาที,0.8978250026702881
+1350,"What is the status of the event which bought ""Post Cards, Posters"" on 2019/8/20?",moderate,1.61 วินาที,1.6069402694702148
+1351,What was Brent Thomason's major?,simple,3.34 วินาที,3.3383190631866455
+1352,"For all the club members from ""Business"" major, how many of them wear medium size t-shirt?",moderate,1.00 วินาที,1.0021710395812988
+1353,What's Christof Nielson's zip code type?,simple,0.80 วินาที,0.7954409122467041
+1354,State the major name for the Vice President of the club.,simple,0.87 วินาที,0.8662111759185791
+1355,"Where is the hometown state for ""Sacha Harrison""?",simple,0.71 วินาที,0.714932918548584
+1356,Which department was the President of the club in?,simple,0.89 วินาที,0.8856208324432373
+1357,State the date Connor Hilton paid his/her dues.,simple,1.11 วินาที,1.1082041263580322
+1358,Who was the first one paid his/her dues? Tell the full name.,simple,0.99 วินาที,0.9937081336975098
+1359,"How many times was the budget in Advertisement for ""Yearly Kickoff"" meeting more than ""October Meeting""?",challenging,3.25 วินาที,3.2503669261932373
+1360,"What percentage was the budget for Parking to the total budget for the ""November Speaker""?",moderate,1.50 วินาที,1.5034959316253662
+1361,What is the total cost of the pizzas for all the events?,simple,0.68 วินาที,0.6815259456634521
+1362,"How many cities are there in Orange County, Virginia?",simple,1.09 วินาที,1.0938360691070557
+1363,List all of the College of Humanities and Social Sciences' departments.,simple,0.69 วินาที,0.6884269714355469
+1364,Where is Amy Firth's hometown?,simple,0.79 วินาที,0.7946648597717285
+1365,What are the expenses of the budget with the lowest remaining?,simple,0.80 วินาที,0.7985200881958008
+1366,"List all the members who attended the event ""October Meeting"".",simple,1.00 วินาที,1.000385046005249
+1367,Which college do most of the members go to?,simple,0.99 วินาที,0.9926877021789551
+1368,"What does the person with the phone number ""809-555-3360"" major in?",simple,0.89 วินาที,0.8889729976654053
+1369,Which event has the highest budget amount?,simple,0.82 วินาที,0.8212368488311768
+1370,List all the expenses incurred by the vice president.,simple,1.18 วินาที,1.1821837425231934
+1371,"How many members attended the ""Women's Soccer"" event?",simple,0.89 วินาที,0.8859851360321045
+1372,"When did the member, Casey Mason, received the income?",simple,1.09 วินาที,1.0928168296813965
+1373,How many of the members' hometowns are from Maryland state?,simple,1.70 วินาที,1.7022361755371094
+1374,"How many events did the member with the phone number ""954-555-6240"" attend?",simple,1.11 วินาที,1.1080210208892822
+1375,"List all the members of the ""School of Applied Sciences, Technology and Education"" department.",moderate,0.83 วินาที,0.829246997833252
+1376,"Among all the closed events, which event has the highest spend-to-budget ratio?",moderate,0.96 วินาที,0.9559669494628906
+1377,How many student have the position of president?,simple,0.68 วินาที,0.6791510581970215
+1378,What is the highest amount of budget spend for an event?,simple,0.99 วินาที,0.9887650012969971
+1379,How many meeting events were held in 2020?,simple,1.50 วินาที,1.4989490509033203
+1380,What is the total amount of money spent for food?,simple,0.69 วินาที,0.6922979354858398
+1381,List the name of students that have attended more than 7 events.,moderate,1.30 วินาที,1.304326057434082
+1382,"Among the students majored in interior design, who have attended the Community Theater event?",moderate,1.38 วินาที,1.377716064453125
+1383,"State the name of students from Georgetown, South Carolina.",simple,1.32 วินาที,1.3244547843933105
+1384,How many income generated by Grant Gilmour?,simple,1.20 วินาที,1.1986989974975586
+1385,Which student was able to generate income more than $40?,simple,1.00 วินาที,1.0015161037445068
+1386,What is the total expense for the Yearly Kickoff?,simple,1.09 วินาที,1.0911328792572021
+1387,Which student has been entrusted to manage the budget for the Yearly Kickoff?,moderate,0.78 วินาที,0.7770402431488037
+1388,Which students manage to generate the highest income. State his/her full name along with the income source.,moderate,1.00 วินาที,0.9980859756469727
+1389,Which event has the lowest cost?,simple,0.89 วินาที,0.8901000022888184
+1390,"Based on the total cost for all event, what is the percentage of cost for Yearly Kickoff event?",moderate,1.21 วินาที,1.208676815032959
+1391,What is the ratio between students majored in finance and physics?,simple,1.50 วินาที,1.4998228549957275
+1392,Indicate the top source of funds received in September 2019 based on their amount.,simple,1.10 วินาที,1.1023609638214111
+1393,Provide the full name and email address of the Student_Club's Secretary.,simple,1.40 วินาที,1.399580717086792
+1394,How many members of the Student_Club have major in 'Physics Teaching'?,simple,0.78 วินาที,0.7827708721160889
+1395,How many members did attend the event 'Community Theater' in 2019?,moderate,0.97 วินาที,0.974402904510498
+1396,Provide the number of events attended by Luisa Guidi. What is her major?,simple,1.32 วินาที,1.315040111541748
+1397,"On average, how much did the Student_Club spend on food for the typical event in the past?",simple,1.33 วินาที,1.328125
+1398,Name the event with the highest amount spent on advertisement.,moderate,0.87 วินาที,0.8712120056152344
+1399,Did Maya Mclean attend the 'Women's Soccer' event?,moderate,1.81 วินาที,1.8056788444519043
+1400,"Among all events hold by the Student_Club in 2019, find the percentage share of events related to 'Community Service'",moderate,1.60 วินาที,1.600261926651001
+1401,Indicate the cost of posters for 'September Speaker' event.,moderate,1.20 วินาที,1.1979808807373047
+1402,What is the most popular size of t-shirt ordered by the club members?,simple,0.89 วินาที,0.8906769752502441
+1403,Indicate the name of the closed event whose cost has exceeded the budget the most.,moderate,1.30 วินาที,1.299692153930664
+1404,Identify the type of expenses and their total value approved for 'October Meeting' event.,moderate,1.20 วินาที,1.1963391304016113
+1405,Calculate the amount budgeted for 'April Speaker' event. List all the budgeted categories for said event in an ascending order based on their amount budgeted.,moderate,0.89 วินาที,0.8945939540863037
+1406,"Among the budgets for Food, which one has the highest budgeted amount?",simple,0.89 วินาที,0.8937337398529053
+1407,"Among the budgets for Advertising, list out top three which have the most budgeted amount?",simple,0.68 วินาที,0.6801869869232178
+1408,Calculate the total cost spent for Parking in the list.,simple,0.79 วินาที,0.7874720096588135
+1409,Mention the total expense used on 8/20/2019.,simple,1.20 วินาที,1.199073076248169
+1410,"List out the full name and total cost that member id ""rec4BLdZHS2Blfp4v"" incurred?",simple,1.51 วินาที,1.5076940059661865
+1411,State what kind of expenses that Sacha Harrison incurred?,simple,1.10 วินาที,1.0964140892028809
+1412,What kind of expenses incurred by members who have X-Large in size of tee shirt?,simple,4.27 วินาที,4.271155118942261
+1413,Mention the zip code of member who incurred less than 50USD.,simple,1.09 วินาที,1.0907669067382812
+1414,State the name of major that Phillip Cullen has joined.,simple,1.11 วินาที,1.1102190017700195
+1415,List out the position of members who joined major of Business.,simple,0.87 วินาที,0.8696751594543457
+1416,How many members of Business have the Medium size of tee shirt?,simple,0.93 วินาที,0.9276931285858154
+1417,List out the type of events which have remaining budget more than 30 USD.,simple,0.90 วินาที,0.9014749526977539
+1418,Mention the category of events which were held at MU 215.,simple,0.94 วินาที,0.9350769519805908
+1419,What is the category of event which was taken place in 2020-03-24T12:00:00?,simple,1.67 วินาที,1.6741111278533936
+1420,State the name of major that Vice President has joined.,simple,2.18 วินาที,2.1801388263702393
+1421,Calculate the percentage of members who are major Business in the list?,moderate,0.97 วินาที,0.9673800468444824
+1422,State the category of events were held at MU 215.,simple,1.40 วินาที,1.3955316543579102
+1423,How many income are received with an amount of 50?,simple,0.72 วินาที,0.7210328578948975
+1424,"Among the members, how many of them have an extra large t-shirt size?",simple,1.08 วินาที,1.0767130851745605
+1425,"In the College of Agriculture and Applied Sciences, how many majors are under the department of School of Applied Sciences, Technology and Education?",simple,0.74 วินาที,0.7439150810241699
+1426,List the last name of members with a major in environmental engineering and include its department and college name.,moderate,1.30 วินาที,1.3024039268493652
+1427,What are the budget category of the events located at MU 215 and a guest speaker type with a 0 budget spent?,moderate,0.93 วินาที,0.9287717342376709
+1428,List the city and state of members enrolled under electrical and computer engineering department.,moderate,0.82 วินาที,0.8152098655700684
+1429,What is the name of the social event that was attended by the vice president of the Student_Club located at 900 E. Washington St.?,challenging,1.42 วินาที,1.4202780723571777
+1430,What is the last name and position of the student that bought pizza on 09/10/2019?,moderate,1.47 วินาที,1.466965913772583
+1431,List the last name of the members of the club that attended the women's soccer event.,moderate,0.92 วินาที,0.9175851345062256
+1432,"Among the members with t-shirt size of medium, what is the percentage of the amount 50 received by the Student_Club?",moderate,1.41 วินาที,1.4052631855010986
+1433,Which countries have zip codes with post office boxes?,simple,1.32 วินาที,1.3241791725158691
+1434,What are the zip codes that have post office boxes in the country of the country of San Juan Municipio whose state is Puerto Rico?,simple,0.83 วินาที,0.831122875213623
+1435,"List the names of closed event as ""game"" that was closed from 3/15/2019 to 3/20/2020.",moderate,0.94 วินาที,0.9391500949859619
+1436,Please provide links to events for members who have paid more than 50 dollar.,simple,0.75 วินาที,0.750777006149292
+1437,Which members who were approved from 1/10/2019 to 11/19/2019? Please identify the member who attended the event and the link to their event.,challenging,1.30 วินาที,1.3019940853118896
+1438,"Please indicate the college of the person whose first name is Katy with the link to the major ""rec1N0upiVLy5esTO"".",simple,1.06 วินาที,1.0630159378051758
+1439,Please list the phone numbers of the members who majored in business at the College of Agriculture and Applied Sciences.,moderate,0.83 วินาที,0.8329730033874512
+1440,List emails of people who paid more than 20 dollars from 9/10/2019 to 11/19/2019.,moderate,1.00 วินาที,0.9996497631072998
+1441,How many members have education major in the College of Education & Human Services?,moderate,0.84 วินาที,0.8438839912414551
+1442,What is the percentage of the events that went over budget?,simple,1.00 วินาที,1.0032529830932617
+1443,"Give the event ID, location, and status of events conducted from November 2019 to March 2020.",simple,1.06 วินาที,1.0612759590148926
+1444,List the expenses that spend more than fifty dollars on average.,simple,0.67 วินาที,0.6745400428771973
+1445,Find the full name of members whose t-shirt size is extra large.,simple,1.30 วินาที,1.3048560619354248
+1446,Calculate the percentage of zip codes that are PO boxes.,simple,1.00 วินาที,1.0048441886901855
+1447,List the name and location of events that underspend its budget.,simple,0.81 วินาที,0.8050470352172852
+1448,Find the name and date of events with expenses for pizza that were more than fifty dollars but less than a hundred dollars.,challenging,1.51 วินาที,1.5093059539794922
+1449,What is the name and major of members who had to spend more than a hundred dollars on an expense?,moderate,1.07 วินาที,1.0733821392059326
+1450,"In the events with more than forty incomes, list the city and country in which the event is happening.",simple,0.97 วินาที,0.966130256652832
+1451,"Among the members who incurred expenses in more than one event, who paid the most amount?",challenging,1.51 วินาที,1.5068690776824951
+1452,What is the average amount paid by students in a position other than a member?,moderate,0.92 วินาที,0.922968864440918
+1453,List the name of events with less than average parking cost.,moderate,1.10 วินาที,1.1006622314453125
+1454,What is the percentage of the cost for the meeting events?,moderate,1.83 วินาที,1.8309249877929688
+1455,"Which budget allowed the most money for water, chips, and cookies?",moderate,0.80 วินาที,0.8034670352935791
+1456,List the full name of the top five members who spend the most money in the descending order of spending.,moderate,1.14 วินาที,1.1381230354309082
+1457,Give the full name and contact number of members who had to spend more than average on each expense.,challenging,1.34 วินาที,1.3357691764831543
+1458,Calculate the difference in the percentage of members in New Jersey and Vermont.,moderate,1.58 วินาที,1.5809149742126465
+1459,What is the major of Garrett Gerke and which department does it belong to?,simple,1.08 วินาที,1.0776870250701904
+1460,"Write the full name of the member who spent money for water, veggie tray and supplies and include the cost of it.",challenging,1.31 วินาที,1.3127758502960205
+1461,List the last names of students under the Elementary Education major and include their phone numbers.,simple,0.90 วินาที,0.8993918895721436
+1462,What category was budgeted for the 'January Speaker' event and how much was the amount budgeted for that category?,simple,1.31 วินาที,1.306325912475586
+1463,List the event names which were budgeted for the food.,simple,1.31 วินาที,1.3091521263122559
+1464,Write the full names of students who received funds on the date of 9/9/2019 and include the amount received.,challenging,1.12 วินาที,1.1150798797607422
+1465,Which budget category does the expense 'Posters' fall to?,simple,1.81 วินาที,1.8144888877868652
+1466,Write the full name of the club member with the position of 'Secretary' and list which college the club member belongs to.,simple,2.41 วินาที,2.407388210296631
+1467,Calculate the total amount spent on speaker gifts and list the name of the event they were spent on.,simple,1.23 วินาที,1.2333831787109375
+1468,Where is the hometown of Garrett Gerke?,simple,0.83 วินาที,0.829136848449707
+1469,"Which student has the hometown of Lincolnton, North Carolina with the zip code of 28092? List their full name and position.",moderate,1.13 วินาที,1.1342062950134277
+1470,How many gas stations in CZE has Premium gas?,simple,1.56 วินาที,1.5609111785888672
+1471,What is the ratio of customers who pay in EUR against customers who pay in CZK?,simple,1.84 วินาที,1.8409712314605713
+1472,"In 2012, who had the least consumption in LAM?",moderate,1.13 วินาที,1.1279308795928955
+1473,What was the average monthly consumption of customers in SME for the year 2013?,moderate,1.54 วินาที,1.5412101745605469
+1474,"Which customers, paying in CZK, consumed the most gas in 2011?",moderate,1.30 วินาที,1.2960057258605957
+1475,"How many customers in KAM had a consumption of less than 30,000 for the year 2012?",moderate,1.50 วินาที,1.502741813659668
+1476,What was the difference in gas consumption between CZK-paying customers and EUR-paying customers in 2012?,challenging,1.12 วินาที,1.1230099201202393
+1477,Which year recorded the most gas use paid in EUR?,simple,1.37 วินาที,1.3738329410552979
+1478,Which segment had the least consumption?,simple,0.79 วินาที,0.790276050567627
+1479,Which year recorded the most consumption of gas paid in CZK?,moderate,1.20 วินาที,1.1967060565948486
+1480,What was the gas consumption peak month for SME customers in 2013?,moderate,0.95 วินาที,0.9518539905548096
+1481,"What is the difference in the annual average consumption of the customers with the least amount of consumption paid in CZK for 2013 between SME and LAM, LAM and KAM, and KAM and SME?",challenging,2.19 วินาที,2.1862871646881104
+1482,"Which of the three segments—SME, LAM and KAM—has the biggest and lowest percentage increases in consumption paid in EUR between 2012 and 2013?",challenging,2.42 วินาที,2.4222629070281982
+1483,How much did customer 6 consume in total between August and November 2013?,simple,0.89 วินาที,0.8891801834106445
+1484,"How many more ""discount"" gas stations does the Czech Republic have compared to Slovakia?",simple,1.37 วินาที,1.365035057067871
+1485,How much more was customer 7 consuming in April 2013 than customer 5?,simple,1.86 วินาที,1.8614020347595215
+1486,"Is it true that more SMEs pay in Czech koruna than in euros? If so, how many more?",simple,5.40 วินาที,5.404872894287109
+1487,Which LAM customer used the Euro as their currency and had the highest consumption in October 2013?,moderate,1.20 วินาที,1.201941967010498
+1488,Who among KAM's customers consumed the most? How much did it consume?,simple,1.06 วินาที,1.0579438209533691
+1489,How much did the KAM customers consume in total in May 2013?,simple,3.96 วินาที,3.9603610038757324
+1490,How many percent of LAM customer consumed more than 46.73?,moderate,1.66 วินาที,1.6556689739227295
+1491,"Which country has more ""value for money"" gas stations? Please give a total number of ""value for money"" gas stations in each country.",simple,1.11 วินาที,1.1087610721588135
+1492,What percentage of KAM customers pay in euros?,simple,0.88 วินาที,0.8823757171630859
+1493,"In February 2012, what percentage of customers consumed more than 528.3?",simple,1.47 วินาที,1.4728271961212158
+1494,What percentage of Slovakian gas stations are premium?,simple,0.79 วินาที,0.7893590927124023
+1495,Which client ID consumed the most in September 2013?,simple,0.98 วินาที,0.9772078990936279
+1496,Which client segment consumed the least in September 2013?,simple,1.02 วินาที,1.015381097793579
+1497,Which SME customer consumed the least in June 2012?,simple,2.34 วินาที,2.3416450023651123
+1498,What is the highest monthly consumption in the year 2012?,simple,0.85 วินาที,0.8504838943481445
+1499,What is the biggest monthly consumption of the customers who use euro as their currency?,simple,0.84 วินาที,0.842188835144043
+1500,"Please list the product description of the products consumed in September, 2013.",simple,1.35 วินาที,1.3472461700439453
+1501,"Please list the countries of the gas stations with transactions taken place in June, 2013.",moderate,1.60 วินาที,1.595602035522461
+1502,Please list the chains of the gas stations with transactions in euro.,simple,1.05 วินาที,1.0459051132202148
+1503,Please list the product description of the products bought in transactions in euro.,simple,1.05 วินาที,1.0482261180877686
+1504,"What is the average total price of the transactions taken place in January, 2012?",simple,1.00 วินาที,0.996614933013916
+1505,"Among the customers who paid in euro, how many of them have a monthly consumption of over 1000?",simple,0.96 วินาที,0.962622880935669
+1506,Please list the product descriptions of the transactions taken place in the gas stations in the Czech Republic.,moderate,1.17 วินาที,1.1730730533599854
+1507,Please list the disparate time of the transactions taken place in the gas stations from chain no. 11.,simple,0.79 วินาที,0.7871510982513428
+1508,How many transactions taken place in the gas station in the Czech Republic are with a price of over 1000?,simple,4.88 วินาที,4.878591299057007
+1509,"Among the transactions made in the gas stations in the Czech Republic, how many of them are taken place after 2012/1/1?",moderate,1.38 วินาที,1.3795220851898193
+1510,What is the average total price of the transactions taken place in gas stations in the Czech Republic?,simple,1.15 วินาที,1.1457247734069824
+1511,"For the customers who paid in the euro, what is their average total price of the transactions?",simple,1.50 วินาที,1.4971599578857422
+1512,Which customer paid the most in 2012/8/25?,simple,0.79 วินาที,0.79323410987854
+1513,Which country's gas station had the first paid cusomer in 2012/8/25?,simple,1.00 วินาที,0.9971940517425537
+1514,What kind of currency did the customer paid at 16:25:00 in 2012/8/24?,simple,1.00 วินาที,0.9976668357849121
+1515,What segment did the customer have at 2012/8/23 21:20:00?,simple,0.94 วินาที,0.942310094833374
+1516,How many transactions were paid in CZK in the morning of 2012/8/26?,moderate,1.12 วินาที,1.1171190738677979
+1517,"For the earliest customer, what segment did he/she have?",simple,0.73 วินาที,0.7301981449127197
+1518,"For the deal happened at 2012/8/24 12:42:00, which country was it?",simple,1.21 วินาที,1.2088429927825928
+1519,What was the product id of the transaction happened at 2012/8/23 21:20:00?,simple,1.00 วินาที,1.0001370906829834
+1520,"For the customer who paid 124.05 in 2012/8/24, how much did he/she spend during the January of 2012? And what is the date and expenses exactly?",moderate,1.07 วินาที,1.0730900764465332
+1521,"For all the transactions happened during 8:00-9:00 in 2012/8/26, how many happened in CZE?",moderate,1.25 วินาที,1.2509040832519531
+1522,"There's one customer spent 214582.17 in the June of 2013, which currency did he/she use?",simple,1.25 วินาที,1.2519350051879883
+1523,Which country was the card owner of No.667467 in?,simple,0.85 วินาที,0.8545811176300049
+1524,What's the nationality of the customer who spent 548.4 in 2012/8/24?,simple,1.10 วินาที,1.1038830280303955
+1525,What is the percentage of the customers who used EUR in 2012/8/25?,simple,1.29 วินาที,1.289557933807373
+1526,"For the customer who paid 634.8 in 2012/8/25, what was the consumption decrease rate from Year 2012 to 2013?",challenging,2.15 วินาที,2.151102066040039
+1527,Which gas station has the highest amount of revenue?,simple,0.73 วินาที,0.7277932167053223
+1528,"What is the percentage of ""premium"" against the overall segment in Country = ""SVK""?",simple,1.18 วินาที,1.1787347793579102
+1529,"What is the amount spent by customer ""38508"" at the gas stations? How much had the customer spent in January 2012?",moderate,1.62 วินาที,1.6175448894500732
+1530,Which are the top five best selling products? Please state the full name of them.,simple,1.31 วินาที,1.3117728233337402
+1531,Who is the top spending customer and how much is the average price per single item purchased by this customer? What currency was being used?,moderate,1.21 วินาที,1.208240270614624
+1532,Which country had the gas station that sold the most expensive product id No.2 for one unit?,simple,0.75 วินาที,0.7534420490264893
+1533,For all the people who paid more than 29.00 per unit of product id No.5. Give their consumption status in the August of 2012.,moderate,1.45 วินาที,1.4504802227020264

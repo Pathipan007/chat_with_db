@@ -1,13 +1,14 @@
 db_root_path='./data/dev/dev_databases/'
 data_mode='dev'
 diff_json_path='./data/dev/dev.json'
-predicted_sql_path_kg='./exp_result/gemma3_output_kg/'
+predicted_sql_path_kg='./exp_result/gpt4-1mini_output_kg/eng/'
 predicted_sql_path='./exp_result/gemma3_output/'
 ground_truth_path='./data/dev/'
 num_cpus=16
 meta_time_out=60.0
 mode_gt='gt'
 mode_predict='gpt'
+
 
 echo '''starting to compare without knowledge for ex'''
 python3 -u ./src/evaluation_ex.py --db_root_path ${db_root_path} --predicted_sql_path ${predicted_sql_path} --data_mode ${data_mode} \

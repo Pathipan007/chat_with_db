@@ -65,18 +65,18 @@ def query_ollama(prompt, error_log, question_id, question):
         return "", -1
 
 # สร้างโฟลเดอร์สำหรับเก็บ log ถ้ายังไม่มี
-log_dir = 'bird/exp_result/gemma3_output_kg/logs/'
+log_dir = 'bird/exp_result/gemma3_output_kg/logs/th/'
 os.makedirs(log_dir, exist_ok=True)
 
 # เตรียมไฟล์ CSV สำหรับเก็บ log
-log_file = os.path.join(log_dir, '12b_log_envi.csv')
+log_file = os.path.join(log_dir, '12b_log_envi_deep.csv')
 with open(log_file, 'w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f)
     # เพิ่มคอลัมน์ generation_time_seconds เพื่อเก็บค่าเวลาในหน่วยวินาที
     writer.writerow(['question_id', 'question', 'evidence', 'difficulty', 'generation_time_formatted', 'generation_time_seconds'])
 
 # อ่าน dev.json ของ BIRD-SQL
-with open('bird/data/dev/bird_tran.json', 'r') as f:
+with open('bird/data/dev/dev_translated.json', 'r') as f:
     dev_data = json.load(f)
 
 # เตรียม dictionary สำหรับ predict_dev.json และ list สำหรับเก็บ error
@@ -140,7 +140,7 @@ Translate the following natural language question into a valid SQL query:
     print("-----------------------------------------------------------------------------------------------------------\n\n")
 
 # สร้าง predict_dev.json
-with open('bird/exp_result/gemma3_output_kg/th/predict_dev.json', 'w') as f:
+with open('bird/exp_result/gemma3_output_kg/th/predict_dev_th_deep.json', 'w') as f:
     json.dump(predict_json, f, indent=4)
 
 print("=== Generated successful!!! ===")

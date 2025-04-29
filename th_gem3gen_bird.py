@@ -65,18 +65,17 @@ def query_ollama(prompt, error_log, question_id, question):
         return "", -1
 
 # สร้างโฟลเดอร์สำหรับเก็บ log ถ้ายังไม่มี
-log_dir = 'bird/exp_result/gemma3_output_kg/logs/th/'
+log_dir = 'bird/exp_result/gemma3_output/logs/th/'
 os.makedirs(log_dir, exist_ok=True)
 
-# เตรียมไฟล์ CSV สำหรับเก็บ log
-log_file = os.path.join(log_dir, '12b_log_envi_j2c2j_100.csv')
+# เตรียมไฟล์ CSV สำหรับเก็บ log (ตัดคอลัมน์ evidence ออก)
+log_file = os.path.join(log_dir, '12b_log_no_envi.csv')
 with open(log_file, 'w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f)
-    # เพิ่มคอลัมน์ generation_time_seconds เพื่อเก็บค่าเวลาในหน่วยวินาที
-    writer.writerow(['question_id', 'question', 'evidence', 'difficulty', 'generation_time_formatted', 'generation_time_seconds'])
+    writer.writerow(['question_id', 'question', 'difficulty', 'generation_time_formatted', 'generation_time_seconds'])
 
 # อ่าน dev.json ของ BIRD-SQL
-with open('bird/data/dev/dev_j2c2j_100.json', 'r', encoding='utf-8') as f:
+with open('bird/data/dev/dev_j2c2j.json', 'r', encoding='utf-8') as f:
     dev_data = json.load(f)
 
 # เตรียม dictionary สำหรับ predict_dev.json และ list สำหรับเก็บ error
@@ -88,23 +87,16 @@ for i, item in enumerate(dev_data):
     question_id = item['question_id']
     question = item['question_th']
     db_id = item['db_id']
-    evidence = item.get('evidence_th', '')  # ดึง evidence ถ้าไม่มีให้เป็น string ว่าง
     difficulty = item.get('difficulty')  # ดึง difficulty ถ้าไม่มีให้เป็น N/A
     schema = get_schema(db_id)
     
-    # เพิ่ม evidence ใน prompt ถ้ามี
-    evidence_text = f"\nAdditional evidence: {evidence}" if evidence else ""
     prompt = f"""You are an expert in translating natural language questions into SQL queries. 
 The questions may be in either English or Thai, and you must handle both languages correctly. 
 Use the provided database schema to generate a valid SQL query. 
-If evidence is provided, use it to help interpret the question. 
-If no evidence is provided, interpret the question based on the schema and the meaning of the question alone.
+Interpret the question based on the schema and the meaning of the question alone.
 
 Database schema:
 {schema}
-
-Evidence (optional, use this to interpret the question if provided):
-{evidence_text}
 
 Translate the following natural language question into a valid SQL query:
 {question}
@@ -120,11 +112,10 @@ Translate the following natural language question into a valid SQL query:
     # แปลงเวลาเป็นรูปแบบ "นาที+วินาที" ก่อนเขียนลง log
     formatted_time = format_time(generation_time)
     
-    # บันทึก log ลงไฟล์ CSV
+    # บันทึก log ลงไฟล์ CSV (ตัด evidence ออก)
     with open(log_file, 'a', newline='', encoding='utf-8') as log_f:
         writer = csv.writer(log_f)
-        # เก็บทั้งเวลาในรูปแบบที่แปลงแล้ว และเวลาในหน่วยวินาที
-        writer.writerow([question_id, question, evidence, difficulty, formatted_time, generation_time])
+        writer.writerow([question_id, question, difficulty, formatted_time, generation_time])
     
     # รูปแบบสำหรับ predict_dev.json: SQL \t----- bird -----\t db_id
     json_line = f"{cleaned_sql}\t----- bird -----\t{db_id}"
@@ -133,14 +124,13 @@ Translate the following natural language question into a valid SQL query:
     print(f"Processed question {i+1}/{len(dev_data)}")
     print(f"Question ID: {question_id}")
     print(f"Question: {question}")
-    print(f"Evidence: {evidence}")
     print(f"Difficulty: {difficulty}")
     print(f"SQL query: {cleaned_sql}")
     print(f"Generation Time: {formatted_time}")
     print("-----------------------------------------------------------------------------------------------------------\n\n")
 
 # สร้าง predict_dev.json
-with open('bird/exp_result/gemma3_output_kg/th/predict_dev_th_j2c2j_100.json', 'w', encoding='utf-8') as f:
+with open('bird/exp_result/gemma3_output/th/predict_dev.json', 'w', encoding='utf-8') as f:
     json.dump(predict_json, f, ensure_ascii=False, indent=4)
 
 print("=== Generated successful!!! ===")

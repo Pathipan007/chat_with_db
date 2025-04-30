@@ -2,12 +2,12 @@ import json
 import csv
 
 # โหลดไฟล์ JSON
-with open('bird/data/dev/dev.json', 'r', encoding='utf-8') as f:
+with open('../spider/data/dev/dev.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # ถ้าไฟล์เป็น List ของ Objects
 if isinstance(data, list):
-    with open('dev.csv', 'w', encoding='utf-8', newline='') as f:
+    with open('dev_spider.csv', 'w', encoding='utf-8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=data[0].keys())
         writer.writeheader()
         writer.writerows(data)

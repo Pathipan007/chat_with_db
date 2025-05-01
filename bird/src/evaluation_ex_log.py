@@ -143,20 +143,20 @@ if __name__ == '__main__':
     run_sqls_parallel(query_pairs, db_places=db_paths, num_cpus=args.num_cpus, meta_time_out=args.meta_time_out)
     exec_result = sort_results(exec_result)
     
-    # 🔁 โหลดไฟล์ difficulty และสร้าง mapping question_id ➜ difficulty
+    # โหลดไฟล์ difficulty และสร้าง mapping question_id ➜ difficulty
     difficulty_contents = load_json(args.diff_json_path)
     id_to_diff = {item['question_id']: item['difficulty'] for item in difficulty_contents}
 
-    # 🔥 เคลียร์ log เก่า
+    # เคลียร์ log เก่า
     open('log.txt', 'w').close()
 
-    # 🔁 เขียน log ที่เรียงลำดับตาม question_id (ซึ่งตรงกับ sql_idx)
+    # เขียน log ที่เรียงลำดับตาม question_id (ซึ่งตรงกับ sql_idx)
     for result in exec_result:
         idx = result['sql_idx']
         pred_sql, gt_sql = query_pairs[idx]
         db_path = db_paths[idx]
 
-        # 🔄 รัน SQL อีกรอบเพื่อดูผลลัพธ์ (สำหรับ log)
+        # รัน SQL อีกรอบเพื่อดูผลลัพธ์ (สำหรับ log)
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
@@ -174,10 +174,10 @@ if __name__ == '__main__':
 
         conn.close()
 
-        # 🔧 ดึง difficulty จาก mapping
+        # ดึง difficulty จาก mapping
         difficulty = id_to_diff.get(idx, 'unknown')
 
-        # 📝 เขียน log ลงไฟล์
+        # เขียน log ลงไฟล์
         with open('log.txt', 'a', encoding='utf-8') as f:
             f.write("\n=== Executing ===\n")
             f.write(f"Question ID: {idx} (Difficulty: {difficulty})\n")
@@ -186,7 +186,7 @@ if __name__ == '__main__':
             f.write(f"Predicted Result: {predicted_res}\n")
             f.write(f"Ground Truth Result: {ground_truth_res}\n")
             f.write(f"Comparison: {set(predicted_res) == set(ground_truth_res)}\n")
-            f.write("=================\n")
+            f.write("============================\n")
 
     print('start calculate')
     simple_acc, moderate_acc, challenging_acc, acc, count_lists = \

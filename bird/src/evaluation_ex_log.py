@@ -3,6 +3,8 @@ import json
 import argparse
 import sqlite3
 import multiprocessing as mp
+import csv
+import os
 from func_timeout import func_timeout, FunctionTimedOut
 
 def load_json(dir):
@@ -117,6 +119,27 @@ def print_data(score_lists,count_lists):
     print('======================================    ACCURACY    =====================================')
     print("{:20} {:<20.2f} {:<20.2f} {:<20.2f} {:<20.2f}".format('accuracy', *score_lists))
 
+def run_query_safe(db_path, query):
+    try:
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute(query)
+        result = cursor.fetchall()
+        conn.close()
+        return result
+    except Exception as e:
+        return [(f'error: {e}',)]
+
+def safe_execute_query(db_path, query, timeout=10):
+    try:
+        return func_timeout(timeout, run_query_safe, args=(db_path, query))
+    except FunctionTimedOut:
+        return [('timeout',)]
+
+def truncate_result(res, max_len=5):
+    if isinstance(res, list) and len(res) > max_len:
+        return res[:max_len] + [('... truncated',)]
+    return res
 
 if __name__ == '__main__':
     args_parser = argparse.ArgumentParser()
@@ -142,56 +165,62 @@ if __name__ == '__main__':
     query_pairs = list(zip(pred_queries,gt_queries))
     run_sqls_parallel(query_pairs, db_places=db_paths, num_cpus=args.num_cpus, meta_time_out=args.meta_time_out)
     exec_result = sort_results(exec_result)
-    
+   
     # โหลดไฟล์ difficulty และสร้าง mapping question_id ➜ difficulty
     difficulty_contents = load_json(args.diff_json_path)
     id_to_diff = {item['question_id']: item['difficulty'] for item in difficulty_contents}
 
-    # เคลียร์ log เก่า
-    open('log.txt', 'w').close()
+    # สร้างโฟลเดอร์สำหรับเก็บ log
+    log_dir = 'eval_log/log_1534_cut.csv'
 
-    # เขียน log ที่เรียงลำดับตาม question_id (ซึ่งตรงกับ sql_idx)
+    # เตรียม header และลบ log เก่า
+    with open(log_dir, 'w', newline='', encoding='utf-8') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['Question ID', 'Difficulty', 'Predicted SQL', 'Ground Truth SQL',
+                        'Predicted Result', 'Ground Truth Result', 'Is Correct'])
+
+    # เขียน log เป็น csv
     for result in exec_result:
         idx = result['sql_idx']
+        print(f"Processing of SQL log saveing index: {idx+1}/{len(difficulty_contents)}")  # เพิ่มบรรทัดนี้
         pred_sql, gt_sql = query_pairs[idx]
         db_path = db_paths[idx]
 
-        # รัน SQL อีกรอบเพื่อดูผลลัพธ์ (สำหรับ log)
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         try:
-            cursor.execute(pred_sql)
-            predicted_res = cursor.fetchall()
+            predicted_res = safe_execute_query(db_path, pred_sql, timeout=10)
         except Exception as e:
             predicted_res = [(f'error: {e}',)]
 
         try:
-            cursor.execute(gt_sql)
-            ground_truth_res = cursor.fetchall()
+            ground_truth_res = safe_execute_query(db_path, gt_sql, timeout=10)
         except Exception as e:
             ground_truth_res = [(f'error: {e}',)]
 
         conn.close()
 
-        # ดึง difficulty จาก mapping
         difficulty = id_to_diff.get(idx, 'unknown')
+        is_correct = set(predicted_res) == set(ground_truth_res)
 
-        # เขียน log ลงไฟล์
-        with open('log.txt', 'a', encoding='utf-8') as f:
-            f.write("\n=== Executing ===\n")
-            f.write(f"Question ID: {idx} (Difficulty: {difficulty})\n")
-            f.write(f"Predicted SQL: {pred_sql}\n")
-            f.write(f"Ground Truth SQL: {gt_sql}\n")
-            f.write(f"Predicted Result: {predicted_res}\n")
-            f.write(f"Ground Truth Result: {ground_truth_res}\n")
-            f.write(f"Comparison: {set(predicted_res) == set(ground_truth_res)}\n")
-            f.write("============================\n")
+        with open(log_dir, 'a', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow([
+                idx,
+                difficulty,
+                pred_sql,
+                gt_sql,
+                #predicted_res,
+                #ground_truth_res,
+                truncate_result(predicted_res),
+                truncate_result(ground_truth_res),
+                is_correct
+            ])
 
-    print('start calculate')
+    print('==== start calculate ====')
     simple_acc, moderate_acc, challenging_acc, acc, count_lists = \
         compute_acc_by_diff(exec_result,args.diff_json_path)
     score_lists = [simple_acc, moderate_acc, challenging_acc, acc]
     print_data(score_lists,count_lists)
     print('===========================================================================================')
-    print("Finished evaluation")

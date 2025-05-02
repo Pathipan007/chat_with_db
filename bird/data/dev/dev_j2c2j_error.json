@@ -1,0 +1,202 @@
+[
+  {
+    "question_id": 267,
+    "db_id": "toxicology",
+    "question": "List down the bond type for molecules from molecule id TR000 to TR050.",
+    "evidence": "double bond refers to bond_type = ' = '; single bond refers to bond_type = '-'; triple bond refers to bond_type = '#';",
+    "question_th": "ลงรายการประเภทพันธะสำหรับโมเลกุลตั้งแต่รหัสโมเลกุล TR000 ถึง TR050",
+    "evidence_th": "พันธะคู่หมายถึง Bond_type = ' = '; พันธบัตรเดี่ยวหมายถึง Bond_type = '-'; พันธะสามหมายถึง Bond_type = '#';",
+    "SQL": "SELECT T2.molecule_id, T2.bond_type FROM molecule AS T1 INNER JOIN bond AS T2 ON T1.molecule_id = T2.molecule_id WHERE T1.molecule_id BETWEEN 'TR000' AND 'TR050'",
+    "difficulty": "moderate"
+  },
+  {
+    "question_id": 355,
+    "db_id": "card_games",
+    "question": "What is the keyword found on card 'Angel of Mercy'?",
+    "evidence": "Angel of Mercy' is the name of card;",
+    "question_th": "คำหลักที่พบในการ์ด 'เทวดาแห่งความเมตตา' คืออะไร?",
+    "evidence_th": "Angel of Mercy' เป็นชื่อของไพ่;",
+    "SQL": "SELECT DISTINCT keywords FROM cards WHERE name = 'Angel of Mercy'",
+    "difficulty": "simple"
+  },
+  {
+    "question_id": 1025,
+    "db_id": "european_football_2",
+    "question": "Give the name of the league had the most goals in the 2016 season?",
+    "evidence": "league that had the most goals refers to MAX(SUM(home_team_goal, away_team_goal)); 2016 season refers to season = '2015/2016';",
+    "question_th": "ให้ชื่อลีกที่มีประตูมากที่สุดในฤดูกาล 2016 หรือไม่?",
+    "evidence_th": "ลีกที่มีประตูมากที่สุดหมายถึง MAX(SUM(home_team_goal, away_team_goal)); ฤดูกาล 2016 หมายถึง ฤดูกาล = '2015/2016';",
+    "SQL": "SELECT t2.name FROM Match AS t1 INNER JOIN League AS t2 ON t1.league_id = t2.id WHERE t1.season = '2015/2016' GROUP BY t2.name ORDER BY SUM(t1.home_team_goal + t1.away_team_goal) DESC LIMIT 1",
+    "difficulty": "moderate"
+  },
+  {
+    "question_id": 1028,
+    "db_id": "european_football_2",
+    "question": "In Scotland Premier League, which away team won the most during the 2010 season?",
+    "evidence": "Final result should return the Team.team_long_name; Scotland Premier League refers to League.name = 'Scotland Premier League'; away team refers to away_team_api_id; away team that won the most refers to MAX(SUBTRACT(away_team_goal, home_team_goal) > 0); 2010 season refers to season = '2009/2010'; won the most refers to MAX(COUNT(*));",
+    "question_th": "ในสกอตแลนด์พรีเมียร์ลีก ทีมเยือนทีมใดชนะมากที่สุดในช่วงฤดูกาล 2010?",
+    "evidence_th": "ผลลัพธ์สุดท้ายควรส่งคืน Team.team_long_name; สกอตแลนด์พรีเมียร์ลีก หมายถึง League.name = 'สกอตแลนด์พรีเมียร์ลีก'; ทีมเยือนหมายถึง away_team_api_id; ทีมเยือนที่ชนะมากที่สุดหมายถึง MAX(SUBTRACT(away_team_goal, home_team_goal) > 0); ฤดูกาล 2010 หมายถึง ฤดูกาล = '2009/2010'; ชนะการอ้างอิงมากที่สุดถึง MAX(COUNT(*));",
+    "SQL": "SELECT teamInfo.team_long_name FROM League AS leagueData INNER JOIN Match AS matchData ON leagueData.id = matchData.league_id INNER JOIN Team AS teamInfo ON matchData.away_team_api_id = teamInfo.team_api_id WHERE leagueData.name = 'Scotland Premier League' AND matchData.season = '2009/2010' AND matchData.away_team_goal - matchData.home_team_goal > 0 GROUP BY matchData.away_team_api_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "difficulty": "challenging"
+  },
+  {
+    "question_id": 1031,
+    "db_id": "european_football_2",
+    "question": "At present, calculate for the player's age who have a sprint speed of no less than 97 between 2013 to 2015.",
+    "evidence": "players age at present = SUBTRACT((DATETIME(), birthday)); sprint speed of no less than 97 refers to sprint_speed > = 97; between 2013 to 2015 refers to YEAR(date) > = '2013' AND YEAR(date) < = '2015'; ",
+    "question_th": "ปัจจุบันคำนวณหาอายุของผู้เล่นที่มีความเร็วสปรินต์ไม่ต่ำกว่า 97 ระหว่างปี 2556 ถึง 2558",
+    "evidence_th": "อายุผู้เล่นในปัจจุบัน = SUBTRACT((DATETIME(), วันเกิด)); ความเร็วสปรินต์ไม่น้อยกว่า 97 หมายถึง sprint_speed > = 97; ระหว่างปี 2013 ถึง 2015 หมายถึง YEAR(date) > = '2013' AND YEAR(date) < = '2015'; ",
+    "SQL": "SELECT DISTINCT DATETIME() - T2.birthday age FROM Player_Attributes AS t1 INNER JOIN Player AS t2 ON t1.player_api_id = t2.player_api_id WHERE STRFTIME('%Y',t1.`date`) >= '2013' AND STRFTIME('%Y',t1.`date`) <= '2015' AND t1.sprint_speed >= 97",
+    "difficulty": "challenging"
+  },
+  {
+    "question_id": 1032,
+    "db_id": "european_football_2",
+    "question": "Give the name of the league with the highest matches of all time and how many matches were played in the said league.",
+    "evidence": "league with highest matches of all time refers to MAX(COUNT(league_id));",
+    "question_th": "ระบุชื่อลีกที่มีแมตช์สูงสุดตลอดกาล และจำนวนแมตช์ที่เล่นในลีกดังกล่าว",
+    "evidence_th": "ลีกที่มีการแข่งขันสูงสุดตลอดกาลหมายถึง MAX(COUNT(league_id));",
+    "SQL": "SELECT t2.name, t1.max_count FROM League AS t2 JOIN (SELECT league_id, MAX(cnt) AS max_count FROM (SELECT league_id, COUNT(id) AS cnt FROM Match GROUP BY league_id) AS subquery) AS t1 ON t1.league_id = t2.id",
+    "difficulty": "moderate"
+  },
+  {
+    "question_id": 1033,
+    "db_id": "european_football_2",
+    "question": "What is the average height of players born between 1990 and 1995?",
+    "evidence": "average height = DIVIDE(SUM(height), COUNT(id)); players born between 1990 and 1995 refers to birthday > = '1990-01-01 00:00:00' AND birthday < '1996-01-01 00:00:00';",
+    "question_th": "ความสูงเฉลี่ยของผู้เล่นที่เกิดระหว่างปี 1990 ถึง 1995 คือเท่าใด",
+    "evidence_th": "ความสูงเฉลี่ย = DIVIDE(SUM(height), COUNT(id)); ผู้เล่นที่เกิดระหว่างปี 1990 ถึง 1995 หมายถึงวันเกิด > = '1990-01-01 00:00:00' และวันเกิด < '1996-01-01 00:00:00';",
+    "SQL": "SELECT SUM(height) / COUNT(id) FROM Player WHERE SUBSTR(birthday, 1, 4) BETWEEN '1990' AND '1995'",
+    "difficulty": "simple"
+  },
+  {
+    "question_id": 1036,
+    "db_id": "european_football_2",
+    "question": "List the long name of teams with above-average build-up play passing in 2012.",
+    "evidence": "long name of teams refers to team_long_name; build-up play passing refers to buildUpPlayPassing; above-average build-up play passing = buildUpPlayPassing > DIVIDE(SUM(buildUpPlayPassing), COUNT(team_long_name) WHERE buildUpPlayPassing IS NOT NULL); in 2012 refers to strftime('%Y', date) = '2012'; ",
+    "question_th": "รายชื่อทีมยาวๆ ที่มีการจ่ายบอลสูงกว่าค่าเฉลี่ยในปี 2012",
+    "evidence_th": "ชื่อยาวของทีมหมายถึง team_long_name; การเล่นแบบ build-up หมายถึง buildUpPlayPassing; การเล่นแบบบิลด์อัพที่สูงกว่าค่าเฉลี่ย = buildUpPlayPassing > DIVIDE(SUM(buildUpPlayPassing), COUNT(team_long_name) โดยที่ buildUpPlayPassing ไม่ใช่ NULL); ในปี 2555 อ้างถึง strftime('%Y', date) = '2012'; ",
+    "SQL": "SELECT DISTINCT t4.team_long_name FROM Team_Attributes AS t3 INNER JOIN Team AS t4 ON t3.team_api_id = t4.team_api_id WHERE SUBSTR(t3.`date`, 1, 4) = '2012' AND t3.buildUpPlayPassing > ( SELECT CAST(SUM(t2.buildUpPlayPassing) AS REAL) / COUNT(t1.id) FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE STRFTIME('%Y',t2.`date`) = '2012')",
+    "difficulty": "challenging"
+  },
+  {
+    "question_id": 1037,
+    "db_id": "european_football_2",
+    "question": "Calculate the percentage of players who prefer left foot, who were born between 1987 and 1992.",
+    "evidence": "players who prefer left foot refers to preferred_foot = 'left'; percentage of players who prefer left foot = DIVIDE(MULTIPLY((SUM(preferred_foot = 'left'), 100)), COUNT(player_fifa_api_id)); born between 1987 and 1992 refers to YEAR(birthday) BETWEEN '1987' AND '1992';",
+    "question_th": "คำนวณเปอร์เซ็นต์ของผู้เล่นที่ชอบเท้าซ้ายที่เกิดระหว่างปี 1987 ถึง 1992",
+    "evidence_th": "ผู้เล่นที่ชอบเท้าซ้ายหมายถึงที่ต้องการ_เท้า = 'ซ้าย'; เปอร์เซ็นต์ของผู้เล่นที่ชอบเท้าซ้าย = DIVIDE(MULTIPLY((SUM(preferred_foot = 'left'), 100)), COUNT(player_fifa_api_id)); เกิดระหว่างปี 1987 ถึง 1992 หมายถึง YEAR(วันเกิด) ระหว่าง '1987' และ '1992';",
+    "SQL": "SELECT CAST(COUNT(CASE WHEN t2.preferred_foot = 'left' THEN t1.id ELSE NULL END) AS REAL) * 100 / COUNT(t1.id) percent FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE SUBSTR(t1.birthday, 1, 4) BETWEEN '1987' AND '1992'",
+    "difficulty": "challenging"
+  },
+  {
+    "question_id": 1041,
+    "db_id": "european_football_2",
+    "question": "For the teams with normal build-up play dribbling class in 2014, List the names of the teams with less than average chance creation passing, in descending order of chance creation passing.",
+    "evidence": "normal build-up play dribbling class refers to buildUpPlayDribblingClass = 'Normal'; in 2014 refers to date > = '2014-01-01 00:00:00' AND date < = '2014-01-31 00:00:00'; names of the teams refers to team_long_name; less than average chance creation passing = DIVIDE(SUM(chanceCreationPassing), COUNT(id)) > chanceCreationPassing;",
+    "question_th": "สำหรับทีมที่มีระดับการเลี้ยงบอลการเล่นแบบสะสมปกติในปี 2014 ให้ระบุรายชื่อทีมที่ผ่านการสร้างโอกาสน้อยกว่าค่าเฉลี่ย โดยเรียงลำดับจากมากไปหาน้อยของการส่งผ่าน",
+    "evidence_th": "คลาสการเลี้ยงบอลการเล่นแบบ build-up ปกติหมายถึง buildUpPlayDribblingClass = 'Normal'; ในปี 2014 หมายถึงวันที่ > = '2014-01-01 00:00:00' และวันที่ < = '2014-01-31 00:00:00'; ชื่อทีมหมายถึง team_long_name; น้อยกว่าค่าเฉลี่ยในการสร้างโอกาสที่ผ่าน = DIVIDE(SUM(chanceCreationPassing), COUNT(id)) > ChanceCreationPassing;",
+    "SQL": "SELECT t3.team_long_name FROM Team AS t3 INNER JOIN Team_Attributes AS t4 ON t3.team_api_id = t4.team_api_id WHERE t4.buildUpPlayDribblingClass = 'Normal' AND t4.chanceCreationPassing < ( SELECT CAST(SUM(t2.chanceCreationPassing) AS REAL) / COUNT(t1.id) FROM Team AS t1 INNER JOIN Team_Attributes AS t2 ON t1.team_api_id = t2.team_api_id WHERE t2.buildUpPlayDribblingClass = 'Normal' AND SUBSTR(t2.`date`, 1, 4) = '2014') ORDER BY t4.chanceCreationPassing DESC",
+    "difficulty": "challenging"
+  },
+  {
+    "question_id": 1068,
+    "db_id": "european_football_2",
+    "question": "From 2010 to 2015, what was the average overall rating of players who are higher than 170?",
+    "evidence": "from 2010 to 2015 refers to strftime('%Y', date) >= '2010' AND <= '2015'; average overall rating = SUM(t2.overall_rating)/ COUNT(t2.id); higher than 170 refers to Player.height > 170;",
+    "question_th": "ตั้งแต่ปี 2010 ถึง 2015 เรตติ้งโดยรวมเฉลี่ยของผู้เล่นที่สูงกว่า 170 เป็นเท่าใด",
+    "evidence_th": "จากปี 2010 ถึง 2015 หมายถึง strftime('%Y', date) >= '2010' AND <= '2015'; คะแนนโดยรวมเฉลี่ย = SUM(t2.overall_rating)/ COUNT(t2.id); สูงกว่า 170 หมายถึง Player.height > 170;",
+    "SQL": "SELECT CAST(SUM(t2.overall_rating) AS REAL) / COUNT(t2.id) FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE t1.height > 170 AND STRFTIME('%Y',t2.`date`) >= '2010' AND STRFTIME('%Y',t2.`date`) <= '2015'",
+    "difficulty": "moderate"
+  },
+  {
+    "question_id": 1073,
+    "db_id": "european_football_2",
+    "question": "How many matches were held in the league Germany 1. Bundesliga\nfrom August to October 2008?",
+    "evidence": "Germany 1. Bundesliga refers to League.name = 'Germany 1. Bundesliga'; from August to October 2008 refers to strftime('%Y-%m', date) BETWEEN '2008-08' AND '2008-10';",
+    "question_th": "มีการแข่งขันกี่นัดในลีก เยอรมนี 1 บุนเดสลีกา\nตั้งแต่เดือนสิงหาคมถึงตุลาคม 2551?",
+    "evidence_th": "เยอรมนี 1. บุนเดสลีกา หมายถึง League.name = 'เยอรมนี 1. บุนเดสลีกา'; ตั้งแต่เดือนสิงหาคมถึงตุลาคม 2551 หมายถึง strftime('%Y-%m', date) BETWEEN '2008-08' AND '2008-10';",
+    "SQL": "SELECT COUNT(t2.id) FROM League AS t1 INNER JOIN Match AS t2 ON t1.id = t2.league_id WHERE t1.name = 'Germany 1. Bundesliga' AND SUBSTR(t2.`date`, 1, 7) BETWEEN '2008-08' AND '2008-10'",
+    "difficulty": "moderate"
+  },
+  {
+    "question_id": 1093,
+    "db_id": "european_football_2",
+    "question": "What is the average overall rating of the players born before the year 1986?",
+    "evidence": "average overall rating = DIVIDE(SUM(overall_rating), COUNT(id)); born before the year 1986 refers to strftime('%Y', birthday) < '1986';",
+    "question_th": "เรตติ้งโดยรวมเฉลี่ยของนักเตะที่เกิดก่อนปี 1986 เป็นเท่าไหร่?",
+    "evidence_th": "คะแนนโดยรวมเฉลี่ย = DIVIDE(SUM(overall_rating), COUNT(id)); เกิดก่อนปี 1986 หมายถึง strftime('%Y', วันเกิด) < '1986';",
+    "SQL": "SELECT SUM(t2.overall_rating) / COUNT(t1.id) FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE SUBSTR(t1.birthday, 1, 4) < '1986'",
+    "difficulty": "moderate"
+  },
+  {
+    "question_id": 1096,
+    "db_id": "european_football_2",
+    "question": "Calculate the average overall rating of Pietro Marino.",
+    "evidence": "Pietro Marino refers to player_name = 'Pietro Marino'; average overall rating AVG(T1.overall_rating)",
+    "question_th": "คำนวณคะแนนเฉลี่ยโดยรวมของ ปิเอโตร มาริโน",
+    "evidence_th": "ปิเอโตร มาริโน หมายถึง player_name = 'ปิเอโตร มาริโน'; คะแนนโดยรวมเฉลี่ย AVG(T1.overall_rating)",
+    "SQL": "SELECT CAST(SUM(t2.overall_rating) AS REAL) / COUNT(t2.id) FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE t1.player_name = 'Pietro Marino'",
+    "difficulty": "moderate"
+  },
+  {
+    "question_id": 1100,
+    "db_id": "european_football_2",
+    "question": "What is the highest overall rating received by Dorlan Pabon?",
+    "evidence": "Dorlan Pabon refers to T2.player_name = 'Dorlan Pabon'; highest overall rating refers to MAX(overall_rating)",
+    "question_th": "ดอร์ลัน ป่าบอน ได้รับคะแนนรวมสูงสุดที่เท่าไร?",
+    "evidence_th": "ดอร์ลัน ปาบอน หมายถึง T2.player_name = 'ดอร์ลัน ปาบอน'; คะแนนรวมสูงสุดหมายถึง MAX(overall_rating)",
+    "SQL": "SELECT MAX(t2.overall_rating) FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE t1.player_name = 'Dorlan Pabon'",
+    "difficulty": "simple"
+  },
+  {
+    "question_id": 1114,
+    "db_id": "european_football_2",
+    "question": "What was the average overall rating for Marko Arnautovic from 2007/2/22 to 2016/4/21?",
+    "evidence": "average overall rating refers to avg(overall_rating); Marko Arnautovic refers to player_name = 'Marko Arnautovic'; from 2007/2/22 to 2016/4/21 refers to the first 10 characters of date BETWEEN '2007-02-22' and '2016-04-21'",
+    "question_th": "คะแนนเฉลี่ยโดยรวมของ Marko Arnautovic ตั้งแต่ปี 2550/2/2559 ถึง 4/2559 ปี 2559 คือเท่าใด",
+    "evidence_th": "คะแนนเฉลี่ยโดยรวมหมายถึง avg(overall_rating); มาร์โก อาร์เนาโตวิช หมายถึง player_name = 'มาร์โก อาร์เนาโตวิช'; ตั้งแต่วันที่ 2/2/2550 ถึง 21/4/2559 หมายถึงอักขระ 10 ตัวแรกของวันที่ระหว่าง '2007-02-22' และ '2016-04-21'",
+    "SQL": "SELECT CAST(SUM(t2.overall_rating) AS REAL) / COUNT(t2.id) FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_fifa_api_id = t2.player_fifa_api_id WHERE t1.player_name = 'Marko Arnautovic' AND SUBSTR(t2.`date`, 1, 10) BETWEEN '2007-02-22' AND '2016-04-21'",
+    "difficulty": "challenging"
+  },
+  {
+    "question_id": 1115,
+    "db_id": "european_football_2",
+    "question": "What percentage is Landon Donovan's overall rating higher than Jordan Bowery on 2013/7/12?",
+    "evidence": "Landon Donovan's refers to player_name = 'Landon Donovan'; Jordan Bowery refers to player_name = 'Jordan Bowery'; percentage refers to DIVIDE(SUBTRACT(player_name = 'Landon Donovan' overall_rating; player_name = 'Jordan Bowery' overall_rating), player_name = 'Landon Donovan' overall_rating)*100",
+    "question_th": "คะแนนโดยรวมของ Landon Donovan สูงกว่า Jordan Bowery ในปี 2013/7/55 อยู่ที่กี่เปอร์เซ็นต์",
+    "evidence_th": "ของ Landon Donovan หมายถึง player_name = 'Landon Donovan'; Jordan Bowery หมายถึง player_name = 'Jordan Bowery'; เปอร์เซ็นต์หมายถึง DIVIDE(SUBTRACT(player_name = 'Landon Donovan' Overall_rating; player_name = 'Jordan Bowery' Overall_rating), player_name = 'Landon Donovan' Overall_rating)*100",
+    "SQL": "SELECT (SUM(CASE WHEN t1.player_name = 'Landon Donovan' THEN t2.overall_rating ELSE 0 END) * 1.0 - SUM(CASE WHEN t1.player_name = 'Jordan Bowery' THEN t2.overall_rating ELSE 0 END)) * 100 / SUM(CASE WHEN t1.player_name = 'Landon Donovan' THEN t2.overall_rating ELSE 0 END) LvsJ_percent FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_fifa_api_id = t2.player_fifa_api_id WHERE SUBSTR(t2.`date`, 1, 10) = '2013-07-12'",
+    "difficulty": "challenging"
+  },
+  {
+    "question_id": 1119,
+    "db_id": "european_football_2",
+    "question": "How many home team goal have been scored by Aaron Lennon?",
+    "evidence": "Aaron Lennon refers to player_name = 'Aaron Lennon'",
+    "question_th": "อารอน เลนนอน ยิงประตูให้ทีมเหย้าได้กี่ประตู?",
+    "evidence_th": "อารอน เลนนอน หมายถึง player_name = 'แอรอน เลนนอน'",
+    "SQL": "SELECT SUM(t2.home_team_goal) FROM Player AS t1 INNER JOIN match AS t2 ON t1.player_api_id = t2.away_player_9 WHERE t1.player_name = 'Aaron Lennon'",
+    "difficulty": "simple"
+  },
+  {
+    "question_id": 1120,
+    "db_id": "european_football_2",
+    "question": "Sum up the away team goal scored by both Daan Smith and Filipe Ferreira.",
+    "evidence": "Daan Smith refers to player_name = 'Daan Smith'; Filipe Ferreira refers to player_name = 'Filipe Ferreira'",
+    "question_th": "สรุปประตูทีมเยือนที่ทั้งดาน สมิธ และฟิลิเป้ เฟร์ไรราทำได้",
+    "evidence_th": "ดาน สมิธ หมายถึง player_name = 'ดาน สมิธ'; ฟิลิเป้ เฟร์เรร่า หมายถึง player_name = 'ฟิลิเป้ เฟร์เรร่า'",
+    "SQL": "SELECT SUM(t2.away_team_goal) FROM Player AS t1 INNER JOIN match AS t2 ON t1.player_api_id = t2.away_player_5 WHERE t1.player_name IN ('Daan Smith', 'Filipe Ferreira')",
+    "difficulty": "moderate"
+  },
+  {
+    "question_id": 1481,
+    "db_id": "debit_card_specializing",
+    "question": "What is the difference in the annual average consumption of the customers with the least amount of consumption paid in CZK for 2013 between SME and LAM, LAM and KAM, and KAM and SME?",
+    "evidence": "annual average consumption of customer with the lowest consumption in each segment = total consumption per year / the number of customer with lowest consumption in each segment; Difference in annual average = SME's annual average - LAM's annual average; Difference in annual average = LAM's annual average - KAM's annual average; Year 2013 can be presented as Between 201301 And 201312; The first 4 strings of the Date values in the yearmonth table can represent year.",
+    "question_th": "อะไรคือความแตกต่างในการบริโภคเฉลี่ยต่อปีของลูกค้าที่มีปริมาณการบริโภคน้อยที่สุดที่จ่ายเป็นสกุลเงิน CZK ในปี 2013 ระหว่าง SME และ LAM, LAM และ KAM และ KAM และ SME",
+    "evidence_th": "การบริโภคเฉลี่ยต่อปีของลูกค้าที่มีการบริโภคต่ำที่สุดในแต่ละกลุ่ม = การบริโภคทั้งหมดต่อปี / จำนวนลูกค้าที่มีการบริโภคต่ำที่สุดในแต่ละกลุ่ม ส่วนต่างของค่าเฉลี่ยรายปี = ค่าเฉลี่ยรายปีของ SME - ค่าเฉลี่ยรายปีของ LAM ส่วนต่างของค่าเฉลี่ยรายปี = ค่าเฉลี่ยรายปีของ LAM - ค่าเฉลี่ยรายปีของ KAM ปี 2556 สามารถแสดงได้ระหว่าง 201301 ถึง 201312; สตริง 4 ตัวแรกของค่าวันที่ในตารางปีเดือนสามารถแสดงถึงปีได้",
+    "SQL": "SELECT CAST(SUM(IIF(T1.Segment = 'SME', T2.Consumption, 0)) AS REAL) / COUNT(T1.CustomerID) - CAST(SUM(IIF(T1.Segment = 'LAM', T2.Consumption, 0)) AS REAL) / COUNT(T1.CustomerID) , CAST(SUM(IIF(T1.Segment = 'LAM', T2.Consumption, 0)) AS REAL) / COUNT(T1.CustomerID) - CAST(SUM(IIF(T1.Segment = 'KAM', T2.Consumption, 0)) AS REAL) / COUNT(T1.CustomerID) , CAST(SUM(IIF(T1.Segment = 'KAM', T2.Consumption, 0)) AS REAL) / COUNT(T1.CustomerID) - CAST(SUM(IIF(T1.Segment = 'SME', T2.Consumption, 0)) AS REAL) / COUNT(T1.CustomerID) FROM customers AS T1 INNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID WHERE T1.Currency = 'CZK' AND T2.Consumption = ( SELECT MIN(Consumption) FROM yearmonth ) AND T2.Date BETWEEN 201301 AND 201312",
+    "difficulty": "challenging"
+  }
+]

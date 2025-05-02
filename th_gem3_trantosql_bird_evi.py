@@ -16,7 +16,7 @@ def format_time(seconds):
     return f"{minutes} นาที {remaining_seconds:.2f} วินาที ({seconds:.2f} วินาที)"
 
 # ฟังก์ชันเรียก Ollama API และวัดเวลา
-def query_ollama(prompt, error_log, question_id, context, max_retries=3):
+def query_ollama(prompt, error_log, question_id, context, max_retries=3, timeout=120):
     url = "http://localhost:11434/api/generate"
     payload = {
         "model": "gemma3:12b",
@@ -26,7 +26,7 @@ def query_ollama(prompt, error_log, question_id, context, max_retries=3):
     start_time = time.time()
     for attempt in range(max_retries):
         try:
-            response = requests.post(url, json=payload, timeout=30)
+            response = requests.post(url, json=payload, timeout=timeout)
             response.raise_for_status()
             end_time = time.time()
             generation_time = end_time - start_time
@@ -87,13 +87,13 @@ log_dir = 'bird/exp_result/gemma3_output_kg/logs/th/'
 os.makedirs(log_dir, exist_ok=True)
 
 # เตรียมไฟล์ CSV สำหรับเก็บ log
-log_file = os.path.join(log_dir, '12b_log_envi_j2c2j_tran_100.csv')
+log_file = os.path.join(log_dir, '12b_log_envi_j2c2j_tran_error.csv')
 with open(log_file, 'w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f)
     writer.writerow(['question_id', 'question_th', 'question_en', 'question_translation_time', 'evidence_th', 'evidence_en', 'evidence_translation_time', 'difficulty', 'generated_sql', 'gold_sql', 'generation_time_formatted', 'generation_time_seconds'])
 
 # อ่าน dev.json ของ BIRD-SQL
-with open('bird/data/dev/dev_j2c2j_100.json', 'r', encoding='utf-8') as f:
+with open('bird/data/dev/dev_j2c2j_error.json', 'r', encoding='utf-8') as f:
     dev_data = json.load(f)
 
 # เตรียม dictionary สำหรับ predict_dev.json และ list สำหรับเก็บ error
@@ -172,7 +172,7 @@ Translate the following natural language question into a valid SQL query:
     print("-----------------------------------------------------------------------------------------------------------\n\n")
 
 # สร้าง predict_dev.json
-with open('bird/exp_result/gemma3_output_kg/th/predict_dev_th_j2c2j_tran_100.json', 'w', encoding='utf-8') as f:
+with open('bird/exp_result/gemma3_output_kg/th/predict_dev_th_j2c2j_tran_error.json', 'w', encoding='utf-8') as f:
     json.dump(predict_json, f, ensure_ascii=False, indent=4)
 
 print("=== Generated successful!!! ===")

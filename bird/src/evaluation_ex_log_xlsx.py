@@ -7,6 +7,8 @@ import csv
 import os
 from func_timeout import func_timeout, FunctionTimedOut
 import pandas as pd
+from openpyxl.styles import Alignment
+import openpyxl
 
 def load_json(dir):
     with open(dir, 'r') as j:
@@ -137,10 +139,10 @@ def safe_execute_query(db_path, query, timeout=10):
     except FunctionTimedOut:
         return [('timeout',)]
 
-def truncate_result(res, max_len=4):
+def truncate_result(res, max_len=3):
     if isinstance(res, list) and len(res) > max_len:
-        return res[:max_len] + [('... truncated',)]
-    return res
+        res = res[:max_len] + [('... truncated',)]
+    return '\n'.join([str(row) for row in res])
 
 if __name__ == '__main__':
     args_parser = argparse.ArgumentParser()
@@ -167,7 +169,7 @@ if __name__ == '__main__':
     run_sqls_parallel(query_pairs, db_places=db_paths, num_cpus=args.num_cpus, meta_time_out=args.meta_time_out)
     exec_result = sort_results(exec_result)
    
-    # โหลดไฟล์ json และ mapping ค่าเพิ่มเติม
+    # โหลดไฟล์ JSON และ mapping ค่า
     difficulty_contents = load_json(args.diff_json_path)
     id_to_diff = {item['question_id']: item['difficulty'] for item in difficulty_contents}
     id_to_data = {
@@ -180,17 +182,23 @@ if __name__ == '__main__':
         for item in difficulty_contents
     }
 
-    # เตรียม log csv
-    log_dir = 'eval_log/th_12b_tran_1534_log3.csv'
-    with open(log_dir, 'w', newline='', encoding='utf-8') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(['Question ID', 'Difficulty', 'Question (Original)', 'Evidence (Original)', 'Question (TH)', 'Evidence (TH)',
-                        'Predicted SQL', 'Ground Truth SQL', 'Predicted Result', 'Ground Truth Result', 'Is Correct'])
+    # เตรียมไฟล์ .xlsx
+    log_path = 'eval_log/th_12b_log.xlsx'
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = 'Evaluation Log'
 
-    # เขียน log
+    # เขียน header
+    headers = ['Question ID', 'Difficulty', 'Question (Original)', 'Evidence (Original)',
+            'Question (TH)', 'Evidence (TH)', 'Predicted SQL', 'Ground Truth SQL',
+            'Predicted Result', 'Ground Truth Result', 'Is Correct']
+    ws.append(headers)
+
+    # บันทึก log
     for result in exec_result:
         idx = result['sql_idx']
         print(f"Logging index: {idx+1}/{len(difficulty_contents)}")
+
         pred_sql, gt_sql = query_pairs[idx]
         db_path = db_paths[idx]
 
@@ -210,24 +218,37 @@ if __name__ == '__main__':
         conn.close()
 
         difficulty = id_to_diff.get(idx, 'unknown')
-        extra_data = id_to_data.get(idx, {})
         is_correct = set(predicted_res) == set(ground_truth_res)
+        
+        data = id_to_data.get(idx, {})
+        question = data.get('question', '')
+        evidence = data.get('evidence', '')
+        question_th = data.get('question_th', '')
+        evidence_th = data.get('evidence_th', '')
 
-        with open(log_dir, 'a', newline='', encoding='utf-8') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow([
-                idx,
-                difficulty,
-                extra_data.get('question', ''),
-                extra_data.get('evidence', ''),
-                extra_data.get('question_th', ''),
-                extra_data.get('evidence_th', ''),
-                pred_sql,
-                gt_sql,
-                truncate_result(predicted_res),
-                truncate_result(ground_truth_res),
-                is_correct
-            ])
+        row_data = [
+            idx,
+            difficulty,
+            question,
+            evidence,
+            question_th,
+            evidence_th,
+            pred_sql,
+            gt_sql,
+            truncate_result(predicted_res),
+            truncate_result(ground_truth_res),
+            is_correct
+        ]
+        ws.append(row_data)
+
+    # ปรับการแสดงผลให้ wrap ข้อความยาวๆ
+    for col in ws.columns:
+        for cell in col:
+            cell.alignment = Alignment(wrap_text=True)
+
+    # บันทึกไฟล์ .xlsx
+    wb.save(log_path)
+    print(f"Log saved to {log_path}")
 
     print('==== start calculate ====')
     simple_acc, moderate_acc, challenging_acc, acc, count_lists = \

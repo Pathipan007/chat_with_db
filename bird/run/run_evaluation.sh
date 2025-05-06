@@ -1,7 +1,7 @@
 db_root_path='./data/dev/dev_databases/'
 data_mode='dev'
 diff_json_path='./data/dev/dev_j2c2j.json'
-predicted_sql_path_kg='./exp_result/gemma3_output_kg/th/'
+predicted_sql_path_kg='./exp_result/gemma3_output_kg/eng/'
 predicted_sql_path='./exp_result/gemma3_output/th/'
 ground_truth_path='./data/dev/'
 num_cpus=16

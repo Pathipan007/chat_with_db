@@ -181,7 +181,7 @@ if __name__ == '__main__':
     }
 
     # เตรียม log csv
-    log_dir = 'eval_log/th_12b_tran_1534_log3.csv'
+    log_dir = 'eval_log/eng_gem12b_eng2sql_1534_log.csv'
     with open(log_dir, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(['Question ID', 'Difficulty', 'Question (Original)', 'Evidence (Original)', 'Question (TH)', 'Evidence (TH)',

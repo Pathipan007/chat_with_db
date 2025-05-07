@@ -47,11 +47,11 @@ for idx, item in enumerate(train_data, start=1):
     # ดึงชื่อตารางจาก SQL และเพิ่มฟิลด์ tables
     sql = item.get('SQL', '')
     if sql:
-        tables = extract_tables_from_sql(sql)
-        item['tables'] = tables
-        print(f"  Extracted tables from SQL: {tables}")
+        table = extract_tables_from_sql(sql)
+        item['table'] = table
+        print(f"  Extracted tables from SQL: {table}")
     else:
-        item['tables'] = []
+        item['table'] = []
         print(f"  No SQL found. Set tables to empty list.")
 
 # สร้างโฟลเดอร์สำหรับเก็บผลลัพธ์
@@ -59,7 +59,7 @@ output_dir = 'bird/data/train/'
 os.makedirs(output_dir, exist_ok=True)
 
 # บันทึกไฟล์ใหม่
-output_file = os.path.join(output_dir, 'train_with_question_id_and_tables.json')
+output_file = os.path.join(output_dir, 'train_v2.json')
 with open(output_file, 'w', encoding='utf-8') as f:
     # จัดเรียง question_id ไว้ลำดับแรก
     for item in train_data:

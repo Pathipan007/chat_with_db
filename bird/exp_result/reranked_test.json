@@ -1,0 +1,83 @@
+[
+    {
+        "question_id": 0,
+        "original_query": "อัตราฟรีที่มีสิทธิ์สูงสุดสำหรับนักเรียนระดับอนุบาลถึงมัธยมศึกษา (K-12) ในโรงเรียนใน Alameda County คือเท่าใด",
+        "top_k_results": [
+            {
+                "language": "th",
+                "english": "What percentage of streets named 11th Street are in Alameda County?",
+                "thai": "ถนนที่ชื่อ 11th Street อยู่ใน Alameda County กี่เปอร์เซ็นต์",
+                "sql": "SELECT CAST(SUM(IIF(T1.street_name = '11th st', 1, 0)) AS REAL) * 100 / COUNT(T1.id_restaurant) FROM location AS T1 INNER JOIN geographic AS T2 ON T1.city = T2.city WHERE T2.County = 'alameda county'",
+                "table": "geographic, location"
+            },
+            {
+                "language": "th",
+                "english": "How many donations from teachers were done in the state of Colorado?",
+                "thai": "มีการบริจาคเงินจากครูจำนวนเท่าใดในรัฐโคโลราโด",
+                "sql": "SELECT COUNT(donationid) FROM donations WHERE is_teacher_acct = 't' AND donor_state = 'CO'",
+                "table": "donations"
+            },
+            {
+                "language": "en",
+                "english": "List all the streets with more than 10 restaurants in Alameda county.",
+                "thai": "รายชื่อถนนทั้งหมดที่มีร้านอาหารมากกว่า 10 แห่งในเทศมณฑลอาลาเมดา",
+                "sql": "SELECT T2.street_name FROM geographic AS T1 INNER JOIN location AS T2 ON T1.city = T2.city WHERE T1.county = 'alameda county' GROUP BY T2.street_name HAVING COUNT(T2.id_restaurant) > 10",
+                "table": "geographic, location"
+            }
+        ]
+    },
+    {
+        "question_id": 1,
+        "original_query": "โปรดระบุอัตราค่าเรียนฟรีที่มีสิทธิ์ต่ำสุดสามรายการสำหรับนักเรียนอายุ 5-17 ปีในโรงเรียนต่อเนื่อง",
+        "top_k_results": [
+            {
+                "language": "th",
+                "english": "For the students with an intelligence of 5, list the full name and courses taken by them who have less than a 3 GPA.",
+                "thai": "สำหรับนักเรียนที่มีสติปัญญาระดับ 5 ให้ระบุชื่อเต็มและหลักสูตรที่เรียนโดยผู้ที่มีเกรดเฉลี่ยต่ำกว่า 3",
+                "sql": "SELECT T1.f_name, T1.l_name, T3.name FROM student AS T1 INNER JOIN registration AS T2 ON T1.student_id = T2.student_id INNER JOIN course AS T3 ON T2.course_id = T3.course_id WHERE T1.intelligence = 5 AND T1.gpa < 3",
+                "table": "course, registration, student"
+            },
+            {
+                "language": "en",
+                "english": "Give the number of students who have payment due.",
+                "thai": "แจ้งจำนวนนักศึกษาที่ครบกำหนดชำระเงิน",
+                "sql": "SELECT COUNT(name) FROM no_payment_due WHERE bool = 'pos'",
+                "table": "no_payment_due"
+            },
+            {
+                "language": "th",
+                "english": "State name of students who have been absent for 5 months from school and do not have payment due.",
+                "thai": "ระบุชื่อนักเรียนที่ขาดเรียนเป็นเวลา 5 เดือนและไม่มีกำหนดชำระเงิน",
+                "sql": "SELECT T1.name FROM longest_absense_from_school AS T1 INNER JOIN no_payment_due AS T2 ON T1.name = T2.name WHERE T1.month = 5 AND T2.bool = 'neg'",
+                "table": "longest_absense_from_school, no_payment_due"
+            }
+        ]
+    },
+    {
+        "question_id": 2,
+        "original_query": "โปรดระบุรหัสไปรษณีย์ของโรงเรียนเหมาลำทั้งหมดในสำนักงานการศึกษาเทศมณฑลเฟรสโน",
+        "top_k_results": [
+            {
+                "language": "th",
+                "english": "Please list the phone numbers of all the store contacts.",
+                "thai": "กรุณาระบุหมายเลขโทรศัพท์ของผู้ติดต่อร้านค้าทั้งหมด",
+                "sql": "SELECT T2.PhoneNumber FROM Person AS T1 INNER JOIN PersonPhone AS T2 ON T1.BusinessEntityID = T2.BusinessEntityID WHERE T1.PersonType = 'SC'",
+                "table": "Person, PersonPhone"
+            },
+            {
+                "language": "en",
+                "english": "Please provide a disability breakdown for each school.",
+                "thai": "โปรดระบุรายละเอียดความพิการสำหรับแต่ละโรงเรียน",
+                "sql": "SELECT COUNT(T1.name) FROM enrolled AS T1 INNER JOIN disabled AS T2 ON T2.name = T1.name GROUP BY T1.school",
+                "table": "disabled, enrolled"
+            },
+            {
+                "language": "th",
+                "english": "List the poverty level of all the schools that received donations with the zip code \"7079\".",
+                "thai": "ระบุระดับความยากจนของโรงเรียนทั้งหมดที่ได้รับบริจาคด้วยรหัสไปรษณีย์ \"7079\"",
+                "sql": "SELECT DISTINCT T2.poverty_level FROM donations AS T1 INNER JOIN projects AS T2 ON T1.projectid = T2.projectid WHERE T1.donor_zip = 7079",
+                "table": "donations, projects"
+            }
+        ]
+    }
+]

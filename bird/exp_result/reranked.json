@@ -1,0 +1,83 @@
+[
+    {
+        "question_id": 0,
+        "original_query": "อัตราฟรีที่มีสิทธิ์สูงสุดสำหรับนักเรียนระดับอนุบาลถึงมัธยมศึกษา (K-12) ในโรงเรียนใน Alameda County คือเท่าใด",
+        "top_k_results": [
+            {
+                "language": "en",
+                "english": "List all the streets with more than 10 restaurants in Alameda county.",
+                "thai": "รายชื่อถนนทั้งหมดที่มีร้านอาหารมากกว่า 10 แห่งในเทศมณฑลอาลาเมดา",
+                "sql": "SELECT T2.street_name FROM geographic AS T1 INNER JOIN location AS T2 ON T1.city = T2.city WHERE T1.county = 'alameda county' GROUP BY T2.street_name HAVING COUNT(T2.id_restaurant) > 10",
+                "table": "geographic, location"
+            },
+            {
+                "language": "en",
+                "english": "List all the streets with more than 10 restaurants in Alameda county.",
+                "thai": "รายชื่อถนนทั้งหมดที่มีร้านอาหารมากกว่า 10 แห่งในเทศมณฑลอาลาเมดา",
+                "sql": "SELECT T2.street_name FROM geographic AS T1 INNER JOIN location AS T2 ON T1.city = T2.city WHERE T1.county = 'alameda county' GROUP BY T2.street_name HAVING COUNT(T2.id_restaurant) > 10",
+                "table": "geographic, location"
+            },
+            {
+                "language": "en",
+                "english": "List all the streets with more than 10 restaurants in Alameda county.",
+                "thai": "รายชื่อถนนทั้งหมดที่มีร้านอาหารมากกว่า 10 แห่งในเทศมณฑลอาลาเมดา",
+                "sql": "SELECT T2.street_name FROM geographic AS T1 INNER JOIN location AS T2 ON T1.city = T2.city WHERE T1.county = 'alameda county' GROUP BY T2.street_name HAVING COUNT(T2.id_restaurant) > 10",
+                "table": "geographic, location"
+            }
+        ]
+    },
+    {
+        "question_id": 1,
+        "original_query": "โปรดระบุอัตราค่าเรียนฟรีที่มีสิทธิ์ต่ำสุดสามรายการสำหรับนักเรียนอายุ 5-17 ปีในโรงเรียนต่อเนื่อง",
+        "top_k_results": [
+            {
+                "language": "en",
+                "english": "Provide the registered courses' names by undergraduate students with GPA of 3.7 and above.",
+                "thai": "ระบุชื่อรายวิชาที่ลงทะเบียนโดยนักศึกษาระดับปริญญาตรีที่มีเกรดเฉลี่ยตั้งแต่ 3.7 ขึ้นไป",
+                "sql": "SELECT DISTINCT T1.f_name FROM student AS T1 INNER JOIN registration AS T2 ON T1.student_id = T2.student_id INNER JOIN course AS T3 ON T2.course_id = T3.course_id WHERE T1.type = 'UG' AND T1.gpa > 3.7",
+                "table": "course, registration, student"
+            },
+            {
+                "language": "en",
+                "english": "Provide the registered courses' names by undergraduate students with GPA of 3.7 and above.",
+                "thai": "ระบุชื่อรายวิชาที่ลงทะเบียนโดยนักศึกษาระดับปริญญาตรีที่มีเกรดเฉลี่ยตั้งแต่ 3.7 ขึ้นไป",
+                "sql": "SELECT DISTINCT T1.f_name FROM student AS T1 INNER JOIN registration AS T2 ON T1.student_id = T2.student_id INNER JOIN course AS T3 ON T2.course_id = T3.course_id WHERE T1.type = 'UG' AND T1.gpa > 3.7",
+                "table": "course, registration, student"
+            },
+            {
+                "language": "en",
+                "english": "Provide the registered courses' names by undergraduate students with GPA of 3.7 and above.",
+                "thai": "ระบุชื่อรายวิชาที่ลงทะเบียนโดยนักศึกษาระดับปริญญาตรีที่มีเกรดเฉลี่ยตั้งแต่ 3.7 ขึ้นไป",
+                "sql": "SELECT DISTINCT T1.f_name FROM student AS T1 INNER JOIN registration AS T2 ON T1.student_id = T2.student_id INNER JOIN course AS T3 ON T2.course_id = T3.course_id WHERE T1.type = 'UG' AND T1.gpa > 3.7",
+                "table": "course, registration, student"
+            }
+        ]
+    },
+    {
+        "question_id": 2,
+        "original_query": "โปรดระบุรหัสไปรษณีย์ของโรงเรียนเหมาลำทั้งหมดในสำนักงานการศึกษาเทศมณฑลเฟรสโน",
+        "top_k_results": [
+            {
+                "language": "th",
+                "english": "List the poverty level of all the schools that received donations with the zip code \"7079\".",
+                "thai": "ระบุระดับความยากจนของโรงเรียนทั้งหมดที่ได้รับบริจาคด้วยรหัสไปรษณีย์ \"7079\"",
+                "sql": "SELECT DISTINCT T2.poverty_level FROM donations AS T1 INNER JOIN projects AS T2 ON T1.projectid = T2.projectid WHERE T1.donor_zip = 7079",
+                "table": "donations, projects"
+            },
+            {
+                "language": "th",
+                "english": "List the poverty level of all the schools that received donations with the zip code \"7079\".",
+                "thai": "ระบุระดับความยากจนของโรงเรียนทั้งหมดที่ได้รับบริจาคด้วยรหัสไปรษณีย์ \"7079\"",
+                "sql": "SELECT DISTINCT T2.poverty_level FROM donations AS T1 INNER JOIN projects AS T2 ON T1.projectid = T2.projectid WHERE T1.donor_zip = 7079",
+                "table": "donations, projects"
+            },
+            {
+                "language": "th",
+                "english": "List the poverty level of all the schools that received donations with the zip code \"7079\".",
+                "thai": "ระบุระดับความยากจนของโรงเรียนทั้งหมดที่ได้รับบริจาคด้วยรหัสไปรษณีย์ \"7079\"",
+                "sql": "SELECT DISTINCT T2.poverty_level FROM donations AS T1 INNER JOIN projects AS T2 ON T1.projectid = T2.projectid WHERE T1.donor_zip = 7079",
+                "table": "donations, projects"
+            }
+        ]
+    }
+]

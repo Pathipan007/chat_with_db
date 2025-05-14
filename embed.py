@@ -29,14 +29,17 @@ persist_directory = "vector_store/"
 # ใช้ PersistentClient แบบใหม่
 client = chromadb.PersistentClient(path=persist_directory)
 
-collection_name = "bird_train_rag_para_v2"
+collection_name = "bird_train_rag_para_v2_cosine"
 
 # ลบ collection เดิมก่อน ถ้ามี
 if collection_name in [col.name for col in client.list_collections()]:
     client.delete_collection(collection_name)
     print(f"[INFO] Deleted existing collection: {collection_name}")
 
-collection = client.create_collection(collection_name)
+collection = client.create_collection(
+    name=collection_name,
+    metadata={"hnsw:space": "cosine"}
+)
 
 all_ids = []
 all_embeddings = []
@@ -74,11 +77,10 @@ for i, item in enumerate(train_data, start=1):
         all_embeddings.append(embedding_model.encode(question).tolist())
         all_documents.append(question)
         all_metadatas.append({
-            "type": "question",
             "language": "en",
-            "text": question,
+            "question_eng": question,
             "question_th": question_th,
-            "sql": sql,
+            "SQL": sql,
             "table": ', '.join(tables) if tables else ''
         })
 
@@ -87,27 +89,13 @@ for i, item in enumerate(train_data, start=1):
         all_embeddings.append(embedding_model.encode(question_th).tolist())
         all_documents.append(question_th)
         all_metadatas.append({
-            "type": "question_th",
             "language": "th",
-            "text": question_th,
-            "question": question,
-            "sql": sql,
+            "question_th": question_th,
+            "question_eng": question,
+            "SQL": sql,
             "table": ', '.join(tables) if tables else ''
         })
 
 batch_add_to_collection(collection, all_ids, all_embeddings, all_documents, all_metadatas)
 
 print(f"Processed {len(train_data)} questions and added to Vector Store in collection '{collection_name}' at '{persist_directory}'")
-
-# ตรวจสอบข้อมูลบางส่วนของ all_embeddings หลังจากที่ทำการ encode ข้อความ
-print(f"First 5 embeddings: {all_embeddings[:5]}")
-
-# ต่อมา คุณสามารถใช้ query เพื่อทดสอบว่าเวกเตอร์ที่เพิ่มเข้าไปถูกต้องหรือไม่
-query_embedding = all_embeddings[0]  # เลือกเวกเตอร์ตัวแรกจาก all_embeddings
-
-# ใช้ query เพื่อค้นหาเอกสารที่ตรงกับ query_embedding
-results = collection.query(query_embeddings=[query_embedding], n_results=5)
-
-# แสดงผลเอกสารที่ตรงกับ query
-for result in results['documents']:
-    print(result)

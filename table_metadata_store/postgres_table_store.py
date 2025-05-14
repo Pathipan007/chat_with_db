@@ -93,6 +93,10 @@ def insert_metadata_to_postgres(schema_json, db_config):
                 from_table_idx, from_col_name = column_names[from_idx]
                 to_table_idx, to_col_name = column_names[to_idx]
 
+                # Filter out foreign keys that do not associate with the current table
+                if from_table_idx != table_idx and to_table_idx != table_idx:
+                    continue
+
                 fk_readable.append({
                     "from_table": table_names[from_table_idx],
                     "from_column": from_col_name,

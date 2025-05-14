@@ -47,7 +47,7 @@ print("Ollama Response:", response)
 print("Generation Time:", format_time(generation_time))
 
 # รับ Train set collection
-train_collection_name = "bird_train_rag_bge_m3_v2"
+train_collection_name = "bird_train_rag_bge_m3_cosine"
 train_collection = client.get_collection(train_collection_name)
 
 # ฟังก์ชัน Similarity Search (Top N)
@@ -67,6 +67,7 @@ def rerank_with_llm(original_query, documents, metadatas, top_k=3):
         for i, meta in enumerate(metadatas)
     ])
     
+    #print(f"\n\nCheck candidates:\n{candidates}\n\n")
     prompt = f"""You are an expert in evaluating the semantic similarity between natural language questions. 
 The original question may be in either English or Thai. Your task is to rank the candidate questions based on their semantic similarity to the original question and select the top {top_k} most similar ones. 
 Focus on the meaning and intent of the questions, considering both English and Thai versions if available.
@@ -84,6 +85,7 @@ Candidate Questions:
 
     error_log = []
     response, _ = query_ollama(prompt, error_log, "rerank", original_query)
+    print(f"\n\nCheck response: {response}\n\n")
     
     if not response or error_log:
         print("Error in LLM reranking, falling back to original ranking.")
@@ -119,8 +121,8 @@ results = []
 for i, item in enumerate(dev_data[:3]):  # ทดสอบ 3 คำถามแรก
     question_id = item['question_id']
     question = item['question']
-    question_th = item.get('question_th', '')
-    difficulty = item.get('difficulty', 'N/A')
+    question_th = item.get('question_th')
+    # difficulty = item.get('difficulty')
 
     # เลือกคำถามที่ใช้ (ถ้ามี question_th ใช้ก่อน ถ้าไม่มีใช้ question)
     query_text = question_th if question_th else question
@@ -145,7 +147,7 @@ for i, item in enumerate(dev_data[:3]):  # ทดสอบ 3 คำถามแ�
     top_k = 3
     top_indices = rerank_with_llm(query_text, documents, metadatas, top_k=top_k)
     
-    print(f"\n\n\ncheck: {top_indices}\n\n\n")
+    # print(f"\n\nCheck Top K: {top_indices}\n\n")
     print(f"\nTop {top_k} Results (After LLM Reranking):")
     for j, idx in enumerate(top_indices):
         meta = metadatas[idx]

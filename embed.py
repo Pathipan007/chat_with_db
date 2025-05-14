@@ -21,7 +21,7 @@ with open(train_file, 'r', encoding='utf-8') as f:
     train_data = json.load(f)
 
 # โหลดโมเดล embedding (BAAI/bge-m3)
-embedding_model = SentenceTransformer('BAAI/bge-m3')
+embedding_model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-mpnet-base-v2')
 
 # กำหนด path
 persist_directory = "vector_store/"
@@ -29,7 +29,7 @@ persist_directory = "vector_store/"
 # ใช้ PersistentClient แบบใหม่
 client = chromadb.PersistentClient(path=persist_directory)
 
-collection_name = "bird_train_rag_bge_m3_cosine"
+collection_name = "bird_train_rag_para_v2_cosine"
 
 # ลบ collection เดิมก่อน ถ้ามี
 if collection_name in [col.name for col in client.list_collections()]:

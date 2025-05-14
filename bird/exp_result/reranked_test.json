@@ -38,18 +38,18 @@
                 "table": "course, registration, student"
             },
             {
-                "language": "en",
-                "english": "Give the number of students who have payment due.",
-                "thai": "แจ้งจำนวนนักศึกษาที่ครบกำหนดชำระเงิน",
-                "sql": "SELECT COUNT(name) FROM no_payment_due WHERE bool = 'pos'",
-                "table": "no_payment_due"
+                "language": "th",
+                "english": "Give me the name and menu price of dishes that were free.",
+                "thai": "ขอชื่อและราคาเมนูอาหารที่แจกฟรีครับ",
+                "sql": "SELECT T2.name, T1.price FROM MenuItem AS T1 INNER JOIN Dish AS T2 ON T2.id = T1.dish_id WHERE T2.lowest_price = 0",
+                "table": "Dish, MenuItem"
             },
             {
                 "language": "th",
-                "english": "State name of students who have been absent for 5 months from school and do not have payment due.",
-                "thai": "ระบุชื่อนักเรียนที่ขาดเรียนเป็นเวลา 5 เดือนและไม่มีกำหนดชำระเงิน",
-                "sql": "SELECT T1.name FROM longest_absense_from_school AS T1 INNER JOIN no_payment_due AS T2 ON T1.name = T2.name WHERE T1.month = 5 AND T2.bool = 'neg'",
-                "table": "longest_absense_from_school, no_payment_due"
+                "english": "Please list the IDs of the professors that teaches more than 3 courses.",
+                "thai": "โปรดระบุรหัสอาจารย์ที่สอนมากกว่า 3 หลักสูตร",
+                "sql": "SELECT T1.p_id FROM taughtBy AS T1 INNER JOIN person AS T2 ON T1.p_id = T2.p_id WHERE T2.professor = 1 GROUP BY T1.p_id HAVING COUNT(DISTINCT T1.course_id) > 3",
+                "table": "person, taughtBy"
             }
         ]
     },

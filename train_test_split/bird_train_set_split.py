@@ -11,7 +11,7 @@ with open('./bird/data/train/train_bird_th.json', 'r', encoding='utf-8') as f:
 db_ids = [item['db_id'] for item in data]  # ดึง db_id เพื่อใช้ในการแบ่ง
 train_set, test_set = train_test_split(
     data,
-    test_size=0.2,
+    test_size=0.15,
     random_state=42,
     shuffle=True,
     stratify=db_ids  # Stratify ด้วย db_id
@@ -22,10 +22,10 @@ print(f"Train: {len(train_set)}")
 print(f"Test: {len(test_set)}")
 
 # === Save split ===
-with open('./bird/data/train/train_split_bird.json', 'w', encoding='utf-8') as f:
+with open('./bird/data/train/train_split_bird_85.json', 'w', encoding='utf-8') as f:
     json.dump(train_set, f, ensure_ascii=False, indent=4)
 
-with open('./bird/data/train/test_split_bird.json', 'w', encoding='utf-8') as f:
+with open('./bird/data/train/test_split_bird_15.json', 'w', encoding='utf-8') as f:
     json.dump(test_set, f, ensure_ascii=False, indent=4)
 
 # === Helper functions for analysis ===

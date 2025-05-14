@@ -39,7 +39,7 @@ def insert_metadata_to_postgres(schema_json, db_config):
             table_name TEXT PRIMARY KEY,
             columns TEXT[],
             column_types TEXT[],
-            primary_keys INTEGER[],
+            primary_keys JSONB,
             foreign_keys JSONB,
             db_id TEXT
         );
@@ -78,6 +78,15 @@ def insert_metadata_to_postgres(schema_json, db_config):
                 if column_names[i][0] == table_idx
             ]
 
+            # Make primary keys more readable
+            pk_readable = [
+                {
+                    "column": column_names[pk_idx][1],
+                    "index": pk_idx
+                }
+                for pk_idx in pk_indices
+            ]
+
             # Make foreign keys more readable
             fk_readable = []
             for from_idx, to_idx in foreign_keys:
@@ -90,7 +99,7 @@ def insert_metadata_to_postgres(schema_json, db_config):
                     "from_index": from_idx,
                     "to_table": table_names[to_table_idx],
                     "to_column": to_col_name,
-                    "to_index": to_idx 
+                    "to_index": to_idx
                 })
 
             # Insert metadata into table_metadata
@@ -98,7 +107,7 @@ def insert_metadata_to_postgres(schema_json, db_config):
                 INSERT INTO table_metadata (db_id, table_name, columns, column_types, primary_keys, foreign_keys)
                 VALUES (%s, %s, %s, %s, %s, %s)
                 ON CONFLICT (table_name) DO NOTHING;
-            """, (db_id, table_name, columns, col_types, pk_indices, json.dumps(fk_readable)))
+            """, (db_id, table_name, columns, col_types, json.dumps(pk_readable), json.dumps(fk_readable)))
 
             print(f"Inserted metadata for table: {table_name}")
 
@@ -113,4 +122,3 @@ if __name__ == "__main__":
         insert_metadata_to_postgres(train_tables, db_params)
         conn.close()
         print("PostgreSQL connection closed.")
-

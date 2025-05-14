@@ -1,0 +1,47 @@
+# Requirements:
+PostgreSQL
+pgAdmin (Optional)
+psycopg2
+
+# Steps
+1. add db_config.json to this directory. It should look like this:
+
+{
+    "DB_NAME": "table_metadata_store",
+    "DB_USER": "admin",
+    "DB_PASSWORD": "1234",
+    "DB_HOST": "localhost",
+    "DB_PORT": 5432,
+    "DB_TYPE": "postgresql"
+}
+
+2. run create_db.py to initialize the database
+3. run postgres_table_store.py to get the data from train_tables.json into PostgreSQL
+4. verify the database using the following Commands:
+
+Open psql shell:
+```
+psql -U admin -d table_metadata_store
+```
+List tables:
+```
+\dt 
+```
+Check the table_metadata table:
+```
+SELECT * FROM table_metadata;
+```
+
+5. (Optional but recommend) Use pgAdmin to view the data graphically
+
+# Troubleshooting
+
+If the database is wrong, try deleting:
+```
+psql -U admin -d postgres
+DROP DATABASE table_metadata_store;
+```
+
+
+
+

@@ -36,11 +36,8 @@ SELECT * FROM table_metadata;
 
 # Troubleshooting
 
-If the database is wrong, try deleting:
-```
-psql -U admin -d postgres
-DROP DATABASE table_metadata_store;
-```
+If there are issues with the database, try deleting the entire database using the python script
+delete_psql_database.py
 
 
 

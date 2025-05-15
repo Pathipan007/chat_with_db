@@ -44,7 +44,6 @@ def insert_metadata_to_postgres(schema_json, db_config):
             is_foreign_key BOOLEAN DEFAULT FALSE,
             foreign_key_table TEXT,
             foreign_key_column TEXT,
-            foreign_key_index INTEGER,
             db_id TEXT
         );
     """)
@@ -74,14 +73,12 @@ def insert_metadata_to_postgres(schema_json, db_config):
                 is_foreign_key = False
                 foreign_key_table = None
                 foreign_key_column = None
-                foreign_key_index = None
 
                 for from_idx, to_idx in foreign_keys:
                     if from_idx == col_idx:
                         is_foreign_key = True
                         foreign_key_table_idx, foreign_key_column = column_names[to_idx]
                         foreign_key_table = table_names[foreign_key_table_idx]
-                        foreign_key_index = to_idx
                         break
 
                 # Insert the metadata for the column
@@ -89,13 +86,13 @@ def insert_metadata_to_postgres(schema_json, db_config):
                     INSERT INTO table_metadata (
                         table_name, column_name, column_type, is_primary_key,
                         is_foreign_key, foreign_key_table, foreign_key_column,
-                        foreign_key_index, db_id
+                        db_id
                     )
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s);
                 """, (
                     table_name, col_name, column_types[col_idx], is_primary_key,
                     is_foreign_key, foreign_key_table, foreign_key_column,
-                    foreign_key_index, db_id
+                    db_id
                 ))
 
     conn.commit()

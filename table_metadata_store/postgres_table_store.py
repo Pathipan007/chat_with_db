@@ -33,14 +33,18 @@ def insert_metadata_to_postgres(schema_json, db_config):
     cur = conn.cursor()
     print("Connected to PostgreSQL database.")
 
-    # Ensure the metadata table exists
+    # Create table_metadata table if it doesn't exist
     cur.execute("""
         CREATE TABLE IF NOT EXISTS table_metadata (
-            table_name TEXT PRIMARY KEY,
-            columns TEXT[],
-            column_types TEXT[],
-            primary_keys JSONB,
-            foreign_keys JSONB,
+            id SERIAL PRIMARY KEY,
+            table_name TEXT,
+            column_name TEXT,
+            column_type TEXT,
+            is_primary_key BOOLEAN DEFAULT FALSE,
+            is_foreign_key BOOLEAN DEFAULT FALSE,
+            foreign_key_table TEXT,
+            foreign_key_column TEXT,
+            foreign_key_index INTEGER,
             db_id TEXT
         );
     """)
@@ -54,66 +58,45 @@ def insert_metadata_to_postgres(schema_json, db_config):
         primary_keys = schema_entry["primary_keys"]
         foreign_keys = schema_entry["foreign_keys"]
 
-        # Group columns by table index
-        table_columns = {i: [] for i in range(len(table_names))}
-        table_col_types = {i: [] for i in range(len(table_names))}
-
-        for i, (table_idx, col_name) in enumerate(column_names):
-            if table_idx == -1:
-                continue
-            table_columns[table_idx].append(col_name)
-            table_col_types[table_idx].append(column_types[i])
-
         # Flatten primary_keys to handle nested lists
         flat_primary_keys = [pk if isinstance(pk, int) else pk[0] for pk in primary_keys]
 
         # Insert metadata for each table
         for table_idx, table_name in enumerate(table_names):
-            columns = table_columns[table_idx]
-            col_types = table_col_types[table_idx]
-
-            # Find primary keys that belong to this table
-            pk_indices = [
-                i for i in flat_primary_keys
-                if column_names[i][0] == table_idx
-            ]
-
-            # Make primary keys more readable
-            pk_readable = [
-                {
-                    "column": column_names[pk_idx][1],
-                    "index": pk_idx
-                }
-                for pk_idx in pk_indices
-            ]
-
-            # Make foreign keys more readable
-            fk_readable = []
-            for from_idx, to_idx in foreign_keys:
-                from_table_idx, from_col_name = column_names[from_idx]
-                to_table_idx, to_col_name = column_names[to_idx]
-
-                # Filter out foreign keys that do not associate with the current table
-                if from_table_idx != table_idx and to_table_idx != table_idx:
+            for col_idx, (col_table_idx, col_name) in enumerate(column_names):
+                if col_table_idx != table_idx:
                     continue
 
-                fk_readable.append({
-                    "from_table": table_names[from_table_idx],
-                    "from_column": from_col_name,
-                    "from_index": from_idx,
-                    "to_table": table_names[to_table_idx],
-                    "to_column": to_col_name,
-                    "to_index": to_idx
-                })
+                # Determine if the column is a primary key
+                is_primary_key = col_idx in flat_primary_keys
 
-            # Insert metadata into table_metadata
-            cur.execute("""
-                INSERT INTO table_metadata (db_id, table_name, columns, column_types, primary_keys, foreign_keys)
-                VALUES (%s, %s, %s, %s, %s, %s)
-                ON CONFLICT (table_name) DO NOTHING;
-            """, (db_id, table_name, columns, col_types, json.dumps(pk_readable), json.dumps(fk_readable)))
+                # Determine if the column is a foreign key
+                is_foreign_key = False
+                foreign_key_table = None
+                foreign_key_column = None
+                foreign_key_index = None
 
-            print(f"Inserted metadata for table: {table_name}")
+                for from_idx, to_idx in foreign_keys:
+                    if from_idx == col_idx:
+                        is_foreign_key = True
+                        foreign_key_table_idx, foreign_key_column = column_names[to_idx]
+                        foreign_key_table = table_names[foreign_key_table_idx]
+                        foreign_key_index = to_idx
+                        break
+
+                # Insert the metadata for the column
+                cur.execute("""
+                    INSERT INTO table_metadata (
+                        table_name, column_name, column_type, is_primary_key,
+                        is_foreign_key, foreign_key_table, foreign_key_column,
+                        foreign_key_index, db_id
+                    )
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
+                """, (
+                    table_name, col_name, column_types[col_idx], is_primary_key,
+                    is_foreign_key, foreign_key_table, foreign_key_column,
+                    foreign_key_index, db_id
+                ))
 
     conn.commit()
     cur.close()

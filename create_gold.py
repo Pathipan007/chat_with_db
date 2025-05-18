@@ -11,4 +11,4 @@ with open('bird/data/train/train_gold_test_split_20sql', 'w') as f:
         db_id = item['db_id']
         f.write(f"{sql}\t{db_id}\n")
 
-print("Created successful!!!")
+print("Created Successful!!!")

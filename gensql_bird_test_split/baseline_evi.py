@@ -2,16 +2,40 @@ import json
 import requests
 import re
 import time
+from transformers import AutoTokenizer
 
-# ฟังก์ชันแปลงเวลาจากวินาทีเป็นนาที+วินาที
+# ใช้ tokenizer ของ Gemma 3
+tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
+
+# สร้าง list สำหรับเก็บ log คำถามที่เกินโทเค็น
+token_exceed_log = []
+
+def count_tokens(text, question_id, question, max_tokens=8192):
+    token_count = len(tokenizer.encode(text))
+    if token_count > max_tokens:
+        token_exceed_log.append({
+            "question_id": question_id,
+            "question": question,
+            "token_count": token_count,
+            "max_tokens": max_tokens
+        })
+    return token_count
+
+# ฟังก์ชันแปลงเวลาจากวินาทีเป็นชั่วโมง+นาที+วินาที
 def format_time(seconds):
-    if seconds < 0:  # กรณี error
+    if seconds < 0: 
         return "N/A"
-    if seconds < 60:  # ถ้าต่ำกว่า 60 วินาที
+    if seconds < 60: 
         return f"{seconds:.2f} วินาที"
-    minutes = int(seconds // 60)  # หานาที
-    remaining_seconds = seconds % 60  # หาวินาทีที่เหลือ
-    return f"{minutes} นาที {remaining_seconds:.2f} วินาที ({seconds:.2f} วินาที)"
+    if seconds < 3600:  
+        minutes = int(seconds // 60)
+        remaining_seconds = seconds % 60
+        return f"{minutes} นาที {remaining_seconds:.2f} วินาที ({seconds:.2f} วินาที)"
+    hours = int(seconds // 3600)
+    remaining_seconds = seconds % 3600
+    minutes = int(remaining_seconds // 60)
+    remaining_seconds = remaining_seconds % 60
+    return f"{hours} ชั่วโมง {minutes} นาที {remaining_seconds:.2f} วินาที ({seconds:.2f} วินาที)"
 
 # ฟังก์ชันดึง schema จาก train_tables.json (เพิ่ม backticks รอบชื่อคอลัมน์)
 def get_schema(db_id, tables_file='./bird/data/train/train_tables.json'):
@@ -39,7 +63,7 @@ def clean_sql(sql):
 def query_ollama(prompt, error_log, question_id, question):
     url = "http://localhost:11434/api/generate"
     payload = {
-        "model": "gemma3:12b",
+        "model": "gemma3:12b_8192",
         "prompt": prompt,
         "stream": False
     }
@@ -50,7 +74,7 @@ def query_ollama(prompt, error_log, question_id, question):
         response.raise_for_status()
         # วัดเวลาสิ้นสุด
         end_time = time.time()
-        generation_time = end_time - start_time  # คำนวณเวลา (วินาที)
+        generation_time = end_time - start_time  
         return response.json()['response'].strip(), generation_time
     except Exception as e:
         print(f"Error for Question ID {question_id}: {e}")
@@ -73,12 +97,18 @@ error_log_test = []
 # วัดเวลาเริ่มต้นทั้งหมด
 overall_start_time = time.time()
 
+# ทดสอบการเชื่อมต่อกับ Ollama API
+response, generation_time = query_ollama("Test prompt", [], "test_question_id", "Test question")
+print("Ollama Response:", response)
+print("Generation Time:", format_time(generation_time))
+
 # ประมวลผล Test Set
 for i, item in enumerate(test_data):
+    print(f"Processed Test question {i+1}/{len(test_data)}")
     question_id = item['question_id']
     question = item['question_th']
     db_id = item['db_id']
-    evidence = item.get('evidence_th', '')  # ใช้ evidence_th ถ้ามี ไม่งั้นเป็นค่าว่าง
+    evidence = item.get('evidence_th', '')
     schema = get_schema(db_id)
     
     prompt = f"""You are an expert in translating natural language questions into SQL queries. 
@@ -99,18 +129,26 @@ Translate the following natural language question into a valid SQL query:
 - Output only the SQL query as a single line.
 - Do not include Markdown formatting (e.g., ```sql), explanations, or additional text."""
     
+    # นับโทเค็น
+    token_count = count_tokens(prompt, question_id, question, max_tokens=8192)
+    if token_count > 8192:
+        print(f"⚠️ Prompt นี้ยาวเกิน 8192 tokens ({token_count} tokens) อาจถูกตัดโดย Ollama")
+    elif token_count > 6553:
+        print(f"⚠️ Prompt ใกล้ขีดจำกัด ({token_count} tokens)")
+    else:
+        print(f"Token of prompt: {token_count}")
+
     # เรียก API และเก็บเวลาการ Generate
     sql, generation_time = query_ollama(prompt, error_log_test, question_id, question)
     cleaned_sql = clean_sql(sql)
     
-    # แปลงเวลาเป็นรูปแบบ "นาที+วินาที" ก่อนเขียนลง log
+    # แปลงเวลาเป็นรูปแบบที่เหมาะสม
     formatted_time = format_time(generation_time)
     
     # รูปแบบสำหรับ predict_test.json: SQL \t----- bird -----\t db_id
     json_line = f"{cleaned_sql}\t----- bird -----\t{db_id}"
     predict_test_json[str(question_id)] = json_line
     
-    print(f"Processed Test question {i+1}/{len(test_data)}")
     print(f"Question ID: {question_id}")
     print(f"Question: {question}")
     print(f"Evidence: {evidence}")
@@ -140,3 +178,15 @@ if error_log_test:
         print("--------------------")
 else:
     print("No errors occurred during generation.")
+
+# แสดง Token Exceed Summary
+print("\n=== Token Exceed Summary ===")
+if token_exceed_log:
+    print(f"Total questions exceeding token limit: {len(token_exceed_log)}")
+    for entry in token_exceed_log:
+        print(f"Question ID: {entry['question_id']}")
+        print(f"Question: {entry['question']}")
+        print(f"Token Count: {entry['token_count']} (Max: {entry['max_tokens']})")
+        print("--------------------")
+else:
+    print("No questions exceeded the token limit.")

@@ -65,7 +65,7 @@ for i, item in enumerate(train_data, start=1):
                 tables = [str(parsed)]
         except (ValueError, SyntaxError):
             print(f"[WARNING] Failed to parse table for q{item.get('question_id')}: {tables_raw}")
-            tables = [tables_raw]  # fallback เป็น string เดียว
+            tables = [tables_raw]
     elif isinstance(tables_raw, list):
         tables = [str(t) for t in tables_raw]
     else:

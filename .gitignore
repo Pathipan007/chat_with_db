@@ -2,5 +2,5 @@
 spider/data/database/
 bird/data/dev/dev_databases
 bird/data/train/train_databases
-vector_store/
+embed_and_vector_store/vector_store
 table_metadata_store/db_config.json

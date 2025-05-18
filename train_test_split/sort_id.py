@@ -1,6 +1,6 @@
 import json
 
-path = './bird/data/train/train_split_bird_90.json'
+path = './bird/data/train/test_split_bird_20.json'
 
 # อ่านไฟล์ JSON
 with open(path, 'r', encoding='utf-8') as f:

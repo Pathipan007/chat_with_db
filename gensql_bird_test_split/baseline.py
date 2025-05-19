@@ -4,11 +4,17 @@ import re
 import time
 from transformers import AutoTokenizer
 
-# ใช้ tokenizer ของ Gemma 3
+# ใช้ tokenizer ของ google/gemma-3-12b-it
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
 
 # สร้าง list สำหรับเก็บ log คำถามที่เกินโทเค็น
 token_exceed_log = []
+# สร้าง list สำหรับเก็บ log ข้อมูลโทเค็นทั้งหมด
+token_log = []
+
+def calculate_dynamic_num_ctx(token_count, min_ctx=2048, max_ctx=8192, buffer=1.2):
+    """คำนวณ num_ctx แบบ dynamic โดยอิงจาก token_count พร้อม buffer"""
+    return max(min_ctx, min(max_ctx, int(token_count * buffer)))
 
 def count_tokens(text, question_id, question, max_tokens=8192):
     token_count = len(tokenizer.encode(text))
@@ -60,30 +66,31 @@ def clean_sql(sql):
     return sql.strip()
 
 # ฟังก์ชันเรียก Ollama API และวัดเวลา
-def query_ollama(prompt, error_log, question_id, question):
+def query_ollama(prompt, error_log, question_id, question, num_ctx):
     url = "http://localhost:11434/api/generate"
     payload = {
         "model": "gemma3:12b_8192",
         "prompt": prompt,
-        "stream": False
+        "stream": False,
+        "options": {"num_ctx": num_ctx}
     }
-    # วัดเวลาเริ่มต้น
     start_time = time.time()
     try:
         response = requests.post(url, json=payload)
         response.raise_for_status()
-        # วัดเวลาสิ้นสุด
+        data = response.json()
+        if 'response' not in data:
+            raise ValueError("Invalid response format: 'response' key missing")
         end_time = time.time()
-        generation_time = end_time - start_time  
-        return response.json()['response'].strip(), generation_time
-    except Exception as e:
+        generation_time = end_time - start_time
+        return data['response'].strip(), generation_time
+    except (requests.RequestException, ValueError) as e:
         print(f"Error for Question ID {question_id}: {e}")
         error_log.append({
             "question_id": question_id,
             "question": question,
             "error": str(e)
         })
-        # ถ้ามี error ให้คืนค่า generation_time เป็น -1
         return "", -1
 
 # อ่าน Test Set
@@ -98,7 +105,7 @@ error_log_test = []
 overall_start_time = time.time()
 
 # ทดสอบการเชื่อมต่อกับ Ollama API
-response, generation_time = query_ollama("Test prompt", [], "test_question_id", "Test question")
+response, generation_time = query_ollama("Test prompt", [], "test_question_id", "Test question", num_ctx=2048)
 print("Ollama Response:", response)
 print("Generation Time:", format_time(generation_time))
 
@@ -106,7 +113,7 @@ print("Generation Time:", format_time(generation_time))
 for i, item in enumerate(test_data):
     print(f"Processed Test question {i+1}/{len(test_data)}")
     question_id = item['question_id']
-    question = item['question']
+    question = item['question_th']
     db_id = item['db_id']
     schema = get_schema(db_id)
     
@@ -125,20 +132,33 @@ Translate the following natural language question into a valid SQL query:
 - Output only the SQL query as a single line.
 - Do not include Markdown formatting (e.g., ```sql), explanations, or additional text."""
     
-    # ใช้ count_tokens ที่ปรับแล้ว
+    # นับโทเค็น
     token_count = count_tokens(prompt, question_id, question, max_tokens=8192)
+    # คำนวณ num_ctx แบบ dynamic
+    num_ctx = calculate_dynamic_num_ctx(token_count)
+    
     if token_count > 8192:
         print(f"⚠️ Prompt นี้ยาวเกิน 8192 tokens ({token_count} tokens) อาจถูกตัดโดย Ollama")
-    elif token_count > 6553: 
+    elif token_count > 6553:
         print(f"⚠️ Prompt ใกล้ขีดจำกัด ({token_count} tokens)")
     else:
         print(f"Token of prompt: {token_count}")
+    print(f"Dynamic num_ctx: {num_ctx}")
 
     # เรียก API และเก็บเวลาการ Generate
-    sql, generation_time = query_ollama(prompt, error_log_test, question_id, question)
+    sql, generation_time = query_ollama(prompt, error_log_test, question_id, question, num_ctx)
     cleaned_sql = clean_sql(sql)
     
-    # แปลงเวลาเป็นรูปแบบ "นาที+วินาที" ก่อนเขียนลง log
+    # บันทึกข้อมูลโทเค็นลง token_log
+    token_log.append({
+        "question_id": question_id,
+        "prompt": prompt,
+        "token_count": token_count,
+        "generation_time": generation_time,
+        "num_ctx": num_ctx
+    })
+    
+    # แปลงเวลาเป็นรูปแบบที่เหมาะสมสำหรับการแสดงผล
     formatted_time = format_time(generation_time)
     
     # รูปแบบสำหรับ predict_test.json: SQL \t----- bird -----\t db_id
@@ -152,8 +172,12 @@ Translate the following natural language question into a valid SQL query:
     print("-----------------------------------------------------------------------------------------------------------\n\n")
 
 # สร้าง predict_test.json
-with open('./bird/exp_result/gemma3_test_split_output/th/new_eng_pred_smote_class2.json', 'w', encoding='utf-8') as f:
+with open('./bird/exp_result/gemma3_test_split_output/th/new_th_pred_smote_class2.json', 'w', encoding='utf-8') as f:
     json.dump(predict_test_json, f, ensure_ascii=False, indent=4)
+
+# สร้าง token_log.json
+with open('./bird/exp_result/gemma3_test_split_output/th/token_log.json', 'w', encoding='utf-8') as f:
+    json.dump(token_log, f, ensure_ascii=False, indent=4)
 
 print("=== Generated successful!!! ===")
 
@@ -174,7 +198,7 @@ if error_log_test:
 else:
     print("No errors occurred during generation.")
 
-# เพิ่มการแสดง Token Exceed Summary
+# แสดง Token Exceed Summary
 print("\n=== Token Exceed Summary ===")
 if token_exceed_log:
     print(f"Total questions exceeding token limit: {len(token_exceed_log)}")

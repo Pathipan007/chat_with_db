@@ -186,161 +186,167 @@ def clean_sql(sql):
         sql += ';'
     return sql.strip()
 
-# ทดสอบการเชื่อมต่อกับ Ollama API
-response, generation_time = query_ollama("Test prompt", "test_question_id", "Test query", num_ctx=2048)
-print("Ollama Response:", response)
-print("Generation Time:", format_time(generation_time))
 
-# โหลด Test set
-test_file = './bird/data/train/test_split_bird_20.json'
-with open(test_file, 'r', encoding='utf-8') as f:
-    test_data = json.load(f)
 
-# เตรียม dictionary สำหรับ predict_test.json
-predict_test_json = {}
+def main():
+    # ทดสอบการเชื่อมต่อกับ Ollama API
+    response, generation_time = query_ollama("Test prompt", "test_question_id", "Test query", num_ctx=2048)
+    print("Ollama Response:", response)
+    print("Generation Time:", format_time(generation_time))
 
-# วัดเวลาเริ่มต้นทั้งหมด
-overall_start_time = time.time()
+    # โหลด Test set
+    test_file = './bird/data/train/test_split_bird_20.json'
+    with open(test_file, 'r', encoding='utf-8') as f:
+        test_data = json.load(f)
 
-# ประมวลผล Test set
-for i, item in enumerate(test_data[:3]):
-    print(f"Processed Test question {i+1}/{len(test_data)}")
-    question_id = item['question_id']
-    question = item['question']
-    question_th = item.get('question_th')
-    db_id = item['db_id']
-    
-    # เลือกคำถามที่ใช้ (ถ้ามี question_th ใช้ก่อน ถ้าไม่มีใช้ question)
-    query_text = question_th if question_th else question
+    # เตรียม dictionary สำหรับ predict_test.json
+    predict_test_json = {}
 
-    # ดึง Top K Evidence
-    print(f"\n=== Fetching Evidence for Question ID: {question_id} ===")
-    print(f"Original Query: {query_text}")
-    ids, documents, metadatas, distances = perform_similarity_search(query_text, top_n=10)
-    
-    print("\nInitial Top 10 Results (Before LLM Reranking):")
-    for j, (doc_id, doc, meta, dist) in enumerate(zip(ids, documents, metadatas, distances)):
-        print(f"Result {j+1}:")
-        print(f"Similarity Score: {1 - dist:.4f}")
-        print(f"ID: {doc_id}")
-        print(f"Evidence: {meta['evidence']}")
+    # วัดเวลาเริ่มต้นทั้งหมด
+    overall_start_time = time.time()
+
+    # ประมวลผล Test set
+    for i, item in enumerate(test_data):
+        print(f"Processed Test question {i+1}/{len(test_data)}")
+        question_id = item['question_id']
+        question = item['question']
+        question_th = item.get('question_th')
+        db_id = item['db_id']
+        
+        # เลือกคำถามที่ใช้ (ถ้ามี question_th ใช้ก่อน ถ้าไม่มีใช้ question)
+        query_text = question_th if question_th else question
+
+        # ดึง Top K Evidence
+        print(f"\n=== Fetching Evidence for Question ID: {question_id} ===")
+        print(f"Original Query: {query_text}")
+        ids, documents, metadatas, distances = perform_similarity_search(query_text, top_n=10)
+        
+        #print("\nInitial Top 10 Results (Before LLM Reranking):")
+        #for j, (doc_id, doc, meta, dist) in enumerate(zip(ids, documents, metadatas, distances)):
+        #    print(f"Result {j+1}:")
+        #    print(f"Similarity Score: {1 - dist:.4f}")
+        #    print(f"ID: {doc_id}")
+        #    print(f"Evidence: {meta['evidence']}")
+        #    print("-----------------------------------------------------------------------------------------------------------\n\n")
+
+        top_k = 3
+        top_indices, rerank_time = rerank_with_llm(query_text, question_id, ids, documents, metadatas, top_k=top_k)
+        
+        print(f"\nTop {top_k} Results (After LLM Reranking):")
+        selected_evidence = []
+        for j, idx in enumerate(top_indices):
+            meta = metadatas[idx]
+            doc_id = ids[idx]
+            print(f"Result {j+1}:")
+            print(f"ID: {doc_id}")
+            print(f"Evidence: {meta['evidence']}")
+            print("-----------------------------------------------------------------------------------------------------------\n\n")
+            selected_evidence.append(meta['evidence'])
+
+        # แปลง evidence เป็น string สำหรับ prompt
+        evidence_text = "\n".join([f"- {ev}" for ev in selected_evidence]) if selected_evidence else "No relevant evidence found."
+
+        # ดึง schema
+        schema = get_schema(db_id)
+        
+        # สร้าง prompt สำหรับเจน SQL โดยเพิ่ม evidence
+        prompt = f"""
+    You are an expert in translating natural language questions into SQL queries. 
+    The questions may be in either English or Thai, and you must handle both languages correctly. 
+    Use the provided database schema and relevant evidence to accurately generate a syntactically and semantically correct SQL query.
+
+    ### Database Schema:
+    {schema}
+
+    ### Evidence:
+    {evidence_text}
+
+    ### Task:
+    Translate the following natural language question into a valid SQL query:
+
+    "{question}"
+
+    ### Output Format:
+    - Output only the SQL query in a single line.
+    - Do NOT include markdown (e.g., ```sql), explanations, or any additional text.
+    - Do NOT use aliases or table joins unless necessary based on the schema and evidence.
+    - Use the exact column and table names from the schema.
+    """
+        
+        # นับโทเค็น
+        token_count = count_tokens(prompt, question_id, question, max_tokens=8192)
+        num_ctx = calculate_dynamic_num_ctx(token_count)
+        
+        if token_count > 8192:
+            print(f"⚠️ Prompt นี้ยาวเกิน 8192 tokens ({token_count} tokens) อาจถูกตัดโดย Ollama")
+        elif token_count > 6553:
+            print(f"⚠️ Prompt ใกล้ขีดจำกัด ({token_count} tokens)")
+        else:
+            print(f"Token of SQL generation prompt: {token_count}")
+        print(f"Dynamic num_ctx: {num_ctx}")
+        print(f"\nSQL Generating...")
+
+        # เรียก API และเก็บเวลาการ Generate
+        sql, sql_gen_time = query_ollama(prompt, question_id, question, num_ctx)
+        cleaned_sql = clean_sql(sql)
+        
+        # รวมเวลาการเรียก LLM (rerank + SQL generation)
+        total_llm_time = rerank_time + sql_gen_time if rerank_time >= 0 and sql_gen_time >= 0 else -1
+        
+        # บันทึกข้อมูลโทเค็นของ SQL generation
+        token_log.append({
+            "stage": "sql_generation",
+            "question_id": question_id,
+            "prompt": prompt,
+            "token_count": token_count,
+            "generation_time": sql_gen_time,
+            "num_ctx": num_ctx,
+            "total_llm_time": total_llm_time
+        })
+        
+        # แปลงเวลาเป็นรูปแบบที่เหมาะสมสำหรับการแสดงผล
+        formatted_rerank_time = format_time(rerank_time)
+        formatted_sql_gen_time = format_time(sql_gen_time)
+        formatted_total_llm_time = format_time(total_llm_time)
+        
+        # รูปแบบสำหรับ predict_test.json: SQL \t----- bird -----\t db_id
+        json_line = f"{cleaned_sql}\t----- bird -----\t{db_id}"
+        predict_test_json[str(question_id)] = json_line
+        
+        print(f"Question ID: {question_id}")
+        print(f"Question: {question}")
+        print(f"SQL query: {cleaned_sql}")
+        print(f"Rerank Time: {formatted_rerank_time}")
+        print(f"SQL Generation Time: {formatted_sql_gen_time}")
+        print(f"Total LLM Time: {formatted_total_llm_time}")
         print("-----------------------------------------------------------------------------------------------------------\n\n")
 
-    top_k = 3
-    top_indices, rerank_time = rerank_with_llm(query_text, question_id, ids, documents, metadatas, top_k=top_k)
-    
-    print(f"\nTop {top_k} Results (After LLM Reranking):")
-    selected_evidence = []
-    for j, idx in enumerate(top_indices):
-        meta = metadatas[idx]
-        doc_id = ids[idx]
-        print(f"Result {j+1}:")
-        print(f"ID: {doc_id}")
-        print(f"Evidence: {meta['evidence']}")
-        print("-----------------------------------------------------------------------------------------------------------\n\n")
-        selected_evidence.append(meta['evidence'])
+    # สร้าง predict_test.json
+    with open('./bird/exp_result/gemma3_test_split_output/eng_baseline_with_evidence.json', 'w', encoding='utf-8') as f:
+        json.dump(predict_test_json, f, ensure_ascii=False, indent=4)
 
-    # แปลง evidence เป็น string สำหรับ prompt
-    evidence_text = "\n".join([f"- {ev}" for ev in selected_evidence]) if selected_evidence else "No relevant evidence found."
+    # สร้าง token_log.json
+    with open('./bird/exp_result/gemma3_test_split_output/eng_baseline_with_evidence_token_log.json', 'w', encoding='utf-8') as f:
+        json.dump(token_log, f, ensure_ascii=False, indent=4)
 
-    # ดึง schema
-    schema = get_schema(db_id)
-    
-    # สร้าง prompt สำหรับเจน SQL โดยเพิ่ม evidence
-    prompt = f"""
-You are an expert in translating natural language questions into SQL queries. 
-The questions may be in either English or Thai, and you must handle both languages correctly. 
-Use the provided database schema and relevant evidence to accurately generate a syntactically and semantically correct SQL query.
+    print("=== Generated successful!!! ===")
 
-### Database Schema:
-{schema}
+    # วัดเวลาทั้งหมด
+    overall_end_time = time.time()
+    overall_time = overall_end_time - overall_start_time
+    print(f"\n=== Overall Processing Time: {format_time(overall_time)} ===")
 
-### Evidence:
-{evidence_text}
-
-### Task:
-Translate the following natural language question into a valid SQL query:
-
-"{question}"
-
-### Output Format:
-- Output only the SQL query in a single line.
-- Do NOT include markdown (e.g., ```sql), explanations, or any additional text.
-- Do NOT use aliases or table joins unless necessary based on the schema and evidence.
-- Use the exact column and table names from the schema.
-"""
-    
-    # นับโทเค็น
-    token_count = count_tokens(prompt, question_id, question, max_tokens=8192)
-    num_ctx = calculate_dynamic_num_ctx(token_count)
-    
-    if token_count > 8192:
-        print(f"⚠️ Prompt นี้ยาวเกิน 8192 tokens ({token_count} tokens) อาจถูกตัดโดย Ollama")
-    elif token_count > 6553:
-        print(f"⚠️ Prompt ใกล้ขีดจำกัด ({token_count} tokens)")
+    # แสดง Token Exceed Summary
+    print("\n=== Token Exceed Summary ===")
+    if token_exceed_log:
+        print(f"Total questions exceeding token limit: {len(token_exceed_log)}")
+        for entry in token_exceed_log:
+            print(f"Question ID: {entry['question_id']}")
+            print(f"Query: {entry['query']}")
+            print(f"Token Count: {entry['token_count']} (Max: {entry['max_tokens']})")
+            print("--------------------")
     else:
-        print(f"Token of SQL generation prompt: {token_count}")
-    print(f"Dynamic num_ctx: {num_ctx}")
-    print(f"\nSQL Generating...")
+        print("No questions exceeded the token limit.")
 
-    # เรียก API และเก็บเวลาการ Generate
-    sql, sql_gen_time = query_ollama(prompt, question_id, question, num_ctx)
-    cleaned_sql = clean_sql(sql)
-    
-    # รวมเวลาการเรียก LLM (rerank + SQL generation)
-    total_llm_time = rerank_time + sql_gen_time if rerank_time >= 0 and sql_gen_time >= 0 else -1
-    
-    # บันทึกข้อมูลโทเค็นของ SQL generation
-    token_log.append({
-        "stage": "sql_generation",
-        "question_id": question_id,
-        "prompt": prompt,
-        "token_count": token_count,
-        "generation_time": sql_gen_time,
-        "num_ctx": num_ctx,
-        "total_llm_time": total_llm_time
-    })
-    
-    # แปลงเวลาเป็นรูปแบบที่เหมาะสมสำหรับการแสดงผล
-    formatted_rerank_time = format_time(rerank_time)
-    formatted_sql_gen_time = format_time(sql_gen_time)
-    formatted_total_llm_time = format_time(total_llm_time)
-    
-    # รูปแบบสำหรับ predict_test.json: SQL \t----- bird -----\t db_id
-    json_line = f"{cleaned_sql}\t----- bird -----\t{db_id}"
-    predict_test_json[str(question_id)] = json_line
-    
-    print(f"Question ID: {question_id}")
-    print(f"Question: {question}")
-    print(f"SQL query: {cleaned_sql}")
-    print(f"Rerank Time: {formatted_rerank_time}")
-    print(f"SQL Generation Time: {formatted_sql_gen_time}")
-    print(f"Total LLM Time: {formatted_total_llm_time}")
-    print("-----------------------------------------------------------------------------------------------------------\n\n")
-
-# สร้าง predict_test.json
-with open('./bird/exp_result/gemma3_test_split_output/eng_baseline_with_evidence.json', 'w', encoding='utf-8') as f:
-    json.dump(predict_test_json, f, ensure_ascii=False, indent=4)
-
-# สร้าง token_log.json
-with open('./bird/exp_result/gemma3_test_split_output/eng_baseline_with_evidence_token_log.json', 'w', encoding='utf-8') as f:
-    json.dump(token_log, f, ensure_ascii=False, indent=4)
-
-print("=== Generated successful!!! ===")
-
-# วัดเวลาทั้งหมด
-overall_end_time = time.time()
-overall_time = overall_end_time - overall_start_time
-print(f"\n=== Overall Processing Time: {format_time(overall_time)} ===")
-
-# แสดง Token Exceed Summary
-print("\n=== Token Exceed Summary ===")
-if token_exceed_log:
-    print(f"Total questions exceeding token limit: {len(token_exceed_log)}")
-    for entry in token_exceed_log:
-        print(f"Question ID: {entry['question_id']}")
-        print(f"Query: {entry['query']}")
-        print(f"Token Count: {entry['token_count']} (Max: {entry['max_tokens']})")
-        print("--------------------")
-else:
-    print("No questions exceeded the token limit.")
+if __name__ == "__main__":
+    main()

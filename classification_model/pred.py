@@ -6,7 +6,7 @@ import joblib
 from sentence_transformers import SentenceTransformer
 
 # ---------- STEP 1: Load Model and Preprocessors ----------
-model = joblib.load("resource/lgbm_baseline_model.joblib")
+model = joblib.load("resource/lgbm_smote_class2_model.joblib")
 scaler = joblib.load("resource/scaler.joblib")
 svd_question = joblib.load("resource/svd_question.joblib")
 svd_sql = joblib.load("resource/svd_sql.joblib")
@@ -45,18 +45,18 @@ def extract_sql_features(sql):
     return features
 
 # ---------- STEP 3: Load JSON File ----------
-input_file = "../bird/data/train/train_bird_th.json"
+input_file = "../spider/data/train/train_spider.json"
 with open(input_file, "r", encoding="utf-8") as f:
     data = json.load(f)
 
 df = pd.DataFrame(data)
 
-if not {'SQL', 'question'}.issubset(df.columns):
+if not {'query', 'question'}.issubset(df.columns):
     raise ValueError("JSON ต้องมีคอลัมน์ 'SQL' และ 'question'")
 
 # ---------- STEP 4: Feature Extraction ----------
 print("Extracting handcrafted SQL features...")
-feature_list = df["SQL"].apply(extract_sql_features)
+feature_list = df["query"].apply(extract_sql_features)
 feature_df = pd.DataFrame(feature_list.tolist())
 feature_scaled = scaler.transform(feature_df)
 
@@ -65,7 +65,7 @@ question_embeddings = embedder.encode(df["question"].tolist(), normalize_embeddi
 question_reduced = svd_question.transform(question_embeddings)
 
 print("Encoding and reducing SQL embeddings...")
-sql_embeddings = embedder.encode(df["SQL"].tolist(), normalize_embeddings=True)
+sql_embeddings = embedder.encode(df["query"].tolist(), normalize_embeddings=True)
 sql_reduced = svd_sql.transform(sql_embeddings)
 
 X_combined = np.hstack([feature_scaled, question_reduced, sql_reduced])
@@ -78,11 +78,15 @@ df["difficulty"] = [label_map[p] for p in predictions]
 
 # ---------- STEP 5.1: Count difficulty distribution ----------
 difficulty_counts = df["difficulty"].value_counts()
+total = difficulty_counts.sum()
+
 print("\nDifficulty distribution:")
 for level in ["simple", "moderate", "challenging"]:
-    print(f"{level}: {difficulty_counts.get(level, 0)}")
+    count = difficulty_counts.get(level, 0)
+    percent = (count / total) * 100
+    print(f"{level}: {count} ({percent:.2f}%)")
 
 # ---------- STEP 6: Save Results as JSON ----------
-output_file = "predicted_output.json"
+output_file = "test_smote_class2.json"
 df.to_json(output_file, orient="records", force_ascii=False, indent=2)
 print(f"\nPrediction complete! Results saved to: {output_file}")

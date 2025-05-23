@@ -28,45 +28,57 @@ class KouMarkowskyAlgorithm:
     def steiner_tree(self, terminals, db_id):
         graph, edge_types = self.driver.session().execute_read(KouMarkowskyAlgorithm._get_trimmed_subgraph, db_id)
         terminal_set = set(terminals)
-        tree_nodes = []
-        tree_edges = set()
-        involved_columns = set()
-        used_terminals = {terminals[0]}
-        tree_nodes.append(terminals[0])
+        all_tree_nodes = []
+        all_tree_edges = set()
+        all_involved_columns = set()
+        all_edge_types = dict(edge_types)  # Copy
 
-        while used_terminals != terminal_set:
-            frontier, parents = self._multi_source_dijkstra(graph, set(tree_nodes))
-            min_dist, best_terminal = float('inf'), None
-            for terminal in terminal_set - used_terminals:
-                if frontier[terminal] < min_dist:
-                    min_dist = frontier[terminal]
-                    best_terminal = terminal
-            if best_terminal is None:
-                break
-            # Reconstruct path
-            path = []
-            current = best_terminal
-            while parents[current] is not None:
-                prev = parents[current]
-                edge = frozenset([prev, current])
-                tree_edges.add(edge)
-                # Track involved columns for PK/FK edges
-                rel_type = edge_types.get(edge)
-                if rel_type in ("HAS_PRIMARY_KEY", "FOREIGN_KEY_TO"):
-                    involved_columns.update([prev, current])
+        components = self._get_connected_components(graph)
+        for component in components:
+            component_terminals = terminal_set & component
+            if not component_terminals:
+                continue  # No terminals in this component
+            # Pick a starting terminal in this component
+            start = next(iter(component_terminals))
+            used_terminals = {start}
+            tree_nodes = [start]
+            tree_edges = set()
+            involved_columns = set()
+            while used_terminals != component_terminals:
+                frontier, parents = self._multi_source_dijkstra(graph, set(tree_nodes))
+                min_dist, best_terminal = float('inf'), None
+                for terminal in component_terminals - used_terminals:
+                    if frontier[terminal] < min_dist:
+                        min_dist = frontier[terminal]
+                        best_terminal = terminal
+                if best_terminal is None:
+                    break
+                # Reconstruct path
+                path = []
+                current = best_terminal
+                while parents[current] is not None:
+                    prev = parents[current]
+                    edge = frozenset([prev, current])
+                    tree_edges.add(edge)
+                    rel_type = edge_types.get(edge)
+                    if rel_type in ("HAS_PRIMARY_KEY", "FOREIGN_KEY_TO"):
+                        involved_columns.update([prev, current])
+                    if current not in tree_nodes:
+                        path.append(current)
+                    current = prev
                 if current not in tree_nodes:
                     path.append(current)
-                current = prev
-            if current not in tree_nodes:
-                path.append(current)
-            for node in reversed(path):
-                tree_nodes.append(node)
-            used_terminals.add(best_terminal)
+                for node in reversed(path):
+                    tree_nodes.append(node)
+                used_terminals.add(best_terminal)
+            all_tree_nodes.extend(tree_nodes)
+            all_tree_edges.update(tree_edges)
+            all_involved_columns.update(involved_columns)
         return {
-            "nodes": tree_nodes,
-            "edges": [list(edge) for edge in tree_edges],
-            "involved_columns": list(involved_columns),  # <-- Add this!
-            "edge_types": edge_types
+            "nodes": all_tree_nodes,
+            "edges": [list(edge) for edge in all_tree_edges],
+            "involved_columns": list(all_involved_columns),
+            "edge_types": all_edge_types
         }
 
     """
@@ -174,3 +186,27 @@ class KouMarkowskyAlgorithm:
         if node.count(".") == 2:
             return ".".join(node.split(".")[:2])
         return None
+
+    @staticmethod
+    def _get_connected_components(graph):
+        """
+        This function retrieves the connected components of the graph.
+        The algorithm uses a depth-first search to find all connected components in the graph.
+        It returns a list of sets, where each set contains the nodes in a connected component.
+        """
+        visited = set()
+        components = []
+        for node in graph:
+            if node not in visited:
+                stack = [node]
+                component = set()
+                while stack:
+                    curr = stack.pop()
+                    if curr not in visited:
+                        visited.add(curr)
+                        component.add(curr)
+                        stack.extend([nbr for nbr in graph[curr] if nbr not in visited])
+                components.append(component)
+        return components
+
+

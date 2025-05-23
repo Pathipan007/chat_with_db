@@ -6,6 +6,10 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer
 import math
+import fasttext
+
+# โหลดโมเดล fastText language detection
+lang_model = fasttext.load_model("../lang_detect_model/lid.176.bin")
 
 # ใช้ tokenizer ของ google/gemma-3-12b-it
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
@@ -16,8 +20,17 @@ token_exceed_log = []
 # สร้าง list สำหรับเก็บ log ข้อมูลโทเค็นทั้งหมด
 token_log = []
 
+id_match_log_top_n = {"correct": 0, "incorrect": 0}
+
 # สร้าง dict สำหรับเก็บผลการเช็ค id
 id_match_log = {"correct": 0, "incorrect": 0}
+
+lang_count_log = {"en": 0, "th": 0, "other": 0}
+
+def detect_language(text):
+    prediction = lang_model.predict(text.strip().replace('\n', ' '))[0][0]
+    lang_code = prediction.replace('__label__', '')
+    return lang_code
 
 # ฟังก์ชันคำนวณ num_ctx แบบ dynamic
 def calculate_dynamic_num_ctx(token_count, min_ctx=2048, max_ctx=8192, buffer=1.2):
@@ -88,23 +101,19 @@ embedding_model = SentenceTransformer('BAAI/bge-m3')
 persist_directory = "../embed_and_vector_store/vector_store/"
 client = chromadb.PersistentClient(path=persist_directory)
 
-# ทดสอบการเชื่อมต่อกับ Ollama API
-response, generation_time = query_ollama("Test prompt", [], "test_question_id", "Test query", num_ctx=2048)
-print("Ollama Response:", response)
-print("Generation Time:", format_time(generation_time))
-
 # รับ Train set collection
-train_collection_name = "bird_train_set_rag_evidence_bge_m3_cosine"
+train_collection_name = "bird_train_set_evidence_bge_m3"
 train_collection = client.get_collection(train_collection_name)
 
-# ฟังก์ชัน Similarity Search (Top N)
-def perform_similarity_search(query_text, top_n=10):
+# ฟังก์ชัน Similarity Search (Top N) พร้อม filter ภาษา
+def perform_similarity_search(query_text, lang="en", top_n=10):
     query_embedding = embedding_model.encode([query_text]).tolist()[0]
     results = train_collection.query(
         query_embeddings=[query_embedding],
-        n_results=top_n
+        n_results=top_n,
+        where={"language": lang}
     )
-    ids = results["ids"][0]  # ดึง ID จากผลลัพธ์
+    ids = results["ids"][0]
     documents = results["documents"][0]
     metadatas = results["metadatas"][0]
     distances = results["distances"][0]
@@ -175,87 +184,124 @@ Candidate Evidence:
     
     return top_indices, rerank_time
 
-# โหลด Dev set
-test_file = '../bird/data/train/test_split_bird_20.json'
-with open(test_file, 'r', encoding='utf-8') as f:
-    test_data = json.load(f)
+def main():
+    # ทดสอบการเชื่อมต่อกับ Ollama API
+    response, generation_time = query_ollama("Test prompt", [], "test_question_id", "Test query", num_ctx=2048)
+    print("Ollama Response:", response)
+    print(f"Generation Time: {format_time(generation_time)}\n\n")
 
-# ประมวลผล Dev set
-overall_start_time = time.time()
+    # โหลด Dev set
+    test_file = '../bird/data/train/test_split_bird_20.json'
+    with open(test_file, 'r', encoding='utf-8') as f:
+        test_data = json.load(f)
 
-for i, item in enumerate(test_data[:30]):  # ทดสอบ 30 คำถามแรก
-    print(f"Processed Test question {i+1}/{len(test_data)}")
-    question_id = item['question_id']
-    question = item['question']
-    question_th = item.get('question_th')
+    # ประมวลผล Dev set
+    overall_start_time = time.time()
 
-    # เลือกคำถามที่ใช้ (ถ้ามี question_th ใช้ก่อน ถ้าไม่มีใช้ question)
-    query_text = question_th if question_th else question
+    for i, item in enumerate(test_data[:60]):
+        print(f"Processed Test question {i+1}/{len(test_data)}")
+        question_id = item['question_id']
+        question = item['question']
+        question_th = item.get('question_th')
 
-    # Similarity Search (Top N)
-    print(f"\n=== Processing Question ID: {question_id} ===")
-    print(f"Original Query: {query_text}")
-    ids, documents, metadatas, distances = perform_similarity_search(query_text, top_n=10)
+        # เลือกคำถามที่ใช้ (ถ้ามี question_th ใช้ก่อน ถ้าไม่มีใช้ question)
+        query_text = question_th if question_th else question
 
-    print("\nInitial Top 10 Results (Before LLM Reranking):")
-    for j, (doc_id, doc, meta, dist) in enumerate(zip(ids, documents, metadatas, distances)):
-        print(f"Result {j+1}:")
-        print(f"Similarity Score: {1 - dist:.4f}")
-        print(f"ID: {doc_id}")
-        print(f"Evidence: {meta['evidence']}")
-        print("-----------------------------------------------------------------------------------------------------------\n\n")
+        # ตรวจจับภาษา
+        lang = detect_language(query_text)
+        print(f"Detected Language: {lang} | Query: {query_text}")
 
-    # คัดกรองด้วย LLM เพื่อเลือก Top K
-    top_k = 3
-    top_indices, rerank_time = rerank_with_llm(query_text, question_id, ids, documents, metadatas, top_k=top_k)
-    
-    print(f"\nTop {top_k} Results (After LLM Reranking):")
-    has_matching_id = False
-    for j, idx in enumerate(top_indices):
-        meta = metadatas[idx]
-        doc_id = ids[idx]
-        # สกัดเลขจาก doc_id (เช่น q11_evidence_th → 11)
-        evidence_number = int(re.search(r'q(\d+)_', doc_id).group(1)) if re.search(r'q(\d+)_', doc_id) else None
-        print(f"Result {j+1}:")
-        print(f"ID: {doc_id}")
-        print(f"Extracted Number: {evidence_number}")
-        print(f"Evidence: {meta['evidence']}")
-        print("-----------------------------------------------------------------------------------------------------------\n\n")
+        if lang in ["en", "th"]:
+            lang_count_log[lang] += 1
+        else:
+            lang_count_log["other"] += 1
+
+        # fallback หากไม่พบภาษาที่ต้องการ
+        if lang not in ['en', 'th']:
+            lang = 'en'
+
+        # Similarity Search (Top N)
+        print(f"\n=== Processing Question ID: {question_id} ===")
+        print(f"Original Query: {query_text}")
+        ids, documents, metadatas, distances = perform_similarity_search(query_text, lang=lang, top_n=10)
+
+        print("\nInitial Top 10 Results (Before LLM Reranking):")
+        for j, (doc_id, doc, meta, dist) in enumerate(zip(ids, documents, metadatas, distances)):
+            evidence_number_top_n = int(re.search(r'q(\d+)_', doc_id).group(1)) if re.search(r'q(\d+)_', doc_id) else None
+            print(f"Result {j+1}:")
+            print(f"Similarity Score: {1 - dist:.4f}")
+            print(f"ID: {doc_id}")
+            print(f"Extracted Number: {evidence_number_top_n}")
+            print(f"Evidence: {meta['evidence']}")
+            print("-----------------------------------------------------------------------------------------------------------\n\n")
         # เช็คว่าเลขจาก evidence ตรงกับ question_id (ตัวเลข) หรือไม่
-        if evidence_number is not None and str(evidence_number) == str(question_id):
-            has_matching_id = True
-    
-    # อัปเดต id_match_log
-    if has_matching_id:
-        id_match_log["correct"] += 1
+            if evidence_number_top_n is not None and str(evidence_number_top_n) == str(question_id):
+                has_matching_id_top_n = True
+        
+        # อัปเดต id_match_log
+        if has_matching_id_top_n:
+            id_match_log_top_n["correct"] += 1
+        else:
+            id_match_log_top_n["incorrect"] += 1
+            
+        # คัดกรองด้วย LLM เพื่อเลือก Top K
+        top_k = 3
+        top_indices, rerank_time = rerank_with_llm(query_text, question_id, ids, documents, metadatas, top_k=top_k)
+        
+        print(f"\nTop {top_k} Results (After LLM Reranking):")
+        has_matching_id = False
+        for j, idx in enumerate(top_indices):
+            meta = metadatas[idx]
+            doc_id = ids[idx]
+            # สกัดเลขจาก doc_id (เช่น q11_evidence_th → 11)
+            evidence_number = int(re.search(r'q(\d+)_', doc_id).group(1)) if re.search(r'q(\d+)_', doc_id) else None
+            print(f"Result {j+1}:")
+            print(f"ID: {doc_id}")
+            print(f"Extracted Number: {evidence_number}")
+            print(f"Evidence: {meta['evidence']}")
+            print("-----------------------------------------------------------------------------------------------------------\n\n")
+            # เช็คว่าเลขจาก evidence ตรงกับ question_id (ตัวเลข) หรือไม่
+            if evidence_number is not None and str(evidence_number) == str(question_id):
+                has_matching_id = True
+        
+        # อัปเดต id_match_log
+        if has_matching_id:
+            id_match_log["correct"] += 1
+        else:
+            id_match_log["incorrect"] += 1
+
+    overall_end_time = time.time()
+    overall_time = overall_end_time - overall_start_time
+    print(f"\n=== Overall Processing Time: {format_time(overall_time)} ===")
+
+    # แสดง Token Exceed Summary
+    print("\n=== Token Exceed Summary ===")
+    if token_exceed_log:
+        print(f"Total queries exceeding token limit: {len(token_exceed_log)}")
+        for entry in token_exceed_log:
+            print(f"Question ID: {entry['question_id']}")
+            print(f"Query: {entry['query']}")
+            print(f"Token Count: {entry['token_count']} (Max: {entry['max_tokens']})")
+            print("--------------------")
     else:
-        id_match_log["incorrect"] += 1
+        print("No queries exceeded the token limit.")
 
-overall_end_time = time.time()
-overall_time = overall_end_time - overall_start_time
-print(f"\n=== Overall Processing Time: {format_time(overall_time)} ===")
+    # แสดง ID Match Summary
+    print("\n=== Top-N ID Match Summary ===")
+    print(f"Number of questions with matching ID in Top N: {id_match_log_top_n['correct']}")
+    print(f"Number of questions with no matching ID in Top N: {id_match_log_top_n['incorrect']}")
 
-# แสดง Token Exceed Summary
-print("\n=== Token Exceed Summary ===")
-if token_exceed_log:
-    print(f"Total queries exceeding token limit: {len(token_exceed_log)}")
-    for entry in token_exceed_log:
-        print(f"Question ID: {entry['question_id']}")
-        print(f"Query: {entry['query']}")
-        print(f"Token Count: {entry['token_count']} (Max: {entry['max_tokens']})")
-        print("--------------------")
-else:
-    print("No queries exceeded the token limit.")
+    print("\n=== Top-K ID Match Summary ===")
+    print(f"Number of questions with matching ID in Top K: {id_match_log['correct']}")
+    print(f"Number of questions with no matching ID in Top K: {id_match_log['incorrect']}")
 
-# แสดง ID Match Summary
-print("\n=== ID Match Summary ===")
-print(f"Number of questions with matching ID in Top K: {id_match_log['correct']}")
-print(f"Number of questions with no matching ID in Top K: {id_match_log['incorrect']}")
+    print("\n=== Language Detection Summary ===")
+    for k, v in lang_count_log.items():
+        print(f"Language '{k}': {v} questions")
 
-# สร้าง id_match_log.json
-#with open('../bird/exp_result/gemma3_test_split_output/id_match_log.json', 'w', encoding='utf-8') as f:
-#    json.dump(id_match_log, f, ensure_ascii=False, indent=4)
+    # สร้าง token_log.json
+    #with open('../bird/exp_result/gemma3_test_split_output/token_log.json', 'w', encoding='utf-8') as f:
+    #    json.dump(token_log, f, ensure_ascii=False, indent=4)
 
-# สร้าง token_log.json
-#with open('../bird/exp_result/gemma3_test_split_output/token_log.json', 'w', encoding='utf-8') as f:
-#    json.dump(token_log, f, ensure_ascii=False, indent=4)
+if __name__ == "__main__":
+    main()

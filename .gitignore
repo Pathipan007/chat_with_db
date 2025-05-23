@@ -7,3 +7,4 @@ table_metadata_store/db_config.json
 notebook/
 table_metadata_store/postgres_db
 table_metadata_store/graph_db/db_config.json
+lang_detect_model/lid.176.bin

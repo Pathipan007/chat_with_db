@@ -126,6 +126,9 @@ class TopKSteinerMetadata:
                     if table_name:
                         table_nodes_set.add(table_name)
             terminal_tables = list(table_nodes_set & tables_set)
+            for t in tables_set:
+                if t not in terminal_tables:
+                    terminal_tables.append(t)
             steiner_tables = list(table_nodes_set - tables_set)
             # Get metadata
             terminal_metadata = self.get_table_metadata(db_id, terminal_tables)
@@ -139,6 +142,9 @@ class TopKSteinerMetadata:
         return all_results
 
 def print_metadata(result):
+    """
+    Print the metadata in a readable format.
+    """
     for db_id, db_data in result.items():
         print(f"\n=== Database: {db_id} ===")
         print("Terminal Tables:")
@@ -164,6 +170,10 @@ if __name__ == "__main__":
     top_k = [
         {"db_id": "movie_platform", "table_name": "movies"},
         {"db_id": "movie_platform", "table_name": "lists"},
+        {"db_id": "works_cycles", "table_name": "ProductSubcategory"},
+        {"db_id": "works_cycles", "table_name": "ProductCategory"},
+        {"db_id": "works_cycles", "table_name": "BusinessEntityContact"},
+        {"db_id": "works_cycles", "table_name": "SalesOrderDetail"},
         # Add more as needed
     ]
     result = fetcher.run(top_k)

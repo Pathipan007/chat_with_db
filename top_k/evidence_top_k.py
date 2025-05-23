@@ -1,5 +1,6 @@
 import json
 import requests
+import re
 import time
 import chromadb
 from sentence_transformers import SentenceTransformer
@@ -11,6 +12,12 @@ tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
 
 # สร้าง list สำหรับเก็บ log คำถามที่เกินโทเค็น
 token_exceed_log = []
+
+# สร้าง list สำหรับเก็บ log ข้อมูลโทเค็นทั้งหมด
+token_log = []
+
+# สร้าง dict สำหรับเก็บผลการเช็ค id
+id_match_log = {"correct": 0, "incorrect": 0}
 
 # ฟังก์ชันคำนวณ num_ctx แบบ dynamic
 def calculate_dynamic_num_ctx(token_count, min_ctx=2048, max_ctx=8192, buffer=1.2):
@@ -138,12 +145,22 @@ Candidate Evidence:
     print(f"Dynamic num_ctx for reranking: {num_ctx}")
 
     error_log = []
-    response = query_ollama(prompt, error_log, f"rerank_q{question_id}", original_query, num_ctx)
+    response, rerank_time = query_ollama(prompt, error_log, f"rerank_q{question_id}", original_query, num_ctx)
     print(f"\n\nCheck response: {response}\n\n")
     
+    # บันทึกข้อมูลโทเค็นของ rerank
+    token_log.append({
+        "stage": "rerank",
+        "question_id": question_id,
+        "prompt": prompt,
+        "token_count": token_count,
+        "generation_time": rerank_time,
+        "num_ctx": num_ctx
+    })
+
     if not response or error_log:
         print("Error in LLM reranking, falling back to original ranking.")
-        return list(range(top_k))
+        return list(range(top_k)), rerank_time
     
     try:
         top_indices = [int(idx.strip()) for idx in response.split(",") if idx.strip().isdigit()]
@@ -156,7 +173,7 @@ Candidate Evidence:
         print("Invalid LLM response, falling back to original ranking.")
         top_indices = list(range(min(top_k, len(metadatas))))
     
-    return top_indices
+    return top_indices, rerank_time
 
 # โหลด Dev set
 test_file = '../bird/data/train/test_split_bird_20.json'
@@ -166,7 +183,7 @@ with open(test_file, 'r', encoding='utf-8') as f:
 # ประมวลผล Dev set
 overall_start_time = time.time()
 
-for i, item in enumerate(test_data[:30]):  # ทดสอบ 3 คำถามแรก
+for i, item in enumerate(test_data[:30]):  # ทดสอบ 30 คำถามแรก
     print(f"Processed Test question {i+1}/{len(test_data)}")
     question_id = item['question_id']
     question = item['question']
@@ -190,16 +207,29 @@ for i, item in enumerate(test_data[:30]):  # ทดสอบ 3 คำถาม�
 
     # คัดกรองด้วย LLM เพื่อเลือก Top K
     top_k = 3
-    top_indices = rerank_with_llm(query_text, question_id, ids, documents, metadatas, top_k=top_k)
+    top_indices, rerank_time = rerank_with_llm(query_text, question_id, ids, documents, metadatas, top_k=top_k)
     
     print(f"\nTop {top_k} Results (After LLM Reranking):")
+    has_matching_id = False
     for j, idx in enumerate(top_indices):
         meta = metadatas[idx]
         doc_id = ids[idx]
+        # สกัดเลขจาก doc_id (เช่น q11_evidence_th → 11)
+        evidence_number = int(re.search(r'q(\d+)_', doc_id).group(1)) if re.search(r'q(\d+)_', doc_id) else None
         print(f"Result {j+1}:")
         print(f"ID: {doc_id}")
+        print(f"Extracted Number: {evidence_number}")
         print(f"Evidence: {meta['evidence']}")
         print("-----------------------------------------------------------------------------------------------------------\n\n")
+        # เช็คว่าเลขจาก evidence ตรงกับ question_id (ตัวเลข) หรือไม่
+        if evidence_number is not None and str(evidence_number) == str(question_id):
+            has_matching_id = True
+    
+    # อัปเดต id_match_log
+    if has_matching_id:
+        id_match_log["correct"] += 1
+    else:
+        id_match_log["incorrect"] += 1
 
 overall_end_time = time.time()
 overall_time = overall_end_time - overall_start_time
@@ -216,3 +246,16 @@ if token_exceed_log:
         print("--------------------")
 else:
     print("No queries exceeded the token limit.")
+
+# แสดง ID Match Summary
+print("\n=== ID Match Summary ===")
+print(f"Number of questions with matching ID in Top K: {id_match_log['correct']}")
+print(f"Number of questions with no matching ID in Top K: {id_match_log['incorrect']}")
+
+# สร้าง id_match_log.json
+#with open('../bird/exp_result/gemma3_test_split_output/id_match_log.json', 'w', encoding='utf-8') as f:
+#    json.dump(id_match_log, f, ensure_ascii=False, indent=4)
+
+# สร้าง token_log.json
+#with open('../bird/exp_result/gemma3_test_split_output/token_log.json', 'w', encoding='utf-8') as f:
+#    json.dump(token_log, f, ensure_ascii=False, indent=4)

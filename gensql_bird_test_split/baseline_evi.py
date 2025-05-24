@@ -6,6 +6,10 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer
 import math
+import fasttext
+
+# โหลดโมเดล fastText language detection
+lang_model = fasttext.load_model("../lang_detect_model/lid.176.bin")
 
 # ใช้ tokenizer ของ google/gemma-3-12b-it
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
@@ -15,6 +19,19 @@ token_exceed_log = []
 
 # สร้าง list สำหรับเก็บ log ข้อมูลโทเค็นทั้งหมด
 token_log = []
+
+# สร้าง dict สำหรับเก็บผลการเช็ค id
+id_match_log_top_n = {"correct": 0, "incorrect": 0}
+id_match_log_top_k = {"correct": 0, "incorrect": 0}
+
+# สร้าง dict สำหรับเก็บสถิติการตรวจจับภาษา
+lang_count_log = {"en": 0, "th": 0, "other": 0}
+
+# ฟังก์ชันตรวจจับภาษา
+def detect_language(text):
+    prediction = lang_model.predict(text.strip().replace('\n', ' '))[0][0]
+    lang_code = prediction.replace('__label__', '')
+    return lang_code
 
 # ฟังก์ชันคำนวณ num_ctx แบบ dynamic
 def calculate_dynamic_num_ctx(token_count, min_ctx=2048, max_ctx=8192, buffer=1.2):
@@ -88,12 +105,13 @@ client = chromadb.PersistentClient(path=persist_directory)
 train_collection_name = "bird_train_set_rag_evidence_bge_m3_cosine"
 train_collection = client.get_collection(train_collection_name)
 
-# ฟังก์ชัน Similarity Search (Top N = 10)
-def perform_similarity_search(query_text, top_n=10):
+# ฟังก์ชัน Similarity Search (Top N = 15) พร้อมกรองภาษา
+def perform_similarity_search(query_text, lang="en", top_n=15):
     query_embedding = embedding_model.encode([query_text]).tolist()[0]
     results = train_collection.query(
         query_embeddings=[query_embedding],
-        n_results=top_n
+        n_results=top_n,
+        where={"language": lang}
     )
     ids = results["ids"][0]
     documents = results["documents"][0]
@@ -101,37 +119,43 @@ def perform_similarity_search(query_text, top_n=10):
     distances = results["distances"][0]
     return ids, documents, metadatas, distances
 
-# ฟังก์ชันคัดกรองด้วย LLM เพื่อเลือก Top K = 3
-def rerank_with_llm(original_query, question_id, ids, documents, metadatas, top_k=3):
+# ฟังก์ชันคัดกรองด้วย LLM เพื่อเลือก Top K = 5
+def rerank_with_llm(original_query, question_id, ids, documents, metadatas, distances, top_k=5):
     candidates = "\n".join([
-        f"Candidate {i+1}:\nEvidence: {meta['evidence']}\nID: {ids[i]}"
-        for i, meta in enumerate(metadatas)
+        f"Candidate {i}: Similarity Score: {1 - dist:.4f}, Evidence: {meta['evidence']}."
+        for i, (meta, dist) in enumerate(zip(metadatas, distances))
     ])
-    
-    prompt = f"""You are an expert in evaluating the semantic similarity between natural language contexts. 
-The original query may be in either English or Thai. Your task is to rank the candidate evidence based on their semantic similarity to the original query and select the top {top_k} most similar ones. 
-Focus on the meaning and intent of the evidence in relation to the query.
 
-Original Query: {original_query}
+    lang_code = detect_language(original_query)
+    lang_display = {
+        "th": "Thai",
+        "en": "English"
+    }.get(lang_code, lang_code.capitalize())
 
-Candidate Evidence:
+    prompt = f"""You are an expert in evaluating semantic similarity between natural language contexts.
+The original query is in {lang_display}, and all candidate evidence is in the same language.
+Each candidate includes a similarity score (from 0.00 to 1.00) based on embedding similarity. Your task is to select the top {top_k} most semantically relevant candidates.
+
+You should carefully consider both:
+1. The **semantic content** of the evidence compared to the query
+2. The **similarity score**, which reflects how close the candidate is based on vector embedding
+
+Original Query:
+{original_query}
+
+Candidate Evidence (with similarity scores):
 {candidates}
 
 ### Instructions:
-- Rank the candidates based on semantic similarity to the original query.
+- Rank the candidates based on both their semantic similarity and similarity score.
+- Use your judgment to resolve conflicts between score and meaning (e.g., high score but off-topic).
 - Output only the indices of the top {top_k} candidates (0-based index), separated by commas.
-- Example output: 0, 1, 2
-- Do not include explanations or additional text."""
+- Example output: 0, 2, 4
+- Do not include any explanations or additional text."""
 
     token_count = count_tokens(prompt, question_id, original_query, max_tokens=8192)
     num_ctx = calculate_dynamic_num_ctx(token_count)
     
-    if token_count > 8192:
-        print(f"⚠️ Reranking prompt นี้ยาวเกิน 8192 tokens ({token_count} tokens) อาจถูกตัดโดย Ollama")
-    elif token_count > 6553:
-        print(f"⚠️ Reranking prompt ใกล้ขีดจำกัด ({token_count} tokens)")
-    else:
-        print(f"\nToken of reranking prompt: {token_count}")
     print(f"Dynamic num_ctx for reranking: {num_ctx}")
     print(f"\nReranking for Top K = {top_k}...")
 
@@ -155,11 +179,12 @@ Candidate Evidence:
         top_indices = [int(idx.strip()) for idx in response.split(",") if idx.strip().isdigit()]
         top_indices = [idx for idx in top_indices if 0 <= idx < len(metadatas)]
         if len(top_indices) < top_k:
+            print(f"⚠️ Only {len(top_indices)} valid indices found, falling back for Question ID {question_id}")
             fallback_indices = [i for i in range(len(metadatas)) if i not in top_indices]
             top_indices += fallback_indices[:top_k - len(top_indices)]
         top_indices = top_indices[:top_k]
-    except:
-        print("Invalid LLM response, falling back to original ranking.")
+    except Exception as e:
+        print(f"Invalid LLM response for Question ID {question_id}: {e}, falling back to original ranking.")
         top_indices = list(range(min(top_k, len(metadatas))))
     
     return top_indices, rerank_time
@@ -186,13 +211,11 @@ def clean_sql(sql):
         sql += ';'
     return sql.strip()
 
-
-
 def main():
     # ทดสอบการเชื่อมต่อกับ Ollama API
     response, generation_time = query_ollama("Test prompt", "test_question_id", "Test query", num_ctx=2048)
     print("Ollama Response:", response)
-    print("Generation Time:", format_time(generation_time))
+    print(f"Generation Time: {format_time(generation_time)}\n\n")
 
     # โหลด Test set
     test_file = './bird/data/train/test_split_bird_20.json'
@@ -202,46 +225,87 @@ def main():
     # เตรียม dictionary สำหรับ predict_test.json
     predict_test_json = {}
 
+    data = test_data
+    total_data = len(data)
+
+    top_n = 15
+    top_k = 5
+
     # วัดเวลาเริ่มต้นทั้งหมด
     overall_start_time = time.time()
 
     # ประมวลผล Test set
-    for i, item in enumerate(test_data):
-        print(f"Processed Test question {i+1}/{len(test_data)}")
+    for i, item in enumerate(data):
+        print(f"Processed Test question {i+1}/{len(total_data)}")
         question_id = item['question_id']
         question = item['question']
         question_th = item.get('question_th')
         db_id = item['db_id']
         
-        # เลือกคำถามที่ใช้ (ถ้ามี question_th ใช้ก่อน ถ้าไม่มีใช้ question)
-        query_text = question_th if question_th else question
+        # เลือกคำถามที่ใช้
+        query_text = question_th
 
-        # ดึง Top K Evidence
+        # ตรวจจับภาษา
+        lang = detect_language(query_text)
+        if lang in ["en", "th"]:
+            lang_count_log[lang] += 1
+        else:
+            lang_count_log["other"] += 1
+            print(f"⚠️ Unsupported language '{lang}' detected for Question ID {question_id}, falling back to 'en'")
+            lang = 'en'
+
+        # ดึง Top N Evidence
         print(f"\n=== Fetching Evidence for Question ID: {question_id} ===")
         print(f"Original Query: {query_text}")
-        ids, documents, metadatas, distances = perform_similarity_search(query_text, top_n=10)
+        ids, documents, metadatas, distances = perform_similarity_search(query_text, lang=lang, top_n=top_n)
         
-        #print("\nInitial Top 10 Results (Before LLM Reranking):")
-        #for j, (doc_id, doc, meta, dist) in enumerate(zip(ids, documents, metadatas, distances)):
-        #    print(f"Result {j+1}:")
-        #    print(f"Similarity Score: {1 - dist:.4f}")
-        #    print(f"ID: {doc_id}")
-        #    print(f"Evidence: {meta['evidence']}")
-        #    print("-----------------------------------------------------------------------------------------------------------\n\n")
+        print(f"\nInitial Top {top_n} Results (Before LLM Reranking):")
+        has_matching_id_top_n = False
+        for j, (doc_id, doc, meta, dist) in enumerate(zip(ids, documents, metadatas, distances)):
+            evidence_number_top_n = int(re.search(r'q(\d+)_', doc_id).group(1)) if re.search(r'q(\d+)_', doc_id) else None
+            if evidence_number_top_n is None:
+                print(f"⚠️ Cannot extract number from ID: {doc_id} for Question ID {question_id}")
+            print(f"Result {j+1}:")
+            print(f"Similarity Score: {1 - dist:.4f}")
+            print(f"ID: {doc_id}")
+            print(f"Extracted Number: {evidence_number_top_n}")
+            print(f"Evidence: {meta['evidence']}")
+            print("-----------------------------------------------------------------------------------------------------------\n\n")
+            if evidence_number_top_n is not None and str(evidence_number_top_n) == str(question_id):
+                has_matching_id_top_n = True
 
-        top_k = 3
-        top_indices, rerank_time = rerank_with_llm(query_text, question_id, ids, documents, metadatas, top_k=top_k)
+        print(f"Check match in Top N: {has_matching_id_top_n}")
+        if has_matching_id_top_n:
+            id_match_log_top_n["correct"] += 1
+        else:
+            id_match_log_top_n["incorrect"] += 1
+
+        # คัดกรองด้วย LLM เพื่อเลือก Top K
+        top_indices, rerank_time = rerank_with_llm(query_text, question_id, ids, documents, metadatas, distances, top_k=top_k)
         
         print(f"\nTop {top_k} Results (After LLM Reranking):")
         selected_evidence = []
+        has_matching_id_top_k = False
         for j, idx in enumerate(top_indices):
             meta = metadatas[idx]
             doc_id = ids[idx]
+            evidence_number_top_k = int(re.search(r'q(\d+)_', doc_id).group(1)) if re.search(r'q(\d+)_', doc_id) else None
+            if evidence_number_top_k is None:
+                print(f"⚠️ Cannot extract number from ID: {doc_id} for Question ID {question_id}")
             print(f"Result {j+1}:")
             print(f"ID: {doc_id}")
+            print(f"Extracted Number: {evidence_number_top_k}")
             print(f"Evidence: {meta['evidence']}")
             print("-----------------------------------------------------------------------------------------------------------\n\n")
             selected_evidence.append(meta['evidence'])
+            if evidence_number_top_k is not None and str(evidence_number_top_k) == str(question_id):
+                has_matching_id_top_k = True
+
+        print(f"Check match in Top K: {has_matching_id_top_k}")
+        if has_matching_id_top_k:
+            id_match_log_top_k["correct"] += 1
+        else:
+            id_match_log_top_k["incorrect"] += 1
 
         # แปลง evidence เป็น string สำหรับ prompt
         evidence_text = "\n".join([f"- {ev}" for ev in selected_evidence]) if selected_evidence else "No relevant evidence found."
@@ -264,7 +328,7 @@ def main():
     ### Task:
     Translate the following natural language question into a valid SQL query:
 
-    "{question}"
+    "{query_text}"
 
     ### Output Format:
     - Output only the SQL query in a single line.
@@ -274,20 +338,15 @@ def main():
     """
         
         # นับโทเค็น
-        token_count = count_tokens(prompt, question_id, question, max_tokens=8192)
+        token_count = count_tokens(prompt, question_id, query_text, max_tokens=8192)
         num_ctx = calculate_dynamic_num_ctx(token_count)
         
-        if token_count > 8192:
-            print(f"⚠️ Prompt นี้ยาวเกิน 8192 tokens ({token_count} tokens) อาจถูกตัดโดย Ollama")
-        elif token_count > 6553:
-            print(f"⚠️ Prompt ใกล้ขีดจำกัด ({token_count} tokens)")
-        else:
-            print(f"Token of SQL generation prompt: {token_count}")
+        print(f"Token of SQL generation prompt: {token_count}")
         print(f"Dynamic num_ctx: {num_ctx}")
         print(f"\nSQL Generating...")
 
         # เรียก API และเก็บเวลาการ Generate
-        sql, sql_gen_time = query_ollama(prompt, question_id, question, num_ctx)
+        sql, sql_gen_time = query_ollama(prompt, question_id, query_text, num_ctx)
         cleaned_sql = clean_sql(sql)
         
         # รวมเวลาการเรียก LLM (rerank + SQL generation)
@@ -314,7 +373,7 @@ def main():
         predict_test_json[str(question_id)] = json_line
         
         print(f"Question ID: {question_id}")
-        print(f"Question: {question}")
+        print(f"Question: {query_text}")
         print(f"SQL query: {cleaned_sql}")
         print(f"Rerank Time: {formatted_rerank_time}")
         print(f"SQL Generation Time: {formatted_sql_gen_time}")
@@ -329,12 +388,16 @@ def main():
     with open('./bird/exp_result/gemma3_test_split_output/eng_baseline_with_evidence_token_log.json', 'w', encoding='utf-8') as f:
         json.dump(token_log, f, ensure_ascii=False, indent=4)
 
+    # สร้าง id_match_log.json
+    with open('./bird/exp_result/gemma3_test_split_output/id_match_log.json', 'w', encoding='utf-8') as f:
+        json.dump({"top_n": id_match_log_top_n, "top_k": id_match_log_top_k}, f, ensure_ascii=False, indent=4)
+
     print("=== Generated successful!!! ===")
 
     # วัดเวลาทั้งหมด
     overall_end_time = time.time()
     overall_time = overall_end_time - overall_start_time
-    print(f"\n=== Overall Processing Time: {format_time(overall_time)} ===")
+    print(f"\n=== Overall Processing Time: {format_time(overall_time)} of {len(test_data)} record ===")
 
     # แสดง Token Exceed Summary
     print("\n=== Token Exceed Summary ===")
@@ -347,6 +410,20 @@ def main():
             print("--------------------")
     else:
         print("No questions exceeded the token limit.")
+
+    # แสดง ID Match Summary
+    print(f"\n=== ID Match Summary for Top-N = {top_n} ===")
+    print(f"Number of questions with matching ID in Top N: {id_match_log_top_n['correct']}")
+    print(f"Number of questions with no matching ID in Top N: {id_match_log_top_n['incorrect']}")
+
+    print(f"\n=== ID Match Summary for Top-K = {top_k} ===")
+    print(f"Number of questions with matching ID in Top K: {id_match_log_top_k['correct']}")
+    print(f"Number of questions with no matching ID in Top K: {id_match_log_top_k['incorrect']}")
+
+    # แสดง Language Detection Summary
+    print("\n=== Language Detection Summary ===")
+    for k, v in lang_count_log.items():
+        print(f"Language '{k}': {v} questions")
 
 if __name__ == "__main__":
     main()

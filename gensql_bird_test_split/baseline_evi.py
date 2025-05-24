@@ -27,6 +27,9 @@ id_match_log_top_k = {"correct": 0, "incorrect": 0}
 # สร้าง dict สำหรับเก็บสถิติการตรวจจับภาษา
 lang_count_log = {"en": 0, "th": 0, "other": 0}
 
+# สร้าง list สำหรับเก็บ error log
+error_log = []
+
 # ฟังก์ชันตรวจจับภาษา
 def detect_language(text):
     prediction = lang_model.predict(text.strip().replace('\n', ' '))[0][0]
@@ -92,6 +95,11 @@ def query_ollama(prompt, question_id, query, num_ctx):
         return data['response'].strip(), generation_time
     except (requests.RequestException, ValueError) as e:
         print(f"Error for Question ID {question_id}: {e}")
+        error_log.append({
+            "question_id": question_id,
+            "question": query,
+            "error": str(e)
+        })
         return "", -1
 
 # โหลดโมเดล embedding
@@ -150,6 +158,7 @@ def rerank_with_llm(original_query, lang_display, question_id, ids, documents, m
     token_count = count_tokens(prompt, question_id, original_query, max_tokens=8192)
     num_ctx = calculate_dynamic_num_ctx(token_count)
     
+    print(f"\nToken of reranking prompt: {token_count}")
     print(f"Dynamic num_ctx for reranking: {num_ctx}")
     print(f"\nReranking for Top K = {top_k}...")
 
@@ -242,7 +251,7 @@ def generate_sql(query_text, lang_display, question_id, db_id, evidence_text, to
     num_ctx = calculate_dynamic_num_ctx(token_count)
     
     print(f"Token of SQL generation prompt: {token_count}")
-    print(f"Dynamic num_ctx: {num_ctx}")
+    print(f"Dynamic num_ctx for SQL generation: {num_ctx}")
     print(f"\nSQL Generating...\n")
 
     # เรียก API และเก็บเวลาการ Generate
@@ -320,16 +329,11 @@ def main():
             evidence_number_top_n = int(re.search(r'q(\d+)_', doc_id).group(1)) if re.search(r'q(\d+)_', doc_id) else None
             if evidence_number_top_n is None:
                 print(f"⚠️ Cannot extract number from ID: {doc_id} for Question ID {question_id}")
-            print(f"Result {j+1}:")
-            print(f"Similarity Score: {1 - dist:.4f}")
-            print(f"ID: {doc_id}")
             print(f"Extracted Number: {evidence_number_top_n}")
-            print(f"Evidence: {meta['evidence']}")
-            print("-----------------------------------------------------------------------------------------------------------\n\n")
             if evidence_number_top_n is not None and str(evidence_number_top_n) == str(question_id):
                 has_matching_id_top_n = True
 
-        print(f"Check match in Top N: {has_matching_id_top_n}\n")
+        print(f"\nCheck match in Top N: {has_matching_id_top_n}\n")
         if has_matching_id_top_n:
             id_match_log_top_n["correct"] += 1
         else:
@@ -350,13 +354,11 @@ def main():
             print(f"Result {j+1}:")
             print(f"ID: {doc_id}")
             print(f"Extracted Number: {evidence_number_top_k}")
-            print(f"Evidence: {meta['evidence']}")
-            print("-----------------------------------------------------------------------------------------------------------\n\n")
             selected_evidence.append(meta['evidence'])
             if evidence_number_top_k is not None and str(evidence_number_top_k) == str(question_id):
                 has_matching_id_top_k = True
 
-        print(f"Check match in Top K: {has_matching_id_top_k}\n")
+        print(f"\nCheck match in Top K: {has_matching_id_top_k}\n")
         if has_matching_id_top_k:
             id_match_log_top_k["correct"] += 1
         else:
@@ -434,6 +436,18 @@ def main():
     print("\n=== Language Detection Summary ===")
     for k, v in lang_count_log.items():
         print(f"Language '{k}': {v} questions")
+
+    # แสดง Test Error Summary
+    print("\n=== Test Error Summary ===")
+    if error_log:
+        print(f"Total errors: {len(error_log)}")
+        for error in error_log:
+            print(f"Question ID: {error['question_id']}")
+            print(f"Question: {error['question']}")
+            print(f"Error Message: {error['error']}")
+            print("--------------------")
+    else:
+        print("No errors occurred during generation.")
 
 if __name__ == "__main__":
     main()

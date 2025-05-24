@@ -329,7 +329,12 @@ def main():
             evidence_number_top_n = int(re.search(r'q(\d+)_', doc_id).group(1)) if re.search(r'q(\d+)_', doc_id) else None
             if evidence_number_top_n is None:
                 print(f"⚠️ Cannot extract number from ID: {doc_id} for Question ID {question_id}")
+            #print(f"Result {j+1}:")
+            #print(f"Similarity Score: {1 - dist:.4f}")
+            #print(f"ID: {doc_id}")
             print(f"Extracted Number: {evidence_number_top_n}")
+            #print(f"Evidence: {meta['evidence']}")
+            #print("-----------------------------------------------------------------------------------------------------------\n\n")
             if evidence_number_top_n is not None and str(evidence_number_top_n) == str(question_id):
                 has_matching_id_top_n = True
 
@@ -351,9 +356,11 @@ def main():
             evidence_number_top_k = int(re.search(r'q(\d+)_', doc_id).group(1)) if re.search(r'q(\d+)_', doc_id) else None
             if evidence_number_top_k is None:
                 print(f"⚠️ Cannot extract number from ID: {doc_id} for Question ID {question_id}")
-            print(f"Result {j+1}:")
-            print(f"ID: {doc_id}")
+            #print(f"Result {j+1}:")
+            #print(f"ID: {doc_id}")
             print(f"Extracted Number: {evidence_number_top_k}")
+            #print(f"Evidence: {meta['evidence']}")
+            #print("-----------------------------------------------------------------------------------------------------------\n\n")
             selected_evidence.append(meta['evidence'])
             if evidence_number_top_k is not None and str(evidence_number_top_k) == str(question_id):
                 has_matching_id_top_k = True

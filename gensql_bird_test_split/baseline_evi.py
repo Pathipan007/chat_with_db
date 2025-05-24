@@ -9,7 +9,7 @@ import math
 import fasttext
 
 # โหลดโมเดล fastText language detection
-lang_model = fasttext.load_model("../lang_detect_model/lid.176.bin")
+lang_model = fasttext.load_model("./lang_detect_model/lid.176.bin")
 
 # ใช้ tokenizer ของ google/gemma-3-12b-it
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
@@ -102,13 +102,13 @@ persist_directory = "./embed_and_vector_store/vector_store/"
 client = chromadb.PersistentClient(path=persist_directory)
 
 # รับ Train set collection
-train_collection_name = "bird_train_set_rag_evidence_bge_m3_cosine"
-train_collection = client.get_collection(train_collection_name)
+evidence_collection_name = "bird_train_set_evidence_bge_m3"
+evidence_collection = client.get_collection(evidence_collection_name)
 
 # ฟังก์ชัน Similarity Search (Top N = 15) พร้อมกรองภาษา
 def perform_similarity_search(query_text, lang="en", top_n=15):
     query_embedding = embedding_model.encode([query_text]).tolist()[0]
-    results = train_collection.query(
+    results = evidence_collection.query(
         query_embeddings=[query_embedding],
         n_results=top_n,
         where={"language": lang}
@@ -120,38 +120,32 @@ def perform_similarity_search(query_text, lang="en", top_n=15):
     return ids, documents, metadatas, distances
 
 # ฟังก์ชันคัดกรองด้วย LLM เพื่อเลือก Top K = 5
-def rerank_with_llm(original_query, question_id, ids, documents, metadatas, distances, top_k=5):
+def rerank_with_llm(original_query, lang_display, question_id, ids, documents, metadatas, distances, top_k=5):
     candidates = "\n".join([
         f"Candidate {i}: Similarity Score: {1 - dist:.4f}, Evidence: {meta['evidence']}."
         for i, (meta, dist) in enumerate(zip(metadatas, distances))
     ])
 
-    lang_code = detect_language(original_query)
-    lang_display = {
-        "th": "Thai",
-        "en": "English"
-    }.get(lang_code, lang_code.capitalize())
-
     prompt = f"""You are an expert in evaluating semantic similarity between natural language contexts.
-The original query is in {lang_display}, and all candidate evidence is in the same language.
-Each candidate includes a similarity score (from 0.00 to 1.00) based on embedding similarity. Your task is to select the top {top_k} most semantically relevant candidates.
+    The original query is in {lang_display}, and all candidate evidence is in the same language.
+    Each candidate includes a similarity score (from 0.00 to 1.00) based on embedding similarity. Your task is to select the top {top_k} most semantically relevant candidates.
 
-You should carefully consider both:
-1. The **semantic content** of the evidence compared to the query
-2. The **similarity score**, which reflects how close the candidate is based on vector embedding
+    You should carefully consider both:
+    1. The **semantic content** of the evidence compared to the query
+    2. The **similarity score**, which reflects how close the candidate is based on vector embedding
 
-Original Query:
-{original_query}
+    Original Query:
+    {original_query}
 
-Candidate Evidence (with similarity scores):
-{candidates}
+    Candidate Evidence (with similarity scores):
+    {candidates}
 
-### Instructions:
-- Rank the candidates based on both their semantic similarity and similarity score.
-- Use your judgment to resolve conflicts between score and meaning (e.g., high score but off-topic).
-- Output only the indices of the top {top_k} candidates (0-based index), separated by commas.
-- Example output: 0, 2, 4
-- Do not include any explanations or additional text."""
+    ### Instructions:
+    - Rank the candidates based on both their semantic similarity and similarity score.
+    - Use your judgment to resolve conflicts between score and meaning (e.g., high score but off-topic).
+    - Output only the indices of the top {top_k} candidates (0-based index), separated by commas.
+    - Example output: 0, 2, 4
+    - Do not include any explanations or additional text."""
 
     token_count = count_tokens(prompt, question_id, original_query, max_tokens=8192)
     num_ctx = calculate_dynamic_num_ctx(token_count)
@@ -211,6 +205,62 @@ def clean_sql(sql):
         sql += ';'
     return sql.strip()
 
+def generate_sql(query_text, lang_display, question_id, db_id, evidence_text, token_log):
+    # ดึง schema
+    schema = get_schema(db_id)
+
+    # สร้าง prompt สำหรับเจน SQL โดยเพิ่ม evidence
+    prompt = f"""You are an expert in translating natural language questions into SQL queries. 
+    The questions may be in either English or Thai. The original question is in {lang_display}.
+    You must handle both languages correctly.
+
+    Use the provided database schema and relevant evidence to accurately generate a syntactically and semantically correct SQL query.
+
+    The evidence is provided to assist your understanding of the question, table relationships, and filtering conditions. Not all evidence may be relevant — focus only on those that directly support the query.
+
+    Strictly follow SQL syntax supported by standard relational databases such as PostgreSQL.
+
+    ### Database Schema:
+    {schema}
+
+    ### Evidence:
+    {evidence_text}
+
+    ### Task:
+    Translate the following natural language question into a valid SQL query:
+
+    "{query_text}"
+
+    ### Output Format:
+    - Output only the SQL query in a single line.
+    - Do NOT include markdown (e.g., ```sql), explanations, or any additional text.
+    - Do NOT use aliases or table joins unless necessary based on the schema and evidence.
+    - Use the exact column and table names from the schema."""
+    
+    # นับโทเค็น
+    token_count = count_tokens(prompt, question_id, query_text, max_tokens=8192)
+    num_ctx = calculate_dynamic_num_ctx(token_count)
+    
+    print(f"Token of SQL generation prompt: {token_count}")
+    print(f"Dynamic num_ctx: {num_ctx}")
+    print(f"\nSQL Generating...\n")
+
+    # เรียก API และเก็บเวลาการ Generate
+    sql, sql_gen_time = query_ollama(prompt, question_id, query_text, num_ctx)
+    cleaned_sql = clean_sql(sql)
+    
+    # บันทึกข้อมูลโทเค็นของ SQL generation
+    token_log.append({
+        "stage": "sql_generation",
+        "question_id": question_id,
+        "prompt": prompt,
+        "token_count": token_count,
+        "generation_time": sql_gen_time,
+        "num_ctx": num_ctx,
+    })
+
+    return cleaned_sql, sql_gen_time
+
 def main():
     # ทดสอบการเชื่อมต่อกับ Ollama API
     response, generation_time = query_ollama("Test prompt", "test_question_id", "Test query", num_ctx=2048)
@@ -225,7 +275,7 @@ def main():
     # เตรียม dictionary สำหรับ predict_test.json
     predict_test_json = {}
 
-    data = test_data
+    data = test_data[:10]
     total_data = len(data)
 
     top_n = 15
@@ -236,7 +286,7 @@ def main():
 
     # ประมวลผล Test set
     for i, item in enumerate(data):
-        print(f"Processed Test question {i+1}/{len(total_data)}")
+        print(f"Processed Test question {i+1}/{total_data}")
         question_id = item['question_id']
         question = item['question']
         question_th = item.get('question_th')
@@ -253,6 +303,11 @@ def main():
             lang_count_log["other"] += 1
             print(f"⚠️ Unsupported language '{lang}' detected for Question ID {question_id}, falling back to 'en'")
             lang = 'en'
+
+        lang_display = {
+            "th": "Thai",
+            "en": "English"
+        }.get(lang, lang.capitalize())
 
         # ดึง Top N Evidence
         print(f"\n=== Fetching Evidence for Question ID: {question_id} ===")
@@ -274,14 +329,14 @@ def main():
             if evidence_number_top_n is not None and str(evidence_number_top_n) == str(question_id):
                 has_matching_id_top_n = True
 
-        print(f"Check match in Top N: {has_matching_id_top_n}")
+        print(f"Check match in Top N: {has_matching_id_top_n}\n")
         if has_matching_id_top_n:
             id_match_log_top_n["correct"] += 1
         else:
             id_match_log_top_n["incorrect"] += 1
 
         # คัดกรองด้วย LLM เพื่อเลือก Top K
-        top_indices, rerank_time = rerank_with_llm(query_text, question_id, ids, documents, metadatas, distances, top_k=top_k)
+        top_indices, rerank_time = rerank_with_llm(query_text, lang_display, question_id, ids, documents, metadatas, distances, top_k=top_k)
         
         print(f"\nTop {top_k} Results (After LLM Reranking):")
         selected_evidence = []
@@ -301,7 +356,7 @@ def main():
             if evidence_number_top_k is not None and str(evidence_number_top_k) == str(question_id):
                 has_matching_id_top_k = True
 
-        print(f"Check match in Top K: {has_matching_id_top_k}")
+        print(f"Check match in Top K: {has_matching_id_top_k}\n")
         if has_matching_id_top_k:
             id_match_log_top_k["correct"] += 1
         else:
@@ -310,56 +365,15 @@ def main():
         # แปลง evidence เป็น string สำหรับ prompt
         evidence_text = "\n".join([f"- {ev}" for ev in selected_evidence]) if selected_evidence else "No relevant evidence found."
 
-        # ดึง schema
-        schema = get_schema(db_id)
-        
-        # สร้าง prompt สำหรับเจน SQL โดยเพิ่ม evidence
-        prompt = f"""
-    You are an expert in translating natural language questions into SQL queries. 
-    The questions may be in either English or Thai, and you must handle both languages correctly. 
-    Use the provided database schema and relevant evidence to accurately generate a syntactically and semantically correct SQL query.
-
-    ### Database Schema:
-    {schema}
-
-    ### Evidence:
-    {evidence_text}
-
-    ### Task:
-    Translate the following natural language question into a valid SQL query:
-
-    "{query_text}"
-
-    ### Output Format:
-    - Output only the SQL query in a single line.
-    - Do NOT include markdown (e.g., ```sql), explanations, or any additional text.
-    - Do NOT use aliases or table joins unless necessary based on the schema and evidence.
-    - Use the exact column and table names from the schema.
-    """
-        
-        # นับโทเค็น
-        token_count = count_tokens(prompt, question_id, query_text, max_tokens=8192)
-        num_ctx = calculate_dynamic_num_ctx(token_count)
-        
-        print(f"Token of SQL generation prompt: {token_count}")
-        print(f"Dynamic num_ctx: {num_ctx}")
-        print(f"\nSQL Generating...")
-
-        # เรียก API และเก็บเวลาการ Generate
-        sql, sql_gen_time = query_ollama(prompt, question_id, query_text, num_ctx)
-        cleaned_sql = clean_sql(sql)
-        
+        # เรียกฟังก์ชัน generate_sql
+        cleaned_sql, sql_gen_time = generate_sql(query_text, lang_display, question_id, db_id, evidence_text, token_log)
+           
         # รวมเวลาการเรียก LLM (rerank + SQL generation)
         total_llm_time = rerank_time + sql_gen_time if rerank_time >= 0 and sql_gen_time >= 0 else -1
-        
-        # บันทึกข้อมูลโทเค็นของ SQL generation
+
         token_log.append({
-            "stage": "sql_generation",
+            "stage": "total_time_generation",
             "question_id": question_id,
-            "prompt": prompt,
-            "token_count": token_count,
-            "generation_time": sql_gen_time,
-            "num_ctx": num_ctx,
             "total_llm_time": total_llm_time
         })
         
@@ -385,12 +399,8 @@ def main():
         json.dump(predict_test_json, f, ensure_ascii=False, indent=4)
 
     # สร้าง token_log.json
-    with open('./bird/exp_result/gemma3_test_split_output/eng_baseline_with_evidence_token_log.json', 'w', encoding='utf-8') as f:
+    with open('./bird/exp_result/gemma3_test_split_output/log/eng_baseline_with_evidence_token_log.json', 'w', encoding='utf-8') as f:
         json.dump(token_log, f, ensure_ascii=False, indent=4)
-
-    # สร้าง id_match_log.json
-    with open('./bird/exp_result/gemma3_test_split_output/id_match_log.json', 'w', encoding='utf-8') as f:
-        json.dump({"top_n": id_match_log_top_n, "top_k": id_match_log_top_k}, f, ensure_ascii=False, indent=4)
 
     print("=== Generated successful!!! ===")
 
